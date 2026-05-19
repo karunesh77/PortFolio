@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Contact - KARUNESH.</title>
+  <meta name="description" content="Get in touch with Karunesh Gupta — Fullstack Developer available for projects, collaborations, and hiring. Response within 24 hours."/>
+  <meta name="author" content="Karunesh Gupta"/>
+  <meta property="og:title" content="Contact — KARUNESH."/>
+  <meta property="og:description" content="Have a project in mind? Let's talk — available for freelance, collaborations, and full-time opportunities."/>
+  <meta property="og:type" content="website"/>
+  <meta name="twitter:card" content="summary"/>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet"/>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "outline-variant": "#c4c7c7",
+            "primary": "#000000",
+            "secondary-container": "#f6e611",
+            "secondary-fixed": "#f6e611",
+            "on-secondary-fixed": "#1f1c00",
+            "background": "#f9f9f9",
+            "surface": "#f9f9f9",
+            "surface-container": "#eeeeee",
+            "surface-container-low": "#f3f3f4",
+            "surface-container-lowest": "#ffffff",
+            "on-primary": "#ffffff",
+            "on-surface": "#1a1c1c",
+            "on-surface-variant": "#444748",
+            "on-background": "#1a1c1c",
+            "secondary": "#676000",
+            "on-secondary": "#ffffff",
+            "outline": "#747878",
+            "inverse-on-surface": "#f0f1f1",
+          },
+          fontFamily: {
+            "display-lg": ["Montserrat"],
+            "headline-xl": ["Montserrat"],
+            "headline-xl-mobile": ["Montserrat"],
+            "headline-lg": ["Montserrat"],
+            "body-lg": ["Inter"],
+            "body-md": ["Inter"],
+            "label-bold": ["Inter"],
+          },
+          fontSize: {
+            "display-lg": ["84px", { lineHeight: "90px", letterSpacing: "-0.04em", fontWeight: "900" }],
+            "headline-xl": ["64px", { lineHeight: "72px", letterSpacing: "-0.02em", fontWeight: "800" }],
+            "headline-xl-mobile": ["40px", { lineHeight: "44px", fontWeight: "800" }],
+            "headline-lg": ["32px", { lineHeight: "40px", fontWeight: "700" }],
+            "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+            "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+            "label-bold": ["14px", { lineHeight: "20px", fontWeight: "700" }],
+          },
+          spacing: {
+            "section-padding": "120px",
+            "margin-desktop": "80px",
+            "margin-mobile": "20px",
+            "gutter": "24px",
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .mobile-menu { display: none; }
+    .mobile-menu.open { display: flex; }
+    input:focus, textarea:focus { outline: none; border-color: #f6e611; }
+    .success-msg { display: none; }
+    .success-msg.show { display: flex; }
+  </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md antialiased min-h-screen flex flex-col">
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-[80px] bg-primary border-b border-outline">
+    <a href="index.html" class="font-headline-lg text-headline-lg font-black tracking-tighter text-on-primary">KARUNESH.</a>
+    <div class="hidden md:flex gap-gutter items-center">
+      <a href="index.html" class="font-label-bold text-label-bold text-on-primary opacity-80 hover:text-secondary transition-colors">HOME</a>
+      <a href="about.html" class="font-label-bold text-label-bold text-on-primary opacity-80 hover:text-secondary transition-colors">ABOUT</a>
+      <a href="projects.html" class="font-label-bold text-label-bold text-on-primary opacity-80 hover:text-secondary transition-colors">WORKS</a>
+      <a href="contact.html" class="font-label-bold text-label-bold text-secondary border-b-4 border-secondary pb-1">CONTACT</a>
+    </div>
+    <a href="contact.html" class="hidden md:block bg-secondary-fixed text-on-secondary-fixed font-label-bold text-label-bold px-6 py-2 hover:bg-primary hover:text-on-primary border-2 border-secondary-fixed hover:border-primary transition-all">HIRE ME</a>
+    <button onclick="document.getElementById('mobile-menu').classList.toggle('open')" class="md:hidden text-on-primary">
+      <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">menu</span>
+    </button>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="mobile-menu fixed top-[80px] left-0 w-full z-40 flex-col bg-primary border-b border-outline px-margin-mobile py-6 gap-4">
+    <a href="index.html" class="font-label-bold text-label-bold text-on-primary opacity-80">HOME</a>
+    <a href="about.html" class="font-label-bold text-label-bold text-on-primary opacity-80">ABOUT</a>
+    <a href="projects.html" class="font-label-bold text-label-bold text-on-primary opacity-80">WORKS</a>
+    <a href="contact.html" class="font-label-bold text-label-bold text-secondary">CONTACT</a>
+    <a href="contact.html" class="inline-block bg-secondary-fixed text-on-secondary-fixed font-label-bold text-label-bold px-6 py-2 mt-2 w-fit">HIRE ME</a>
+  </div>
+
+  <main class="flex-grow pt-[80px]">
+
+    <!-- Hero Banner -->
+    <section class="bg-primary text-on-primary py-24 md:py-32 relative overflow-hidden">
+      <div class="absolute top-0 left-0 w-64 h-64 opacity-10 pointer-events-none" style="background-image: radial-gradient(#f6e611 2px, transparent 2px); background-size: 16px 16px;"></div>
+      <div class="absolute bottom-0 right-0 w-48 h-48 opacity-10 pointer-events-none" style="background-image: radial-gradient(#f6e611 2px, transparent 2px); background-size: 16px 16px;"></div>
+      <div class="max-w-4xl mx-auto px-margin-mobile md:px-margin-desktop text-center relative z-10">
+        <span class="font-label-bold text-label-bold uppercase tracking-widest text-outline block mb-4">GET IN TOUCH</span>
+        <h1 class="font-headline-xl-mobile md:text-[72px] font-black text-on-primary leading-tight mb-6 relative inline-block">
+          LET'S WORK<br/>TOGETHER
+          <div class="absolute -bottom-4 left-1/2 -translate-x-1/2 w-24 h-1.5 bg-secondary-fixed"></div>
+        </h1>
+        <p class="font-body-lg text-body-lg text-inverse-on-surface mt-12 max-w-xl mx-auto opacity-70">
+          Have a project in mind? Looking for a developer? Let's talk — I respond within 24 hours.
+        </p>
+      </div>
+    </section>
+
+    <!-- Contact Content -->
+    <section class="py-section-padding bg-surface relative">
+      <div class="max-w-6xl mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 md:grid-cols-12 gap-12">
+
+        <!-- Info Sidebar -->
+        <div class="md:col-span-4">
+          <div class="bg-surface-container border-l-4 border-secondary-fixed p-8 h-full flex flex-col justify-between">
+            <div>
+              <h3 class="font-headline-lg text-[22px] font-bold text-on-surface uppercase tracking-tight mb-8">Contact Info</h3>
+
+              <div class="flex items-start gap-4 mb-8 group">
+                <span class="material-symbols-outlined text-secondary-fixed text-2xl mt-0.5">mail</span>
+                <div>
+                  <p class="font-label-bold text-label-bold text-outline uppercase mb-1">Email</p>
+                  <a href="mailto:karunesh@elens.in" class="font-body-md text-body-md text-on-surface font-semibold hover:text-secondary transition-colors break-all">karunesh@elens.in</a>
+                  <a href="mailto:heyitskaruneshgupta@gmail.com" class="font-body-md text-body-md text-on-surface font-semibold hover:text-secondary transition-colors break-all block mt-1">heyitskaruneshgupta@gmail.com</a>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4 mb-8 group">
+                <span class="material-symbols-outlined text-secondary-fixed text-2xl mt-0.5">location_on</span>
+                <div>
+                  <p class="font-label-bold text-label-bold text-outline uppercase mb-1">Location</p>
+                  <p class="font-body-md text-body-md text-on-surface font-semibold">India<br/>Available Worldwide</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4 mb-8">
+                <span class="material-symbols-outlined text-secondary-fixed text-2xl mt-0.5">schedule</span>
+                <div>
+                  <p class="font-label-bold text-label-bold text-outline uppercase mb-1">Response Time</p>
+                  <p class="font-body-md text-body-md text-on-surface font-semibold">Within 24 hours</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <span class="material-symbols-outlined text-secondary-fixed text-2xl mt-0.5">check_circle</span>
+                <div>
+                  <p class="font-label-bold text-label-bold text-outline uppercase mb-1">Status</p>
+                  <div class="flex items-center gap-2">
+                    <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                    <p class="font-body-md text-body-md text-on-surface font-semibold">Available for Projects</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-12">
+              <h4 class="font-label-bold text-label-bold text-on-surface uppercase mb-4">Find Me On</h4>
+              <div class="flex gap-3">
+                <a href="#" class="w-10 h-10 bg-primary text-on-primary flex items-center justify-center hover:bg-secondary-fixed hover:text-primary transition-colors font-bold text-sm">GH</a>
+                <a href="#" class="w-10 h-10 bg-primary text-on-primary flex items-center justify-center hover:bg-secondary-fixed hover:text-primary transition-colors font-bold text-sm">IN</a>
+                <a href="#" class="w-10 h-10 bg-primary text-on-primary flex items-center justify-center hover:bg-secondary-fixed hover:text-primary transition-colors font-bold text-sm">TW</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="md:col-span-8">
+
+          <!-- Success message -->
+          <div id="success-msg" class="success-msg items-center gap-4 bg-secondary-fixed text-primary px-6 py-4 mb-8 font-label-bold text-label-bold uppercase">
+            <span class="material-symbols-outlined">check_circle</span>
+            Message sent! I'll get back to you within 24 hours.
+          </div>
+
+          <form id="contact-form" class="space-y-8" action="https://formspree.io/f/mpqnwvva" method="POST" onsubmit="handleSubmit(event)">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div>
+                <label class="font-label-bold text-label-bold text-primary uppercase block mb-2" for="name">Name *</label>
+                <input
+                  class="w-full bg-transparent border-0 border-b-2 border-primary text-on-surface font-body-md px-0 py-2 transition-colors placeholder:text-outline"
+                  id="name" name="name" type="text" placeholder="Your name" required
+                />
+              </div>
+              <div>
+                <label class="font-label-bold text-label-bold text-primary uppercase block mb-2" for="email">Email *</label>
+                <input
+                  class="w-full bg-transparent border-0 border-b-2 border-primary text-on-surface font-body-md px-0 py-2 transition-colors placeholder:text-outline"
+                  id="email" name="email" type="email" placeholder="your@email.com" required
+                />
+              </div>
+            </div>
+
+            <div>
+              <label class="font-label-bold text-label-bold text-primary uppercase block mb-2" for="subject">Subject *</label>
+              <input
+                class="w-full bg-transparent border-0 border-b-2 border-primary text-on-surface font-body-md px-0 py-2 transition-colors placeholder:text-outline"
+                id="subject" name="subject" type="text" placeholder="Project inquiry / Collaboration / Hiring" required
+              />
+            </div>
+
+            <div>
+              <label class="font-label-bold text-label-bold text-primary uppercase block mb-2" for="budget">Budget Range</label>
+              <select
+                class="w-full bg-transparent border-0 border-b-2 border-primary text-on-surface font-body-md px-0 py-2 transition-colors appearance-none cursor-pointer"
+                id="budget" name="budget"
+              >
+                <option value="" class="text-outline">Select a range (optional)</option>
+                <option>Under ₹50,000</option>
+                <option>₹50,000 – ₹1,00,000</option>
+                <option>₹1,00,000 – ₹3,00,000</option>
+                <option>₹3,00,000+</option>
+                <option>Let's discuss</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="font-label-bold text-label-bold text-primary uppercase block mb-2" for="message">Message *</label>
+              <textarea
+                class="w-full bg-transparent border-0 border-b-2 border-primary text-on-surface font-body-md px-0 py-2 transition-colors resize-none placeholder:text-outline"
+                id="message" name="message" rows="5"
+                placeholder="Tell me about your project, timeline, and what you need..." required
+              ></textarea>
+            </div>
+
+            <div class="pt-2 flex justify-end">
+              <button
+                type="submit"
+                class="bg-primary text-on-primary font-label-bold text-label-bold px-10 py-4 uppercase tracking-widest hover:bg-secondary-fixed hover:text-primary border-2 border-primary hover:border-secondary-fixed transition-all inline-flex items-center gap-2 group"
+              >
+                SEND MESSAGE
+                <span class="material-symbols-outlined text-xl group-hover:translate-x-1 transition-transform">arrow_forward</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bottom CTA Strip -->
+    <section class="bg-secondary-fixed py-12 px-margin-mobile md:px-margin-desktop">
+      <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+        <div>
+          <h3 class="font-headline-lg text-[24px] font-black text-primary uppercase">PREFER EMAIL?</h3>
+          <p class="font-body-md text-body-md text-primary opacity-70 mt-1">Drop me a line directly.</p>
+        </div>
+        <a href="mailto:heyitskaruneshgupta@gmail.com" class="bg-primary text-on-primary font-label-bold text-label-bold px-8 py-3 tracking-widest hover:bg-surface hover:text-primary border-2 border-primary transition-all">
+          heyitskaruneshgupta@gmail.com
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="w-full py-10 px-margin-mobile md:px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-gutter bg-primary border-t-2 border-outline">
+    <div class="font-headline-lg text-headline-lg font-black text-on-primary">KARUNESH.</div>
+    <div class="font-body-md text-body-md text-on-primary opacity-60 text-center">
+      © 2025 KARUNESH GUPTA. ENGINEERED FOR PRECISION.
+    </div>
+    <div class="flex gap-gutter">
+      <a href="#" class="font-label-bold text-label-bold text-on-primary opacity-60 hover:text-secondary transition-all">GITHUB</a>
+      <a href="#" class="font-label-bold text-label-bold text-on-primary opacity-60 hover:text-secondary transition-all">LINKEDIN</a>
+      <a href="mailto:karunesh@elens.in" class="font-label-bold text-label-bold text-on-primary opacity-60 hover:text-secondary transition-all">EMAIL</a>
+    </div>
+  </footer>
+
+  <script>
+    async function handleSubmit(e) {
+      e.preventDefault();
+      const form = e.target;
+      const btn = form.querySelector('button[type="submit"]');
+      const successMsg = document.getElementById('success-msg');
+
+      btn.textContent = 'SENDING...';
+      btn.disabled = true;
+
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (res.ok) {
+          form.reset();
+          successMsg.classList.add('show');
+          setTimeout(() => successMsg.classList.remove('show'), 5000);
+        } else {
+          alert('Something went wrong. Please try again or email directly.');
+        }
+      } catch {
+        alert('Network error. Please try again.');
+      }
+
+      btn.innerHTML = 'SEND MESSAGE <span class="material-symbols-outlined text-xl group-hover:translate-x-1 transition-transform">arrow_forward</span>';
+      btn.disabled = false;
+    }
+  </script>
+
+</body>
+</html>

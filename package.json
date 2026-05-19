@@ -1,0 +1,15 @@
+{
+  "name": "karunesh-portfolio",
+  "version": "1.0.0",
+  "description": "Karunesh Gupta - Developer Portfolio",
+  "scripts": {
+    "build": "node build.js",
+    "dev": "node build.js && python -m http.server 3000 --directory dist"
+  },
+  "dependencies": {
+    "contentful": "^10.15.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

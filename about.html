@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>About - KARUNESH.</title>
+  <meta name="description" content="About Karunesh Gupta — Fullstack Developer skilled in React, Node.js, MongoDB, AWS, Docker. View my skills, tech stack, and work process."/>
+  <meta name="author" content="Karunesh Gupta"/>
+  <meta property="og:title" content="About — KARUNESH."/>
+  <meta property="og:description" content="Fullstack Developer skilled in React, Node.js, MongoDB, AWS, Docker. View my skills, tech stack, and work process."/>
+  <meta property="og:type" content="website"/>
+  <meta name="twitter:card" content="summary"/>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet"/>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "outline-variant": "#c4c7c7",
+            "primary": "#000000",
+            "secondary-container": "#f6e611",
+            "secondary-fixed": "#f6e611",
+            "on-secondary-fixed": "#1f1c00",
+            "background": "#f9f9f9",
+            "surface": "#f9f9f9",
+            "surface-container": "#eeeeee",
+            "surface-container-low": "#f3f3f4",
+            "surface-container-lowest": "#ffffff",
+            "on-primary": "#ffffff",
+            "on-surface": "#1a1c1c",
+            "on-surface-variant": "#444748",
+            "on-background": "#1a1c1c",
+            "secondary": "#676000",
+            "on-secondary": "#ffffff",
+            "outline": "#747878",
+            "inverse-on-surface": "#f0f1f1",
+          },
+          fontFamily: {
+            "display-lg": ["Montserrat"],
+            "headline-xl": ["Montserrat"],
+            "headline-xl-mobile": ["Montserrat"],
+            "headline-lg": ["Montserrat"],
+            "body-lg": ["Inter"],
+            "body-md": ["Inter"],
+            "label-bold": ["Inter"],
+          },
+          fontSize: {
+            "display-lg": ["84px", { lineHeight: "90px", letterSpacing: "-0.04em", fontWeight: "900" }],
+            "headline-xl": ["64px", { lineHeight: "72px", letterSpacing: "-0.02em", fontWeight: "800" }],
+            "headline-xl-mobile": ["40px", { lineHeight: "44px", fontWeight: "800" }],
+            "headline-lg": ["32px", { lineHeight: "40px", fontWeight: "700" }],
+            "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+            "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+            "label-bold": ["14px", { lineHeight: "20px", fontWeight: "700" }],
+          },
+          spacing: {
+            "section-padding": "120px",
+            "margin-desktop": "80px",
+            "margin-mobile": "20px",
+            "gutter": "24px",
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .dot-pattern {
+      background-image: radial-gradient(circle, #747878 1px, transparent 1px);
+      background-size: 8px 8px;
+    }
+    .skill-bar-fill { transition: width 1s ease-in-out; }
+    .mobile-menu { display: none; }
+    .mobile-menu.open { display: flex; }
+  </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col pt-[80px]">
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-[80px] bg-primary border-b border-outline">
+    <a href="index.html" class="font-headline-lg text-headline-lg font-black tracking-tighter text-on-primary">KARUNESH.</a>
+    <div class="hidden md:flex gap-gutter items-center">
+      <a href="index.html" class="font-label-bold text-label-bold text-on-primary opacity-80 hover:text-secondary transition-colors">HOME</a>
+      <a href="about.html" class="font-label-bold text-label-bold text-secondary border-b-4 border-secondary pb-1">ABOUT</a>
+      <a href="projects.html" class="font-label-bold text-label-bold text-on-primary opacity-80 hover:text-secondary transition-colors">WORKS</a>
+      <a href="contact.html" class="font-label-bold text-label-bold text-on-primary opacity-80 hover:text-secondary transition-colors">CONTACT</a>
+    </div>
+    <a href="contact.html" class="hidden md:block bg-secondary-fixed text-on-secondary-fixed font-label-bold text-label-bold px-6 py-2 hover:bg-primary hover:text-on-primary border-2 border-secondary-fixed hover:border-primary transition-all">HIRE ME</a>
+    <button onclick="document.getElementById('mobile-menu').classList.toggle('open')" class="md:hidden text-on-primary">
+      <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">menu</span>
+    </button>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="mobile-menu fixed top-[80px] left-0 w-full z-40 flex-col bg-primary border-b border-outline px-margin-mobile py-6 gap-4">
+    <a href="index.html" class="font-label-bold text-label-bold text-on-primary opacity-80">HOME</a>
+    <a href="about.html" class="font-label-bold text-label-bold text-secondary">ABOUT</a>
+    <a href="projects.html" class="font-label-bold text-label-bold text-on-primary opacity-80">WORKS</a>
+    <a href="contact.html" class="font-label-bold text-label-bold text-on-primary opacity-80">CONTACT</a>
+    <a href="contact.html" class="inline-block bg-secondary-fixed text-on-secondary-fixed font-label-bold text-label-bold px-6 py-2 mt-2 w-fit">HIRE ME</a>
+  </div>
+
+  <main>
+
+    <!-- Who Am I -->
+    <section class="py-section-padding px-margin-mobile md:px-margin-desktop bg-surface-container-low relative overflow-hidden">
+      <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-gutter items-center relative z-10">
+
+        <!-- Avatar Block -->
+        <div class="md:col-span-5 md:col-start-1 relative flex justify-center">
+          <div class="absolute -top-8 -left-4 w-full h-full bg-primary z-0 hidden md:block"></div>
+          <div class="absolute -top-4 -right-4 w-4 h-4 bg-secondary-fixed rounded-full z-20 hidden md:block"></div>
+          <div class="absolute -top-4 -right-12 w-2 h-2 bg-secondary-fixed rounded-full z-20 hidden md:block"></div>
+          <div class="relative z-10">
+            <!-- Offset yellow shadow -->
+            <div class="absolute top-4 left-4 w-full h-full bg-secondary-fixed opacity-80"></div>
+            <!-- Photo -->
+            <img
+              src="profile.webp"
+              alt="Karunesh Gupta"
+              class="relative z-10 w-64 h-72 md:w-72 md:h-80 object-cover"
+              style="filter: grayscale(90%) contrast(1.2) brightness(0.8); object-position: center 35%;"
+            />
+            <!-- Corner accents -->
+            <div class="absolute -top-2 -right-2 w-6 h-6 bg-secondary-fixed z-20"></div>
+            <div class="absolute -bottom-2 -left-2 w-6 h-6 bg-secondary-fixed z-20"></div>
+          </div>
+          <div class="absolute -bottom-12 right-0 w-32 h-16 dot-pattern z-0 opacity-40 hidden md:block"></div>
+        </div>
+
+        <!-- Text Block -->
+        <div class="md:col-span-6 md:col-start-7 mt-12 md:mt-0">
+          <span class="font-label-bold text-label-bold uppercase tracking-wider text-outline block mb-3">WHO AM I</span>
+          <h2 class="font-headline-xl-mobile md:text-[52px] font-black text-primary relative inline-block mb-6">
+            HELLO, I'M<br/>KARUNESH
+            <div class="absolute -bottom-2 left-0 w-full h-1 bg-secondary-fixed"></div>
+          </h2>
+          <div class="mt-8 font-body-md text-body-md text-on-surface-variant space-y-4">
+            <!-- ABOUT_BIO_START -->
+            <p>
+              I'm a passionate Fullstack Developer who loves building products that are fast, clean, and functional. I turn ideas into working software — from database design to polished user interfaces.
+            </p>
+            <p>
+              My focus is on writing maintainable code, crafting seamless user experiences, and delivering projects that actually solve real problems. I've worked on job platforms, trading apps, and chat systems.
+            </p>
+            <!-- ABOUT_BIO_END -->
+          </div>
+          <div class="mt-8 flex gap-4">
+            <a href="__CV_URL__" class="bg-primary text-on-primary font-label-bold text-label-bold px-8 py-3 hover:bg-secondary-fixed hover:text-primary transition-colors" target="_blank" rel="noopener">DOWNLOAD CV</a>
+            <a href="contact.html" class="border-2 border-primary text-primary font-label-bold text-label-bold px-8 py-3 hover:bg-primary hover:text-on-primary transition-all">CONTACT</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="py-section-padding px-margin-mobile md:px-margin-desktop bg-primary relative overflow-hidden">
+      <div class="absolute top-12 right-12 w-48 h-48 dot-pattern opacity-10 hidden md:block"></div>
+      <div class="max-w-6xl mx-auto">
+        <div class="mb-14">
+          <span class="font-label-bold text-label-bold uppercase tracking-widest text-outline block mb-2">TECHNICAL SKILLS</span>
+          <h2 class="font-headline-xl-mobile md:text-[48px] font-black text-on-primary leading-tight">
+            MY <span class="text-secondary-fixed">STACK</span>
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-8">
+          <!-- SKILLS_START -->
+          <div>
+            <div class="flex justify-between mb-2">
+              <span class="font-label-bold text-label-bold text-on-primary uppercase">JavaScript / TypeScript</span>
+              <span class="font-label-bold text-label-bold text-secondary-fixed">90%</span>
+            </div>
+            <div class="w-full h-1 bg-outline">
+              <div class="h-1 bg-secondary-fixed" style="width:90%"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between mb-2">
+              <span class="font-label-bold text-label-bold text-on-primary uppercase">React / Next.js</span>
+              <span class="font-label-bold text-label-bold text-secondary-fixed">85%</span>
+            </div>
+            <div class="w-full h-1 bg-outline">
+              <div class="h-1 bg-secondary-fixed" style="width:85%"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between mb-2">
+              <span class="font-label-bold text-label-bold text-on-primary uppercase">TailwindCSS</span>
+              <span class="font-label-bold text-label-bold text-secondary-fixed">90%</span>
+            </div>
+            <div class="w-full h-1 bg-outline">
+              <div class="h-1 bg-secondary-fixed" style="width:90%"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between mb-2">
+              <span class="font-label-bold text-label-bold text-on-primary uppercase">Node.js / Express</span>
+              <span class="font-label-bold text-label-bold text-secondary-fixed">80%</span>
+            </div>
+            <div class="w-full h-1 bg-outline">
+              <div class="h-1 bg-secondary-fixed" style="width:80%"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between mb-2">
+              <span class="font-label-bold text-label-bold text-on-primary uppercase">MongoDB / SQL</span>
+              <span class="font-label-bold text-label-bold text-secondary-fixed">80%</span>
+            </div>
+            <div class="w-full h-1 bg-outline">
+              <div class="h-1 bg-secondary-fixed" style="width:80%"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between mb-2">
+              <span class="font-label-bold text-label-bold text-on-primary uppercase">REST APIs / JWT Auth</span>
+              <span class="font-label-bold text-label-bold text-secondary-fixed">85%</span>
+            </div>
+            <div class="w-full h-1 bg-outline">
+              <div class="h-1 bg-secondary-fixed" style="width:85%"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between mb-2">
+              <span class="font-label-bold text-label-bold text-on-primary uppercase">Python</span>
+              <span class="font-label-bold text-label-bold text-secondary-fixed">65%</span>
+            </div>
+            <div class="w-full h-1 bg-outline">
+              <div class="h-1 bg-secondary-fixed" style="width:65%"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between mb-2">
+              <span class="font-label-bold text-label-bold text-on-primary uppercase">Docker / AWS</span>
+              <span class="font-label-bold text-label-bold text-secondary-fixed">70%</span>
+            </div>
+            <div class="w-full h-1 bg-outline">
+              <div class="h-1 bg-secondary-fixed" style="width:70%"></div>
+            </div>
+          </div>
+          <!-- SKILLS_END -->
+        </div>
+
+        <!-- Tech Chips -->
+        <div class="mt-16">
+          <span class="font-label-bold text-label-bold uppercase tracking-widest text-outline block mb-6">TOOLS & TECHNOLOGIES</span>
+          <div class="flex flex-wrap gap-3">
+            <!-- TECH_CHIPS_START -->
+            <span class="bg-secondary-fixed text-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">React</span>
+            <span class="bg-secondary-fixed text-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">Next.js</span>
+            <span class="bg-secondary-fixed text-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">Node.js</span>
+            <span class="bg-secondary-fixed text-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">Express.js</span>
+            <span class="bg-secondary-fixed text-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">MongoDB</span>
+            <span class="bg-secondary-fixed text-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">TailwindCSS</span>
+            <span class="bg-secondary-fixed text-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">Python</span>
+            <span class="bg-secondary-fixed text-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">Docker</span>
+            <span class="bg-secondary-fixed text-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">AWS</span>
+            <span class="border border-outline text-on-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">JavaScript</span>
+            <span class="border border-outline text-on-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">TypeScript</span>
+            <span class="border border-outline text-on-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">SQL</span>
+            <span class="border border-outline text-on-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">JWT</span>
+            <span class="border border-outline text-on-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">REST APIs</span>
+            <span class="border border-outline text-on-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">Redis</span>
+            <span class="border border-outline text-on-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">Nginx</span>
+            <span class="border border-outline text-on-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">Linux</span>
+            <span class="border border-outline text-on-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">Git</span>
+            <span class="border border-outline text-on-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">GitHub</span>
+            <span class="border border-outline text-on-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">Postman</span>
+            <span class="border border-outline text-on-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">Vercel</span>
+            <span class="border border-outline text-on-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">Figma</span>
+            <span class="border border-outline text-on-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">Contentful</span>
+            <span class="border border-outline text-on-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">VS Code</span>
+            <!-- TECH_CHIPS_END -->
+          </div>
+        </div>
+
+        <!-- Cloud & DevOps Section -->
+        <div class="mt-16 border-t border-outline pt-12">
+          <div class="flex flex-col md:flex-row md:items-start gap-10">
+
+            <!-- Left label -->
+            <div class="md:w-1/3 shrink-0">
+              <span class="font-label-bold text-label-bold uppercase tracking-widest text-outline block mb-2">INFRASTRUCTURE</span>
+              <h3 class="font-headline-lg text-[28px] font-black text-on-primary leading-tight">
+                CLOUD &<br/><span class="text-secondary-fixed">DEVOPS</span>
+              </h3>
+              <p class="font-body-md text-body-md text-on-surface-variant mt-4 text-sm max-w-xs">
+                Deploying, scaling, and automating production-grade applications on AWS infrastructure.
+              </p>
+            </div>
+
+            <!-- Right: Cards grid -->
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 flex-1">
+
+              <div class="border border-outline p-4 hover:border-secondary-fixed hover:bg-on-primary transition-all group cursor-default">
+                <div class="w-8 h-8 bg-secondary-fixed flex items-center justify-center mb-3">
+                  <span class="material-symbols-outlined text-primary text-base">cloud</span>
+                </div>
+                <h4 class="font-label-bold text-label-bold text-on-primary uppercase text-xs font-black mb-1">AWS</h4>
+                <p class="text-outline text-xs">Amazon Web Services — core cloud platform</p>
+              </div>
+
+              <div class="border border-outline p-4 hover:border-secondary-fixed hover:bg-on-primary transition-all group cursor-default">
+                <div class="w-8 h-8 bg-secondary-fixed flex items-center justify-center mb-3">
+                  <span class="material-symbols-outlined text-primary text-base">functions</span>
+                </div>
+                <h4 class="font-label-bold text-label-bold text-on-primary uppercase text-xs font-black mb-1">AWS LAMBDA</h4>
+                <p class="text-outline text-xs">Serverless functions — event-driven compute</p>
+              </div>
+
+              <div class="border border-outline p-4 hover:border-secondary-fixed hover:bg-on-primary transition-all group cursor-default">
+                <div class="w-8 h-8 bg-secondary-fixed flex items-center justify-center mb-3">
+                  <span class="material-symbols-outlined text-primary text-base">storage</span>
+                </div>
+                <h4 class="font-label-bold text-label-bold text-on-primary uppercase text-xs font-black mb-1">AWS S3</h4>
+                <p class="text-outline text-xs">Object storage — files, assets, backups</p>
+              </div>
+
+              <div class="border border-outline p-4 hover:border-secondary-fixed hover:bg-on-primary transition-all group cursor-default">
+                <div class="w-8 h-8 bg-secondary-fixed flex items-center justify-center mb-3">
+                  <span class="material-symbols-outlined text-primary text-base">public</span>
+                </div>
+                <h4 class="font-label-bold text-label-bold text-on-primary uppercase text-xs font-black mb-1">CDN</h4>
+                <p class="text-outline text-xs">CloudFront — fast global content delivery</p>
+              </div>
+
+              <div class="border border-outline p-4 hover:border-secondary-fixed hover:bg-on-primary transition-all group cursor-default col-span-2 md:col-span-2">
+                <div class="w-8 h-8 bg-secondary-fixed flex items-center justify-center mb-3">
+                  <span class="material-symbols-outlined text-primary text-base">sync_alt</span>
+                </div>
+                <h4 class="font-label-bold text-label-bold text-on-primary uppercase text-xs font-black mb-1">CI/CD PIPELINE</h4>
+                <p class="text-outline text-xs">GitHub Actions — automated build, test & deploy workflows</p>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- My Process Section -->
+    <section class="py-section-padding px-margin-mobile md:px-margin-desktop bg-surface-container-lowest relative overflow-hidden">
+      <!-- Decorative dot pattern -->
+      <div class="absolute bottom-0 right-0 w-64 h-64 dot-pattern opacity-10 hidden md:block"></div>
+
+      <div class="max-w-6xl mx-auto">
+        <div class="mb-14">
+          <span class="font-label-bold text-label-bold uppercase tracking-widest text-outline block mb-2">HOW I WORK</span>
+          <h2 class="font-headline-xl-mobile md:text-[48px] font-black text-primary leading-tight">
+            MY <span class="inline-block relative">PROCESS<div class="absolute -bottom-1 left-0 w-full h-1 bg-secondary-fixed"></div></span>
+          </h2>
+        </div>
+
+        <!-- Steps Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-0 border border-outline">
+
+          <!-- Step 01 -->
+          <div class="relative p-8 border-b md:border-b-0 md:border-r border-outline group hover:bg-primary transition-all duration-300 cursor-default">
+            <div class="text-[64px] font-black leading-none mb-4 text-secondary-fixed" style="font-family:'Montserrat'; opacity:0.3;">01</div>
+            <div class="w-10 h-10 bg-secondary-fixed flex items-center justify-center mb-4 group-hover:bg-primary group-hover:border-2 group-hover:border-secondary-fixed transition-all">
+              <span class="material-symbols-outlined text-primary group-hover:text-secondary-fixed text-xl">search</span>
+            </div>
+            <h3 class="font-label-bold text-label-bold text-on-surface group-hover:text-on-primary uppercase font-black text-base mb-3 tracking-wider">DISCOVER</h3>
+            <p class="font-body-md text-body-md text-on-surface-variant group-hover:text-on-primary opacity-80 text-sm leading-relaxed">
+              Understand the problem, gather requirements, research the tech stack, and plan the architecture.
+            </p>
+            <!-- Arrow desktop -->
+            <div class="hidden md:block absolute top-1/2 -right-4 z-10 text-secondary-fixed font-black text-xl">→</div>
+          </div>
+
+          <!-- Step 02 -->
+          <div class="relative p-8 border-b md:border-b-0 md:border-r border-outline group hover:bg-primary transition-all duration-300 cursor-default">
+            <div class="text-[64px] font-black leading-none mb-4 text-secondary-fixed" style="font-family:'Montserrat'; opacity:0.3;">02</div>
+            <div class="w-10 h-10 bg-secondary-fixed flex items-center justify-center mb-4 group-hover:bg-primary group-hover:border-2 group-hover:border-secondary-fixed transition-all">
+              <span class="material-symbols-outlined text-primary group-hover:text-secondary-fixed text-xl">design_services</span>
+            </div>
+            <h3 class="font-label-bold text-label-bold text-on-surface group-hover:text-on-primary uppercase font-black text-base mb-3 tracking-wider">DESIGN</h3>
+            <p class="font-body-md text-body-md text-on-surface-variant group-hover:text-on-primary opacity-80 text-sm leading-relaxed">
+              Structure the UI/UX, plan database schema, define API contracts, and set up the project.
+            </p>
+            <div class="hidden md:block absolute top-1/2 -right-4 z-10 text-secondary-fixed font-black text-xl">→</div>
+          </div>
+
+          <!-- Step 03 -->
+          <div class="relative p-8 border-b md:border-b-0 md:border-r border-outline group hover:bg-primary transition-all duration-300 cursor-default">
+            <div class="text-[64px] font-black leading-none mb-4 text-secondary-fixed" style="font-family:'Montserrat'; opacity:0.3;">03</div>
+            <div class="w-10 h-10 bg-secondary-fixed flex items-center justify-center mb-4 group-hover:bg-primary group-hover:border-2 group-hover:border-secondary-fixed transition-all">
+              <span class="material-symbols-outlined text-primary group-hover:text-secondary-fixed text-xl">code</span>
+            </div>
+            <h3 class="font-label-bold text-label-bold text-on-surface group-hover:text-on-primary uppercase font-black text-base mb-3 tracking-wider">BUILD</h3>
+            <p class="font-body-md text-body-md text-on-surface-variant group-hover:text-on-primary opacity-80 text-sm leading-relaxed">
+              Write clean, maintainable code. Frontend + Backend together, tested at every step.
+            </p>
+            <div class="hidden md:block absolute top-1/2 -right-4 z-10 text-secondary-fixed font-black text-xl">→</div>
+          </div>
+
+          <!-- Step 04 -->
+          <div class="relative p-8 group hover:bg-primary transition-all duration-300 cursor-default">
+            <div class="text-[64px] font-black leading-none mb-4 text-secondary-fixed" style="font-family:'Montserrat'; opacity:0.3;">04</div>
+            <div class="w-10 h-10 bg-secondary-fixed flex items-center justify-center mb-4 group-hover:bg-primary group-hover:border-2 group-hover:border-secondary-fixed transition-all">
+              <span class="material-symbols-outlined text-primary group-hover:text-secondary-fixed text-xl">rocket_launch</span>
+            </div>
+            <h3 class="font-label-bold text-label-bold text-on-surface group-hover:text-on-primary uppercase font-black text-base mb-3 tracking-wider">DEPLOY</h3>
+            <p class="font-body-md text-body-md text-on-surface-variant group-hover:text-on-primary opacity-80 text-sm leading-relaxed">
+              Deploy to production, monitor performance, fix bugs, and iterate based on feedback.
+            </p>
+          </div>
+
+        </div>
+
+        <!-- Bottom yellow strip -->
+        <div class="bg-secondary-fixed p-6 flex flex-col md:flex-row items-center justify-between gap-4 mt-0 border border-t-0 border-outline">
+          <p class="font-label-bold text-label-bold text-primary uppercase tracking-wider text-sm">
+            Every project — same precision. Every time.
+          </p>
+          <a href="contact.html" class="bg-primary text-on-primary font-label-bold text-label-bold px-6 py-2 uppercase tracking-widest hover:bg-surface hover:text-primary border-2 border-primary transition-all text-sm">
+            START A PROJECT →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience / Timeline -->
+    <section class="py-section-padding px-margin-mobile md:px-margin-desktop bg-surface-container-lowest relative">
+      <div class="max-w-6xl mx-auto">
+        <div class="mb-14">
+          <span class="font-label-bold text-label-bold uppercase tracking-widest text-outline block mb-2">JOURNEY</span>
+          <h2 class="font-headline-xl-mobile md:text-[48px] font-black text-primary leading-tight">
+            EXPERIENCE &<br/><span class="inline-block relative">EDUCATION<div class="absolute -bottom-1 left-0 w-full h-1 bg-secondary-fixed"></div></span>
+          </h2>
+        </div>
+
+        <div class="relative border-l-2 border-outline ml-4 space-y-12 pl-8">
+
+          <!-- Entry 1 -->
+          <div class="relative">
+            <div class="absolute -left-[41px] top-1 w-4 h-4 bg-secondary-fixed border-2 border-primary"></div>
+            <span class="font-label-bold text-label-bold text-outline uppercase tracking-wider block mb-1">2024 — PRESENT</span>
+            <h3 class="font-headline-lg text-[22px] font-bold text-primary uppercase mb-1">Fullstack Developer</h3>
+            <p class="font-label-bold text-label-bold text-secondary uppercase mb-3">Freelance / Self-Employed</p>
+            <p class="font-body-md text-body-md text-on-surface-variant max-w-xl">
+              Building end-to-end web applications including HireMitra (job platform) and Bullox (trading app). Handling full project lifecycle from design to deployment.
+            </p>
+          </div>
+
+          <!-- Entry 2 -->
+          <div class="relative">
+            <div class="absolute -left-[41px] top-1 w-4 h-4 bg-primary border-2 border-outline"></div>
+            <span class="font-label-bold text-label-bold text-outline uppercase tracking-wider block mb-1">2023 — 2024</span>
+            <h3 class="font-headline-lg text-[22px] font-bold text-primary uppercase mb-1">Frontend Developer</h3>
+            <p class="font-label-bold text-label-bold text-secondary uppercase mb-3">Projects & Learning</p>
+            <p class="font-body-md text-body-md text-on-surface-variant max-w-xl">
+              Focused on building responsive UIs with React and TailwindCSS. Developed skills in component architecture, state management, and API integration.
+            </p>
+          </div>
+
+          <!-- Entry 3 -->
+          <div class="relative">
+            <div class="absolute -left-[41px] top-1 w-4 h-4 bg-primary border-2 border-outline"></div>
+            <span class="font-label-bold text-label-bold text-outline uppercase tracking-wider block mb-1">2021 — 2023</span>
+            <h3 class="font-headline-lg text-[22px] font-bold text-primary uppercase mb-1">Computer Science Degree</h3>
+            <p class="font-label-bold text-label-bold text-secondary uppercase mb-3">University</p>
+            <p class="font-body-md text-body-md text-on-surface-variant max-w-xl">
+              Foundation in algorithms, data structures, databases, and software engineering principles. Started web development journey.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="w-full py-10 px-margin-mobile md:px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-gutter bg-primary border-t-2 border-outline">
+    <div class="font-headline-lg text-headline-lg font-black text-on-primary">KARUNESH.</div>
+    <div class="font-body-md text-body-md text-on-primary opacity-60 text-center">
+      © 2025 KARUNESH GUPTA. ENGINEERED FOR PRECISION.
+    </div>
+    <div class="flex gap-gutter">
+      <a href="#" class="font-label-bold text-label-bold text-on-primary opacity-60 hover:text-secondary transition-all">GITHUB</a>
+      <a href="#" class="font-label-bold text-label-bold text-on-primary opacity-60 hover:text-secondary transition-all">LINKEDIN</a>
+      <a href="mailto:karunesh@elens.in" class="font-label-bold text-label-bold text-on-primary opacity-60 hover:text-secondary transition-all">EMAIL</a>
+    </div>
+  </footer>
+
+</body>
+</html>

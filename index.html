@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>KARUNESH. - Fullstack Developer</title>
+  <meta name="description" content="Karunesh Gupta — Fullstack Developer specializing in React, Next.js, Node.js, MongoDB, and AWS. Building scalable web apps with clean architecture."/>
+  <meta name="keywords" content="Karunesh Gupta, fullstack developer, React developer, Node.js developer, portfolio, web developer India"/>
+  <meta name="author" content="Karunesh Gupta"/>
+  <meta property="og:title" content="KARUNESH. — Fullstack Developer"/>
+  <meta property="og:description" content="Building scalable web apps with clean architecture. From pixel-perfect UIs to robust APIs — engineered for precision."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="profile.webp"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="KARUNESH. — Fullstack Developer"/>
+  <meta name="twitter:description" content="Building scalable web apps with clean architecture. React, Next.js, Node.js, MongoDB, AWS."/>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet"/>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "outline-variant": "#c4c7c7",
+            "primary": "#000000",
+            "secondary-container": "#f6e611",
+            "secondary-fixed": "#f6e611",
+            "on-secondary-fixed": "#1f1c00",
+            "background": "#f9f9f9",
+            "surface": "#f9f9f9",
+            "surface-container": "#eeeeee",
+            "surface-container-low": "#f3f3f4",
+            "surface-container-lowest": "#ffffff",
+            "on-primary": "#ffffff",
+            "on-surface": "#1a1c1c",
+            "on-surface-variant": "#444748",
+            "on-background": "#1a1c1c",
+            "secondary": "#676000",
+            "on-secondary": "#ffffff",
+            "outline": "#747878",
+            "inverse-on-surface": "#f0f1f1",
+          },
+          fontFamily: {
+            "display-lg": ["Montserrat"],
+            "headline-xl": ["Montserrat"],
+            "headline-xl-mobile": ["Montserrat"],
+            "headline-lg": ["Montserrat"],
+            "body-lg": ["Inter"],
+            "body-md": ["Inter"],
+            "label-bold": ["Inter"],
+          },
+          fontSize: {
+            "display-lg": ["84px", { lineHeight: "90px", letterSpacing: "-0.04em", fontWeight: "900" }],
+            "headline-xl": ["64px", { lineHeight: "72px", letterSpacing: "-0.02em", fontWeight: "800" }],
+            "headline-xl-mobile": ["40px", { lineHeight: "44px", fontWeight: "800" }],
+            "headline-lg": ["32px", { lineHeight: "40px", fontWeight: "700" }],
+            "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+            "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+            "label-bold": ["14px", { lineHeight: "20px", fontWeight: "700" }],
+          },
+          spacing: {
+            "section-padding": "120px",
+            "margin-desktop": "80px",
+            "margin-mobile": "20px",
+            "gutter": "24px",
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .dot-pattern {
+      background-image: radial-gradient(#747878 1px, transparent 1px);
+      background-size: 16px 16px;
+    }
+    .nav-link { transition: all 0.2s; }
+    .mobile-menu { display: none; }
+    .mobile-menu.open { display: flex; }
+  </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col pt-[80px]">
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-[80px] bg-primary border-b border-outline">
+    <a href="index.html" class="font-headline-lg text-headline-lg font-black tracking-tighter text-on-primary">KARUNESH.</a>
+    <div class="hidden md:flex gap-gutter items-center">
+      <a href="index.html" class="font-label-bold text-label-bold text-secondary border-b-4 border-secondary pb-1">HOME</a>
+      <a href="about.html" class="font-label-bold text-label-bold text-on-primary opacity-80 hover:text-secondary nav-link">ABOUT</a>
+      <a href="projects.html" class="font-label-bold text-label-bold text-on-primary opacity-80 hover:text-secondary nav-link">WORKS</a>
+      <a href="contact.html" class="font-label-bold text-label-bold text-on-primary opacity-80 hover:text-secondary nav-link">CONTACT</a>
+    </div>
+    <a href="contact.html" class="hidden md:block bg-secondary-fixed text-on-secondary-fixed font-label-bold text-label-bold px-6 py-2 rounded-none hover:bg-on-primary hover:text-on-primary border-2 border-secondary-fixed hover:border-primary transition-all">HIRE ME</a>
+    <button onclick="document.getElementById('mobile-menu').classList.toggle('open')" class="md:hidden text-on-primary">
+      <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">menu</span>
+    </button>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="mobile-menu fixed top-[80px] left-0 w-full z-40 flex-col bg-primary border-b border-outline px-margin-mobile py-6 gap-4">
+    <a href="index.html" class="font-label-bold text-label-bold text-secondary">HOME</a>
+    <a href="about.html" class="font-label-bold text-label-bold text-on-primary opacity-80">ABOUT</a>
+    <a href="projects.html" class="font-label-bold text-label-bold text-on-primary opacity-80">WORKS</a>
+    <a href="contact.html" class="font-label-bold text-label-bold text-on-primary opacity-80">CONTACT</a>
+    <a href="contact.html" class="inline-block bg-secondary-fixed text-on-secondary-fixed font-label-bold text-label-bold px-6 py-2 mt-2 w-fit">HIRE ME</a>
+  </div>
+
+  <main class="flex-grow flex flex-col">
+
+    <!-- Hero Section -->
+    <section class="w-full flex flex-col md:flex-row relative">
+
+      <!-- Fixed Left Social Bar -->
+      <div class="hidden md:flex fixed left-6 top-1/2 -translate-y-1/2 z-40 flex-col items-center gap-4">
+        <a href="https://github.com" target="_blank" title="GitHub"
+           class="w-9 h-9 bg-primary border border-outline flex items-center justify-center text-on-primary hover:bg-secondary-fixed hover:text-primary hover:border-secondary-fixed transition-all">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+        </a>
+        <a href="https://linkedin.com" target="_blank" title="LinkedIn"
+           class="w-9 h-9 bg-primary border border-outline flex items-center justify-center text-on-primary hover:bg-secondary-fixed hover:text-primary hover:border-secondary-fixed transition-all">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+          </svg>
+        </a>
+        <a href="mailto:karunesh@elens.in" title="Email"
+           class="w-9 h-9 bg-primary border border-outline flex items-center justify-center text-on-primary hover:bg-secondary-fixed hover:text-primary hover:border-secondary-fixed transition-all">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
+        </a>
+        <a href="https://twitter.com" target="_blank" title="Twitter / X"
+           class="w-9 h-9 bg-primary border border-outline flex items-center justify-center text-on-primary hover:bg-secondary-fixed hover:text-primary hover:border-secondary-fixed transition-all">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.734-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+        </a>
+        <div class="w-px h-16 bg-outline opacity-40"></div>
+      </div>
+
+      <!-- Left: Dark Block -->
+      <div class="w-full md:w-1/2 bg-primary text-on-primary flex flex-col justify-center px-margin-mobile py-section-padding md:pl-48 md:pr-16 min-h-[600px] relative overflow-hidden">
+        <div class="absolute top-12 left-12 w-32 h-32 dot-pattern opacity-30"></div>
+        <div class="z-10 mt-10 md:mt-0">
+          <span class="font-label-bold text-label-bold text-outline uppercase tracking-widest block mb-4">MY NAME IS</span>
+          <h1 class="font-headline-xl-mobile md:font-headline-xl text-headline-xl-mobile md:text-headline-xl text-on-primary mb-6 leading-tight">
+            KARUNESH<br/>GUPTA
+          </h1>
+          <div class="inline-block bg-secondary-fixed text-primary px-4 py-2 mb-8">
+            <span class="font-label-bold text-label-bold uppercase">I'M A <span id="typing-text"></span><span id="cursor" class="inline-block w-0.5 h-4 bg-primary ml-0.5 align-middle animate-pulse">|</span></span>
+          </div>
+          <p class="font-body-md text-body-md text-on-primary opacity-60 max-w-sm mb-10">
+            <!-- HERO_TAGLINE_START -->Building scalable web apps with clean architecture. From pixel-perfect UIs to robust APIs — engineered for precision.<!-- HERO_TAGLINE_END -->
+          </p>
+          <div class="flex gap-4 flex-wrap">
+            <a href="projects.html" class="bg-secondary-fixed text-on-secondary-fixed font-label-bold text-label-bold px-8 py-3 border-2 border-secondary-fixed hover:bg-primary hover:text-on-primary hover:border-primary transition-all">VIEW WORKS</a>
+            <a href="contact.html" class="border-2 border-on-primary text-on-primary font-label-bold text-label-bold px-8 py-3 hover:bg-secondary-fixed hover:text-primary hover:border-secondary-fixed transition-all">CONTACT ME</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Photo Block -->
+      <div class="w-full md:w-1/2 min-h-[400px] md:min-h-[600px] relative bg-primary flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 dot-pattern opacity-10"></div>
+
+        <div class="relative z-10 flex flex-col items-center gap-6 px-8">
+          <!-- Brutalist square photo frame -->
+          <div class="relative">
+            <!-- Offset shadow block -->
+            <div class="absolute top-4 left-4 w-full h-full bg-secondary-fixed opacity-80"></div>
+            <!-- Photo -->
+            <img src="profile.webp" alt="Karunesh Gupta"
+              class="relative z-10 w-64 h-72 md:w-72 md:h-80 object-cover"
+              style="filter: grayscale(90%) contrast(1.2) brightness(0.8); object-position: center 35%;"/>
+            <!-- Yellow top-right corner accent -->
+            <div class="absolute -top-2 -right-2 w-6 h-6 bg-secondary-fixed z-20"></div>
+            <!-- Yellow bottom-left corner accent -->
+            <div class="absolute -bottom-2 -left-2 w-6 h-6 bg-secondary-fixed z-20"></div>
+          </div>
+
+          <!-- Status -->
+          <div class="flex items-center gap-2 mt-2">
+            <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+            <span class="font-label-bold text-label-bold text-on-primary opacity-70 text-xs uppercase tracking-widest">Available for Hire</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <section class="w-full bg-secondary-fixed py-8 px-margin-mobile md:px-margin-desktop">
+      <div class="flex flex-wrap justify-around gap-8 max-w-4xl mx-auto" id="stats-section">
+        <div class="text-center">
+          <div class="font-headline-lg text-headline-lg font-black text-primary counter" data-target="3" data-suffix="+">0+</div>
+          <div class="font-label-bold text-label-bold text-primary uppercase tracking-wider opacity-70">Years Coding</div>
+        </div>
+        <div class="w-px bg-primary opacity-20 hidden md:block"></div>
+        <div class="text-center">
+          <div class="font-headline-lg text-headline-lg font-black text-primary counter" data-target="10" data-suffix="+">0+</div>
+          <div class="font-label-bold text-label-bold text-primary uppercase tracking-wider opacity-70">Projects Built</div>
+        </div>
+        <div class="w-px bg-primary opacity-20 hidden md:block"></div>
+        <div class="text-center">
+          <div class="font-headline-lg text-headline-lg font-black text-primary counter" data-target="5" data-suffix="+">0+</div>
+          <div class="font-label-bold text-label-bold text-primary uppercase tracking-wider opacity-70">Tech Stacks</div>
+        </div>
+        <div class="w-px bg-primary opacity-20 hidden md:block"></div>
+        <div class="text-center">
+          <div class="font-headline-lg text-headline-lg font-black text-primary counter" data-target="100" data-suffix="%">0%</div>
+          <div class="font-label-bold text-label-bold text-primary uppercase tracking-wider opacity-70">Commitment</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- What I Do -->
+    <section class="w-full py-section-padding px-margin-mobile md:px-margin-desktop bg-surface-container-lowest relative">
+      <div class="absolute top-12 right-12 w-40 h-40 dot-pattern opacity-20 hidden md:block"></div>
+      <div class="max-w-6xl mx-auto">
+        <div class="mb-14">
+          <span class="font-label-bold text-label-bold uppercase tracking-widest text-outline block mb-2">EXPERTISE</span>
+          <h2 class="font-headline-xl-mobile md:font-headline-xl text-headline-xl-mobile md:text-[48px] text-primary leading-tight">
+            WHAT I <span class="inline-block relative">DO<div class="absolute -bottom-1 left-0 w-full h-1 bg-secondary-fixed"></div></span>
+          </h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-0 border border-outline">
+          <!-- Frontend -->
+          <div class="service-card p-8 border-b md:border-b-0 md:border-r border-outline hover:bg-primary hover:text-on-primary transition-all group cursor-default">
+            <div class="w-12 h-12 bg-secondary-fixed flex items-center justify-center mb-6 group-hover:bg-primary group-hover:border-2 group-hover:border-secondary-fixed">
+              <span class="material-symbols-outlined text-primary group-hover:text-secondary-fixed">web</span>
+            </div>
+            <h3 class="font-headline-lg text-[20px] font-bold text-on-surface group-hover:text-on-primary mb-3 uppercase tracking-tight">Frontend Dev</h3>
+            <p class="font-body-md text-body-md text-on-surface-variant group-hover:text-on-primary opacity-80">Pixel-perfect UIs with React, Next.js, and TailwindCSS. Responsive, fast, and accessible.</p>
+          </div>
+          <!-- Backend -->
+          <div class="service-card p-8 border-b md:border-b-0 md:border-r border-outline hover:bg-primary hover:text-on-primary transition-all group cursor-default">
+            <div class="w-12 h-12 bg-secondary-fixed flex items-center justify-center mb-6 group-hover:bg-primary group-hover:border-2 group-hover:border-secondary-fixed">
+              <span class="material-symbols-outlined text-primary group-hover:text-secondary-fixed">dns</span>
+            </div>
+            <h3 class="font-headline-lg text-[20px] font-bold text-on-surface group-hover:text-on-primary mb-3 uppercase tracking-tight">Backend Dev</h3>
+            <p class="font-body-md text-body-md text-on-surface-variant group-hover:text-on-primary opacity-80">RESTful APIs and server-side logic with Node.js, Express, and MongoDB. Secure and scalable.</p>
+          </div>
+          <!-- Fullstack -->
+          <div class="service-card p-8 hover:bg-primary hover:text-on-primary transition-all group cursor-default">
+            <div class="w-12 h-12 bg-secondary-fixed flex items-center justify-center mb-6 group-hover:bg-primary group-hover:border-2 group-hover:border-secondary-fixed">
+              <span class="material-symbols-outlined text-primary group-hover:text-secondary-fixed">layers</span>
+            </div>
+            <h3 class="font-headline-lg text-[20px] font-bold text-on-surface group-hover:text-on-primary mb-3 uppercase tracking-tight">Fullstack Apps</h3>
+            <p class="font-body-md text-body-md text-on-surface-variant group-hover:text-on-primary opacity-80">End-to-end solutions from database to deployment. Auth, real-time features, and more.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Projects -->
+    <section class="w-full py-section-padding px-margin-mobile md:px-margin-desktop bg-primary relative">
+      <div class="absolute bottom-12 left-12 w-48 h-48 dot-pattern opacity-10 hidden md:block"></div>
+      <div class="max-w-6xl mx-auto">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
+          <div>
+            <span class="font-label-bold text-label-bold uppercase tracking-widest text-outline block mb-2">SELECTED WORK</span>
+            <h2 class="font-headline-xl-mobile md:text-[48px] font-black text-on-primary leading-tight">FEATURED<br/>PROJECTS</h2>
+          </div>
+          <a href="projects.html" class="border-2 border-on-primary text-on-primary font-label-bold text-label-bold px-6 py-2 hover:bg-secondary-fixed hover:text-primary hover:border-secondary-fixed transition-all w-fit">VIEW ALL →</a>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Project: HireMitra -->
+          <!-- HireMitra -->
+          <div class="group relative overflow-hidden cursor-pointer">
+            <div class="h-72 relative overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80"
+                alt="HireMitra" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                style="filter: grayscale(100%) brightness(0.6);"/>
+              <div class="absolute inset-0 bg-secondary-fixed opacity-0 group-hover:opacity-90 transition-opacity duration-300 flex flex-col items-center justify-center p-8 text-center">
+                <span class="material-symbols-outlined text-primary mb-3" style="font-size:40px;">work</span>
+                <h3 class="font-headline-lg text-[22px] font-black text-primary mb-2">HIREMITRA</h3>
+                <p class="font-body-md text-body-md text-primary opacity-80 mb-4 text-sm">Job platform connecting workers with employers. Full-stack with Express + MongoDB + Next.js.</p>
+                <div class="flex gap-2 flex-wrap justify-center">
+                  <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs">NEXT.JS</span>
+                  <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs">EXPRESS</span>
+                  <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs">MONGODB</span>
+                </div>
+              </div>
+            </div>
+            <div class="p-5 bg-primary border-t-2 border-secondary-fixed">
+              <h3 class="font-label-bold text-base font-black text-on-primary uppercase mb-1">HIREMITRA</h3>
+              <p class="font-body-md text-body-md text-outline text-sm">Job Platform · Fullstack</p>
+            </div>
+          </div>
+
+          <!-- Bullox -->
+          <div class="group relative overflow-hidden cursor-pointer">
+            <div class="h-72 relative overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&q=80"
+                alt="Bullox" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                style="filter: grayscale(100%) brightness(0.6);"/>
+              <div class="absolute inset-0 bg-secondary-fixed opacity-0 group-hover:opacity-90 transition-opacity duration-300 flex flex-col items-center justify-center p-8 text-center">
+                <span class="material-symbols-outlined text-primary mb-3" style="font-size:40px;">trending_up</span>
+                <h3 class="font-headline-lg text-[22px] font-black text-primary mb-2">BULLOX</h3>
+                <p class="font-body-md text-body-md text-primary opacity-80 mb-4 text-sm">Fast trading intelligence app with real-time data and smart alerts. Built for precision.</p>
+                <div class="flex gap-2 flex-wrap justify-center">
+                  <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs">REACT</span>
+                  <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs">NODE.JS</span>
+                  <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs">MONGODB</span>
+                </div>
+              </div>
+            </div>
+            <div class="p-5 bg-primary border-t-2 border-secondary-fixed">
+              <h3 class="font-label-bold text-base font-black text-on-primary uppercase mb-1">BULLOX</h3>
+              <p class="font-body-md text-body-md text-outline text-sm">Trading App · Fullstack</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="w-full py-section-padding px-margin-mobile md:px-margin-desktop bg-secondary-fixed relative">
+      <div class="max-w-3xl mx-auto text-center">
+        <span class="font-label-bold text-label-bold uppercase tracking-widest text-primary opacity-60 block mb-4">READY TO BUILD SOMETHING?</span>
+        <h2 class="font-headline-xl-mobile md:text-[56px] font-black text-primary leading-tight mb-8">
+          LET'S WORK<br/>TOGETHER.
+        </h2>
+        <a href="contact.html" class="inline-block bg-primary text-on-primary font-label-bold text-label-bold px-10 py-4 uppercase tracking-widest hover:bg-surface-container hover:text-primary border-2 border-primary transition-all">GET IN TOUCH →</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="w-full py-10 px-margin-mobile md:px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-gutter bg-primary border-t-2 border-outline">
+    <div class="font-headline-lg text-headline-lg font-black text-on-primary">KARUNESH.</div>
+    <div class="font-body-md text-body-md text-on-primary opacity-60 text-center">
+      © 2025 KARUNESH GUPTA. ENGINEERED FOR PRECISION.
+    </div>
+    <div class="flex gap-gutter">
+      <a href="#" class="font-label-bold text-label-bold text-on-primary opacity-60 hover:text-secondary transition-all">GITHUB</a>
+      <a href="#" class="font-label-bold text-label-bold text-on-primary opacity-60 hover:text-secondary transition-all">LINKEDIN</a>
+      <a href="mailto:karunesh@elens.in" class="font-label-bold text-label-bold text-on-primary opacity-60 hover:text-secondary transition-all">EMAIL</a>
+    </div>
+  </footer>
+
+  <script>
+    // ── Service Card 3D Tilt ──
+    document.querySelectorAll('.service-card').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const cx = rect.width / 2;
+        const cy = rect.height / 2;
+        const rotateX = ((y - cy) / cy) * -8;
+        const rotateY = ((x - cx) / cx) * 8;
+        card.style.transform = `perspective(600px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.04,1.04,1.04)`;
+        card.style.transition = 'transform 0.1s ease';
+        card.style.zIndex = '10';
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'perspective(600px) rotateX(0deg) rotateY(0deg) scale3d(1,1,1)';
+        card.style.transition = 'transform 0.5s ease';
+        card.style.zIndex = '';
+      });
+    });
+  </script>
+
+  <script>
+    // ── Counter Animation ──
+    const counters = document.querySelectorAll('.counter');
+    let counted = false;
+
+    function runCounters() {
+      counters.forEach(el => {
+        const target = +el.dataset.target;
+        const suffix = el.dataset.suffix || '';
+        const duration = 1500;
+        const step = target / (duration / 16);
+        let current = 0;
+        const timer = setInterval(() => {
+          current += step;
+          if (current >= target) {
+            current = target;
+            clearInterval(timer);
+          }
+          el.textContent = Math.floor(current) + suffix;
+        }, 16);
+      });
+    }
+
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !counted) {
+          counted = true;
+          runCounters();
+        }
+      });
+    }, { threshold: 0.5 });
+
+    statsObserver.observe(document.getElementById('stats-section'));
+  </script>
+
+  <script>
+    const roles = /*ROLES_START*/["FULLSTACK DEVELOPER","REACT DEVELOPER","NODE.JS DEVELOPER","BACKEND ENGINEER","UI CRAFTSMAN"]/*ROLES_END*/;
+
+    let roleIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    const el = document.getElementById('typing-text');
+
+    function type() {
+      const current = roles[roleIndex];
+
+      if (isDeleting) {
+        el.textContent = current.substring(0, charIndex - 1);
+        charIndex--;
+      } else {
+        el.textContent = current.substring(0, charIndex + 1);
+        charIndex++;
+      }
+
+      let speed = isDeleting ? 60 : 100;
+
+      if (!isDeleting && charIndex === current.length) {
+        speed = 1800; // pause at end
+        isDeleting = true;
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        roleIndex = (roleIndex + 1) % roles.length;
+        speed = 400; // pause before next word
+      }
+
+      setTimeout(type, speed);
+    }
+
+    type();
+  </script>
+</body>
+</html>

@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Works - KARUNESH.</title>
+  <meta name="description" content="Portfolio of Karunesh Gupta — Fullstack projects including job platforms, trading apps, auth systems, and more. React, Node.js, AWS."/>
+  <meta name="author" content="Karunesh Gupta"/>
+  <meta property="og:title" content="Works — KARUNESH."/>
+  <meta property="og:description" content="Fullstack projects including job platforms, trading apps, auth systems. React, Node.js, MongoDB, AWS."/>
+  <meta property="og:type" content="website"/>
+  <meta name="twitter:card" content="summary"/>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet"/>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "outline-variant": "#c4c7c7",
+            "primary": "#000000",
+            "secondary-container": "#f6e611",
+            "secondary-fixed": "#f6e611",
+            "on-secondary-fixed": "#1f1c00",
+            "background": "#f9f9f9",
+            "surface": "#f9f9f9",
+            "surface-container": "#eeeeee",
+            "surface-container-low": "#f3f3f4",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-highest": "#e2e2e2",
+            "on-primary": "#ffffff",
+            "on-surface": "#1a1c1c",
+            "on-surface-variant": "#444748",
+            "on-background": "#1a1c1c",
+            "secondary": "#676000",
+            "on-secondary": "#ffffff",
+            "outline": "#747878",
+            "inverse-on-surface": "#f0f1f1",
+          },
+          fontFamily: {
+            "display-lg": ["Montserrat"],
+            "headline-xl": ["Montserrat"],
+            "headline-xl-mobile": ["Montserrat"],
+            "headline-lg": ["Montserrat"],
+            "body-lg": ["Inter"],
+            "body-md": ["Inter"],
+            "label-bold": ["Inter"],
+          },
+          fontSize: {
+            "headline-xl": ["64px", { lineHeight: "72px", letterSpacing: "-0.02em", fontWeight: "800" }],
+            "headline-xl-mobile": ["40px", { lineHeight: "44px", fontWeight: "800" }],
+            "headline-lg": ["32px", { lineHeight: "40px", fontWeight: "700" }],
+            "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+            "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+            "label-bold": ["14px", { lineHeight: "20px", fontWeight: "700" }],
+          },
+          spacing: {
+            "section-padding": "120px",
+            "margin-desktop": "80px",
+            "margin-mobile": "20px",
+            "gutter": "24px",
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .pattern-dots {
+      background-image: radial-gradient(circle at 1px 1px, #e2e2e2 1px, transparent 0);
+      background-size: 16px 16px;
+    }
+    .filter-btn.active {
+      color: #000;
+      border-bottom: 4px solid #f6e611;
+    }
+    .project-card { display: block; }
+    .project-card.hidden-card { display: none; }
+    .mobile-menu { display: none; }
+    .mobile-menu.open { display: flex; }
+  </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md antialiased min-h-screen flex flex-col">
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-[80px] bg-primary border-b border-outline">
+    <a href="index.html" class="font-headline-lg text-headline-lg font-black tracking-tighter text-on-primary">KARUNESH.</a>
+    <div class="hidden md:flex gap-gutter items-center">
+      <a href="index.html" class="font-label-bold text-label-bold text-on-primary opacity-80 hover:text-secondary transition-colors">HOME</a>
+      <a href="about.html" class="font-label-bold text-label-bold text-on-primary opacity-80 hover:text-secondary transition-colors">ABOUT</a>
+      <a href="projects.html" class="font-label-bold text-label-bold text-secondary border-b-4 border-secondary pb-1">WORKS</a>
+      <a href="contact.html" class="font-label-bold text-label-bold text-on-primary opacity-80 hover:text-secondary transition-colors">CONTACT</a>
+    </div>
+    <a href="contact.html" class="hidden md:block bg-secondary-fixed text-on-secondary-fixed font-label-bold text-label-bold px-6 py-2 hover:bg-primary hover:text-on-primary border-2 border-secondary-fixed hover:border-primary transition-all">HIRE ME</a>
+    <button onclick="document.getElementById('mobile-menu').classList.toggle('open')" class="md:hidden text-on-primary">
+      <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">menu</span>
+    </button>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="mobile-menu fixed top-[80px] left-0 w-full z-40 flex-col bg-primary border-b border-outline px-margin-mobile py-6 gap-4">
+    <a href="index.html" class="font-label-bold text-label-bold text-on-primary opacity-80">HOME</a>
+    <a href="about.html" class="font-label-bold text-label-bold text-on-primary opacity-80">ABOUT</a>
+    <a href="projects.html" class="font-label-bold text-label-bold text-secondary">WORKS</a>
+    <a href="contact.html" class="font-label-bold text-label-bold text-on-primary opacity-80">CONTACT</a>
+    <a href="contact.html" class="inline-block bg-secondary-fixed text-on-secondary-fixed font-label-bold text-label-bold px-6 py-2 mt-2 w-fit">HIRE ME</a>
+  </div>
+
+  <main class="flex-grow pt-[80px]">
+
+    <!-- Page Header -->
+    <section class="py-20 px-margin-mobile md:px-margin-desktop bg-primary relative overflow-hidden">
+      <div class="absolute top-0 left-0 w-64 h-64 opacity-10 pointer-events-none" style="background-image: radial-gradient(#f6e611 2px, transparent 2px); background-size: 16px 16px;"></div>
+      <div class="max-w-6xl mx-auto relative z-10">
+        <span class="font-label-bold text-label-bold uppercase tracking-widest text-outline block mb-4">MY PORTFOLIO</span>
+        <h1 class="font-headline-xl-mobile md:text-[64px] font-black text-on-primary leading-tight relative inline-block">
+          MY WORK
+          <div class="absolute -bottom-2 left-0 w-24 h-1.5 bg-secondary-fixed"></div>
+        </h1>
+        <p class="font-body-md text-body-md text-on-primary opacity-50 mt-8 max-w-xl">
+          A selection of projects I've built — from fullstack platforms to polished frontends. Each one engineered with precision.
+        </p>
+      </div>
+    </section>
+
+    <!-- Filter Bar -->
+    <section class="sticky top-[80px] z-30 bg-surface-container-lowest border-b border-outline">
+      <div class="max-w-6xl mx-auto px-margin-mobile md:px-margin-desktop py-4 flex flex-wrap gap-8 font-label-bold text-label-bold">
+        <button onclick="filterProjects('all', this)" class="filter-btn active uppercase text-on-surface hover:text-primary pb-2 transition-colors">ALL</button>
+        <button onclick="filterProjects('fullstack', this)" class="filter-btn uppercase text-on-surface-variant hover:text-primary pb-2 transition-colors">FULLSTACK</button>
+        <button onclick="filterProjects('frontend', this)" class="filter-btn uppercase text-on-surface-variant hover:text-primary pb-2 transition-colors">FRONTEND</button>
+        <button onclick="filterProjects('backend', this)" class="filter-btn uppercase text-on-surface-variant hover:text-primary pb-2 transition-colors">BACKEND</button>
+        <button onclick="filterProjects('cloud', this)" class="filter-btn uppercase text-on-surface-variant hover:text-primary pb-2 transition-colors">CLOUD</button>
+      </div>
+    </section>
+
+    <!-- Projects Grid -->
+    <section class="py-16 px-margin-mobile md:px-margin-desktop bg-surface-container-lowest relative">
+      <div class="absolute top-20 right-20 w-64 h-64 pattern-dots opacity-50 hidden md:block"></div>
+      <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10" id="projects-grid">
+        <!-- PROJECTS_GRID_START -->
+
+        <!-- HireMitra -->
+        <div class="project-card group relative overflow-hidden cursor-pointer" data-category="fullstack cloud">
+          <div class="h-60 relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80" alt="HireMitra"
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              style="filter:grayscale(100%) brightness(0.55);"/>
+            <div class="absolute inset-0 bg-secondary-fixed opacity-0 group-hover:opacity-90 transition-opacity duration-300 flex flex-col items-center justify-center p-6 text-center">
+              <h3 class="font-headline-lg text-[22px] font-black text-primary mb-2">HIREMITRA</h3>
+              <p class="font-body-md text-body-md text-primary opacity-80 mb-3 text-sm">Job platform with auth, messaging, and dashboards. Full-stack.</p>
+              <div class="flex gap-2 flex-wrap justify-center">
+                <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">Next.js</span>
+                <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">Express</span>
+                <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">MongoDB</span>
+                <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">AWS</span>
+                <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">CI/CD</span>
+              </div>
+            </div>
+          </div>
+          <div class="p-4 bg-primary border-t-2 border-secondary-fixed flex justify-between items-center">
+            <div>
+              <h3 class="font-label-bold text-base font-black text-on-primary uppercase">HIREMITRA</h3>
+              <p class="text-outline text-xs mt-0.5">Job Platform</p>
+            </div>
+            <div class="flex gap-1.5 items-center">
+              <span class="bg-secondary-fixed text-primary font-label-bold px-2 py-1 text-xs uppercase">Fullstack</span>
+              <span class="border border-secondary-fixed text-secondary-fixed font-label-bold px-2 py-1 text-xs uppercase">AWS</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bullox -->
+        <div class="project-card group relative overflow-hidden cursor-pointer" data-category="fullstack cloud">
+          <div class="h-60 relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&q=80" alt="Bullox"
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              style="filter:grayscale(100%) brightness(0.55);"/>
+            <div class="absolute inset-0 bg-secondary-fixed opacity-0 group-hover:opacity-90 transition-opacity duration-300 flex flex-col items-center justify-center p-6 text-center">
+              <h3 class="font-headline-lg text-[22px] font-black text-primary mb-2">BULLOX</h3>
+              <p class="font-body-md text-body-md text-primary opacity-80 mb-3 text-sm">Real-time trading app with alerts and portfolio tracking.</p>
+              <div class="flex gap-2 flex-wrap justify-center">
+                <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">React</span>
+                <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">Node.js</span>
+                <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">MongoDB</span>
+                <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">AWS S3</span>
+              </div>
+            </div>
+          </div>
+          <div class="p-4 bg-primary border-t-2 border-secondary-fixed flex justify-between items-center">
+            <div>
+              <h3 class="font-label-bold text-base font-black text-on-primary uppercase">BULLOX</h3>
+              <p class="text-outline text-xs mt-0.5">Trading App</p>
+            </div>
+            <div class="flex gap-1.5 items-center">
+              <span class="bg-secondary-fixed text-primary font-label-bold px-2 py-1 text-xs uppercase">Fullstack</span>
+              <span class="border border-secondary-fixed text-secondary-fixed font-label-bold px-2 py-1 text-xs uppercase">S3</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- AI Chat System -->
+        <div class="project-card group relative overflow-hidden cursor-pointer" data-category="backend cloud">
+          <div class="h-60 relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1577563908411-5077b6dc7624?w=800&q=80" alt="AI Chat"
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              style="filter:grayscale(100%) brightness(0.55);"/>
+            <div class="absolute inset-0 bg-secondary-fixed opacity-0 group-hover:opacity-90 transition-opacity duration-300 flex flex-col items-center justify-center p-6 text-center">
+              <h3 class="font-headline-lg text-[22px] font-black text-primary mb-2">AI CHAT SYSTEM</h3>
+              <p class="font-body-md text-body-md text-primary opacity-80 mb-3 text-sm">8 controller functions, REST endpoints, real-time messaging backend.</p>
+              <div class="flex gap-2 flex-wrap justify-center">
+                <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">Express</span>
+                <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">MongoDB</span>
+                <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">REST API</span>
+                <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">AWS Lambda</span>
+                <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">CI/CD</span>
+              </div>
+            </div>
+          </div>
+          <div class="p-4 bg-primary border-t-2 border-secondary-fixed flex justify-between items-center">
+            <div>
+              <h3 class="font-label-bold text-base font-black text-on-primary uppercase">AI CHAT SYSTEM</h3>
+              <p class="text-outline text-xs mt-0.5">Messaging Backend</p>
+            </div>
+            <div class="flex gap-1.5 items-center">
+              <span class="bg-primary border border-outline text-on-primary font-label-bold px-2 py-1 text-xs uppercase">Backend</span>
+              <span class="border border-secondary-fixed text-secondary-fixed font-label-bold px-2 py-1 text-xs uppercase">Lambda</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Auth System -->
+        <div class="project-card group relative overflow-hidden cursor-pointer" data-category="backend cloud">
+          <div class="h-60 relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&q=80" alt="Auth System"
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              style="filter:grayscale(100%) brightness(0.55);"/>
+            <div class="absolute inset-0 bg-secondary-fixed opacity-0 group-hover:opacity-90 transition-opacity duration-300 flex flex-col items-center justify-center p-6 text-center">
+              <h3 class="font-headline-lg text-[22px] font-black text-primary mb-2">AUTH SYSTEM</h3>
+              <p class="font-body-md text-body-md text-primary opacity-80 mb-3 text-sm">JWT auth, login/register, protected routes, Auth Context.</p>
+              <div class="flex gap-2 flex-wrap justify-center">
+                <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">JWT</span>
+                <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">React</span>
+                <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">Express</span>
+                <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">AWS</span>
+                <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">CI/CD</span>
+              </div>
+            </div>
+          </div>
+          <div class="p-4 bg-primary border-t-2 border-secondary-fixed flex justify-between items-center">
+            <div>
+              <h3 class="font-label-bold text-base font-black text-on-primary uppercase">AUTH SYSTEM</h3>
+              <p class="text-outline text-xs mt-0.5">Security Module</p>
+            </div>
+            <div class="flex gap-1.5 items-center">
+              <span class="bg-primary border border-outline text-on-primary font-label-bold px-2 py-1 text-xs uppercase">Backend</span>
+              <span class="border border-secondary-fixed text-secondary-fixed font-label-bold px-2 py-1 text-xs uppercase">AWS</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Portfolio Site -->
+        <div class="project-card group relative overflow-hidden cursor-pointer" data-category="frontend cloud">
+          <div class="h-60 relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&q=80" alt="Portfolio"
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              style="filter:grayscale(100%) brightness(0.55);"/>
+            <div class="absolute inset-0 bg-secondary-fixed opacity-0 group-hover:opacity-90 transition-opacity duration-300 flex flex-col items-center justify-center p-6 text-center">
+              <h3 class="font-headline-lg text-[22px] font-black text-primary mb-2">PORTFOLIO SITE</h3>
+              <p class="font-body-md text-body-md text-primary opacity-80 mb-3 text-sm">Brutalist developer portfolio — sharp, fast, precision-engineered.</p>
+              <div class="flex gap-2 flex-wrap justify-center">
+                <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">HTML</span>
+                <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">TailwindCSS</span>
+                <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">AWS S3</span>
+                <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">CDN</span>
+              </div>
+            </div>
+          </div>
+          <div class="p-4 bg-primary border-t-2 border-secondary-fixed flex justify-between items-center">
+            <div>
+              <h3 class="font-label-bold text-base font-black text-on-primary uppercase">PORTFOLIO SITE</h3>
+              <p class="text-outline text-xs mt-0.5">Personal Brand</p>
+            </div>
+            <div class="flex gap-1.5 items-center">
+              <span class="bg-primary border border-outline text-on-primary font-label-bold px-2 py-1 text-xs uppercase">Frontend</span>
+              <span class="border border-secondary-fixed text-secondary-fixed font-label-bold px-2 py-1 text-xs uppercase">CDN</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Admin Dashboard -->
+        <div class="project-card group relative overflow-hidden cursor-pointer" data-category="frontend cloud">
+          <div class="h-60 relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80" alt="Dashboard"
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              style="filter:grayscale(100%) brightness(0.55);"/>
+            <div class="absolute inset-0 bg-secondary-fixed opacity-0 group-hover:opacity-90 transition-opacity duration-300 flex flex-col items-center justify-center p-6 text-center">
+              <h3 class="font-headline-lg text-[22px] font-black text-primary mb-2">ADMIN DASHBOARD</h3>
+              <p class="font-body-md text-body-md text-primary opacity-80 mb-3 text-sm">Responsive admin UI with tables, charts, and role-based access.</p>
+              <div class="flex gap-2 flex-wrap justify-center">
+                <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">React</span>
+                <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">TailwindCSS</span>
+                <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">AWS S3</span>
+                <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">CDN</span>
+              </div>
+            </div>
+          </div>
+          <div class="p-4 bg-primary border-t-2 border-secondary-fixed flex justify-between items-center">
+            <div>
+              <h3 class="font-label-bold text-base font-black text-on-primary uppercase">ADMIN DASHBOARD</h3>
+              <p class="text-outline text-xs mt-0.5">UI / Frontend</p>
+            </div>
+            <div class="flex gap-1.5 items-center">
+              <span class="bg-primary border border-outline text-on-primary font-label-bold px-2 py-1 text-xs uppercase">Frontend</span>
+              <span class="border border-secondary-fixed text-secondary-fixed font-label-bold px-2 py-1 text-xs uppercase">CDN</span>
+            </div>
+          </div>
+        </div>
+        <!-- PROJECTS_GRID_END -->
+
+      </div>
+
+      <!-- No results message -->
+      <div id="no-results" class="hidden text-center py-20">
+        <span class="material-symbols-outlined text-outline" style="font-size:48px;">search_off</span>
+        <p class="font-label-bold text-label-bold text-on-surface-variant uppercase mt-4">No projects in this category yet.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="w-full py-10 px-margin-mobile md:px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-gutter bg-primary border-t-2 border-outline">
+    <div class="font-headline-lg text-headline-lg font-black text-on-primary">KARUNESH.</div>
+    <div class="font-body-md text-body-md text-on-primary opacity-60 text-center">
+      © 2025 KARUNESH GUPTA. ENGINEERED FOR PRECISION.
+    </div>
+    <div class="flex gap-gutter">
+      <a href="#" class="font-label-bold text-label-bold text-on-primary opacity-60 hover:text-secondary transition-all">GITHUB</a>
+      <a href="#" class="font-label-bold text-label-bold text-on-primary opacity-60 hover:text-secondary transition-all">LINKEDIN</a>
+      <a href="mailto:karunesh@elens.in" class="font-label-bold text-label-bold text-on-primary opacity-60 hover:text-secondary transition-all">EMAIL</a>
+    </div>
+  </footer>
+
+  <script>
+    // ── 3D Card Tilt Effect ──
+    document.querySelectorAll('.project-card').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const cx = rect.width / 2;
+        const cy = rect.height / 2;
+        const rotateX = ((y - cy) / cy) * -10;
+        const rotateY = ((x - cx) / cx) * 10;
+        card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.03,1.03,1.03)`;
+        card.style.transition = 'transform 0.1s ease';
+        card.style.boxShadow = `${-rotateY * 2}px ${rotateX * 2}px 30px rgba(246,230,17,0.2)`;
+      });
+
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) scale3d(1,1,1)';
+        card.style.transition = 'transform 0.5s ease, box-shadow 0.5s ease';
+        card.style.boxShadow = 'none';
+      });
+    });
+  </script>
+
+  <script>
+    function filterProjects(category, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const cards = document.querySelectorAll('.project-card');
+      let visible = 0;
+      cards.forEach(card => {
+        const categories = card.dataset.category.split(' ');
+        const match = category === 'all' || categories.includes(category);
+        card.classList.toggle('hidden-card', !match);
+        if (match) visible++;
+      });
+      document.getElementById('no-results').classList.toggle('hidden', visible > 0);
+    }
+  </script>
+</body>
+</html>
