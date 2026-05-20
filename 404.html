@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>404 - KARUNESH.</title>
+  <meta name="description" content="Page not found — KARUNESH. Portfolio"/>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet"/>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#000000",
+            "secondary-container": "#f6e611",
+            "background": "#f9f9f9",
+            "on-surface": "#1a1c1c",
+            "on-surface-variant": "#444748",
+            "outline": "#747878",
+          },
+          fontFamily: {
+            "display": ["Montserrat"],
+            "body": ["Inter"],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .glitch {
+      position: relative;
+      animation: glitchShift 3s infinite;
+    }
+    .glitch::before, .glitch::after {
+      content: '404';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+    }
+    .glitch::before {
+      color: #f6e611;
+      z-index: -1;
+      animation: glitchLeft 1.5s infinite;
+    }
+    .glitch::after {
+      color: #747878;
+      z-index: -2;
+      animation: glitchRight 1.2s infinite;
+    }
+    @keyframes glitchLeft {
+      0%, 100% { transform: translate(0); }
+      20% { transform: translate(-4px, 2px); }
+      40% { transform: translate(4px, -2px); }
+      60% { transform: translate(-2px, 4px); }
+      80% { transform: translate(2px, -4px); }
+    }
+    @keyframes glitchRight {
+      0%, 100% { transform: translate(0); }
+      20% { transform: translate(4px, -2px); }
+      40% { transform: translate(-4px, 2px); }
+      60% { transform: translate(2px, -4px); }
+      80% { transform: translate(-2px, 4px); }
+    }
+    @keyframes glitchShift {
+      0%, 95%, 100% { transform: translate(0); }
+      96% { transform: translate(-6px, 0); }
+      97% { transform: translate(6px, 0); }
+      98% { transform: translate(-3px, 0); }
+      99% { transform: translate(3px, 0); }
+    }
+    .scan-line {
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: repeating-linear-gradient(
+        0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px
+      );
+      pointer-events: none; z-index: 10;
+    }
+    .dot-pattern {
+      background-image: radial-gradient(#747878 1px, transparent 1px);
+      background-size: 16px 16px;
+    }
+    .blink { animation: blink 1s step-end infinite; }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+  </style>
+</head>
+<body class="bg-background min-h-screen flex flex-col">
+
+  <div class="scan-line"></div>
+
+  <!-- Nav -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-background border-b-2 border-primary">
+    <div class="max-w-7xl mx-auto px-5 md:px-20 flex items-center justify-between h-[72px]">
+      <a href="index.html" class="font-display font-black text-2xl text-primary tracking-tight">KARUNESH.</a>
+      <a href="index.html" class="font-body font-bold text-sm text-primary uppercase tracking-wider border-2 border-primary px-4 py-2 hover:bg-primary hover:text-white transition-all">
+        &larr; GO HOME
+      </a>
+    </div>
+  </nav>
+
+  <!-- Main -->
+  <main class="flex-1 flex items-center justify-center px-5 md:px-20 pt-[72px]">
+    <div class="text-center">
+
+      <!-- 404 Number -->
+      <div class="glitch font-display font-black text-[180px] md:text-[280px] leading-none text-primary select-none">
+        404
+      </div>
+
+      <!-- Message -->
+      <div class="border-2 border-primary bg-white p-6 md:p-8 max-w-lg mx-auto -mt-6 relative">
+        <div class="absolute -top-3 left-6 bg-[#f6e611] px-3 py-0.5 font-body font-bold text-xs uppercase tracking-widest">
+          ERROR
+        </div>
+        <p class="font-display font-bold text-xl md:text-2xl text-primary uppercase mb-3">
+          Page not found
+        </p>
+        <p class="font-body text-on-surface-variant text-base leading-relaxed">
+          The page you're looking for doesn't exist, was moved, or got eaten by a rogue <span class="font-bold text-primary">git rebase</span>.
+        </p>
+      </div>
+
+      <!-- Terminal -->
+      <div class="bg-primary text-white font-mono text-sm p-5 max-w-lg mx-auto mt-6 text-left border-2 border-primary">
+        <p class="text-outline mb-1">$ curl -I karunesh.dev/this-page</p>
+        <p class="text-[#f6e611] mb-1">HTTP/1.1 404 Not Found</p>
+        <p class="text-outline mb-1">$ echo $?</p>
+        <p class="text-white mb-1">1</p>
+        <p class="text-outline">$ <span class="blink">_</span></p>
+      </div>
+
+      <!-- Actions -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
+        <a href="index.html" class="bg-primary text-white font-body font-bold text-sm uppercase tracking-wider px-8 py-4 border-2 border-primary hover:bg-[#f6e611] hover:text-primary transition-all">
+          Back to Home
+        </a>
+        <a href="projects.html" class="bg-white text-primary font-body font-bold text-sm uppercase tracking-wider px-8 py-4 border-2 border-primary hover:bg-primary hover:text-white transition-all">
+          View Projects
+        </a>
+        <a href="contact.html" class="bg-white text-primary font-body font-bold text-sm uppercase tracking-wider px-8 py-4 border-2 border-primary hover:bg-primary hover:text-white transition-all">
+          Contact Me
+        </a>
+      </div>
+
+      <!-- Dot decoration -->
+      <div class="dot-pattern w-32 h-8 mx-auto mt-10 opacity-40"></div>
+
+    </div>
+  </main>
+
+</body>
+</html>
