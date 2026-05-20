@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Setting Up CI/CD for Node.js with GitHub Actions - KARUNESH.</title>
+  <meta name="description" content="How to set up a complete CI/CD pipeline for Node.js apps using GitHub Actions — automated testing, linting, and deployment to AWS and Vercel."/>
+  <meta name="author" content="Karunesh Gupta"/>
+  <meta property="og:title" content="CI/CD for Node.js with GitHub Actions — KARUNESH."/>
+  <meta property="og:description" content="Automated testing, linting, and deployment pipeline for Node.js apps."/>
+  <meta property="og:type" content="article"/>
+  <meta name="twitter:card" content="summary"/>
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg"/>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet"/>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "outline-variant":"#c4c7c7","primary":"#000000","secondary-container":"#f6e611",
+            "secondary-fixed":"#f6e611","on-secondary-fixed":"#1f1c00","background":"#f9f9f9",
+            "surface":"#f9f9f9","surface-container":"#eeeeee","surface-container-low":"#f3f3f4",
+            "surface-container-lowest":"#ffffff","surface-container-highest":"#e2e2e2",
+            "on-primary":"#ffffff","on-surface":"#1a1c1c","on-surface-variant":"#444748",
+            "on-background":"#1a1c1c","secondary":"#676000","on-secondary":"#ffffff",
+            "outline":"#747878","inverse-on-surface":"#f0f1f1",
+          },
+          fontFamily: {"display-lg":["Montserrat"],"headline-xl":["Montserrat"],"headline-lg":["Montserrat"],"body-lg":["Inter"],"body-md":["Inter"],"label-bold":["Inter"]},
+          fontSize: {
+            "headline-xl":["64px",{lineHeight:"72px",letterSpacing:"-0.02em",fontWeight:"800"}],
+            "headline-lg":["32px",{lineHeight:"40px",fontWeight:"700"}],
+            "body-lg":["18px",{lineHeight:"28px",fontWeight:"400"}],
+            "body-md":["16px",{lineHeight:"24px",fontWeight:"400"}],
+            "label-bold":["14px",{lineHeight:"20px",fontWeight:"700"}],
+          },
+          spacing:{"section-padding":"120px","margin-desktop":"80px","margin-mobile":"20px","gutter":"24px"}
+        }
+      }
+    }
+  </script>
+  <style>
+    .page-loader { position:fixed;inset:0;z-index:9999;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.4s ease,visibility 0.4s ease; }
+    .page-loader.done { opacity:0;visibility:hidden;pointer-events:none; }
+    .loader-bar { width:120px;height:3px;background:#333;margin-top:16px;overflow:hidden; }
+    .loader-bar-fill { height:100%;width:0;background:#f6e611;animation:loaderFill 0.8s ease forwards; }
+    @keyframes loaderFill { to { width:100%; } }
+  </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md antialiased min-h-screen flex flex-col">
+  <div class="page-loader" id="page-loader">
+    <span class="font-headline-lg text-[28px] font-black text-on-primary tracking-tighter">KARUNESH.</span>
+    <div class="loader-bar"><div class="loader-bar-fill"></div></div>
+  </div>
+
+  <nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-[80px] bg-primary border-b border-outline">
+    <a href="../index.html" class="font-headline-lg text-headline-lg font-black tracking-tighter text-on-primary">KARUNESH.</a>
+    <div class="hidden md:flex gap-gutter items-center">
+      <a href="../index.html" class="font-label-bold text-label-bold text-on-primary opacity-80 hover:text-secondary transition-colors">HOME</a>
+      <a href="../about.html" class="font-label-bold text-label-bold text-on-primary opacity-80 hover:text-secondary transition-colors">ABOUT</a>
+      <a href="../projects.html" class="font-label-bold text-label-bold text-on-primary opacity-80 hover:text-secondary transition-colors">WORKS</a>
+      <a href="../blog.html" class="font-label-bold text-label-bold text-secondary border-b-4 border-secondary pb-1">BLOG</a>
+      <a href="../contact.html" class="font-label-bold text-label-bold text-on-primary opacity-80 hover:text-secondary transition-colors">CONTACT</a>
+    </div>
+    <a href="../contact.html" class="hidden md:block bg-secondary-fixed text-on-secondary-fixed font-label-bold text-label-bold px-6 py-2 hover:bg-primary hover:text-on-primary border-2 border-secondary-fixed hover:border-primary transition-all">HIRE ME</a>
+  </nav>
+
+  <main class="flex-grow pt-[80px]">
+    <section class="py-20 px-margin-mobile md:px-margin-desktop bg-primary">
+      <div class="max-w-4xl mx-auto">
+        <a href="../blog.html" class="font-label-bold text-label-bold text-secondary-fixed uppercase tracking-widest hover:opacity-80 transition-opacity">&larr; BACK TO BLOG</a>
+      </div>
+    </section>
+
+    <article class="py-16 px-margin-mobile md:px-margin-desktop bg-surface-container-lowest">
+      <div class="max-w-4xl mx-auto">
+        <div class="flex gap-2 items-center mb-4">
+          <span class="bg-secondary-fixed text-primary font-label-bold px-2 py-0.5 text-xs uppercase">CI/CD</span>
+          <span class="bg-secondary-fixed text-primary font-label-bold px-2 py-0.5 text-xs uppercase">GitHub Actions</span>
+          <span class="bg-secondary-fixed text-primary font-label-bold px-2 py-0.5 text-xs uppercase">DevOps</span>
+          <span class="text-outline text-xs ml-2">6 min read</span>
+        </div>
+        <h1 class="font-headline-xl text-[36px] md:text-[48px] font-black text-on-surface leading-tight uppercase">SETTING UP CI/CD FOR NODE.JS WITH GITHUB ACTIONS</h1>
+        <div class="flex items-center gap-4 mt-6 mb-12 pb-8 border-b-2 border-secondary-fixed">
+          <span class="font-label-bold text-label-bold text-on-surface-variant uppercase">Karunesh Gupta</span>
+          <span class="text-outline">&bull;</span>
+          <span class="font-label-bold text-label-bold text-outline uppercase">Sep 18, 2024</span>
+        </div>
+        <div class="prose-content">
+          <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-4">Manual deployments are a recipe for disaster. You forget to run tests, push untested code, and spend Friday night debugging production. CI/CD eliminates this entirely — every push triggers automated tests, and only passing code gets deployed. Here's how I set it up for my Node.js projects using GitHub Actions.</p>
+
+          <h2 class="font-headline-lg text-[22px] font-black text-on-surface uppercase mt-10 mb-4">CI VS CD — THE DIFFERENCE</h2>
+
+          <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-4">Continuous Integration (CI) means every code change is automatically tested. Push to a branch, tests run. Open a PR, tests run. This catches bugs before they reach main. Continuous Deployment (CD) takes it further — if tests pass, the code is automatically deployed to production. No manual steps, no human error.</p>
+
+          <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-4">You don't need both from day one. Start with CI (automated tests on every push), then add CD once you trust your test suite. A CI pipeline that catches 80% of bugs is infinitely better than no pipeline at all.</p>
+
+          <h2 class="font-headline-lg text-[22px] font-black text-on-surface uppercase mt-10 mb-4">THE WORKFLOW FILE</h2>
+
+          <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-4">GitHub Actions uses YAML files in .github/workflows/. Each file defines a workflow — a set of jobs triggered by events. The most common trigger is push to main or PR creation. Each job runs on a virtual machine (Ubuntu is fastest), installs your dependencies, and runs your scripts.</p>
+
+          <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-4">My standard workflow has three jobs: lint, test, and deploy. Lint and test run in parallel — no point waiting for tests to finish before checking code style. Deploy runs only if both pass and only on the main branch. This means PR branches get tested but never deployed.</p>
+
+          <h2 class="font-headline-lg text-[22px] font-black text-on-surface uppercase mt-10 mb-4">CACHING NODE_MODULES</h2>
+
+          <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-4">The biggest time sink in CI is npm install. A fresh install downloads hundreds of packages every run. GitHub Actions has a built-in cache action — it caches node_modules keyed by the hash of package-lock.json. If the lock file hasn't changed, it restores the cache instead of installing from scratch. This cut my CI time from 3 minutes to 45 seconds.</p>
+
+          <h2 class="font-headline-lg text-[22px] font-black text-on-surface uppercase mt-10 mb-4">ENVIRONMENT VARIABLES & SECRETS</h2>
+
+          <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-4">Never hardcode API keys, database URLs, or secrets in your workflow file. GitHub Secrets stores them encrypted — they're injected as environment variables at runtime. Go to Settings → Secrets → Actions, add your variables, and reference them as secrets.VARIABLE_NAME in the YAML.</p>
+
+          <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-4">For multi-environment setups (staging vs production), use GitHub Environments. Each environment has its own set of secrets. The staging workflow uses staging secrets, production uses production secrets. You can even add manual approval — the deploy to production waits for a team member to click "approve."</p>
+
+          <h2 class="font-headline-lg text-[22px] font-black text-on-surface uppercase mt-10 mb-4">DEPLOYING TO VERCEL</h2>
+
+          <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-4">For frontend apps, Vercel's GitHub integration handles CD automatically — connect your repo and every push to main triggers a deployment. No workflow file needed. But if you want custom logic (run tests first, then deploy), use the Vercel CLI in your GitHub Action. Install it, authenticate with a token from Secrets, and run vercel --prod.</p>
+
+          <h2 class="font-headline-lg text-[22px] font-black text-on-surface uppercase mt-10 mb-4">DEPLOYING TO AWS</h2>
+
+          <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-4">For backend APIs on EC2, the deploy job SSHs into the server, pulls the latest code, installs dependencies, and restarts the process manager (PM2). Store the SSH key as a GitHub Secret. Use the appleboy/ssh-action to execute remote commands without managing SSH connections yourself.</p>
+
+          <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-4">For Lambda deployments, use the Serverless Framework's deploy command in your workflow. It packages your code, uploads to S3, and updates the Lambda function — all in one command. The whole deploy takes about 90 seconds.</p>
+
+          <h2 class="font-headline-lg text-[22px] font-black text-on-surface uppercase mt-10 mb-4">NOTIFICATIONS</h2>
+
+          <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-4">A CI pipeline that fails silently is useless. I set up Slack notifications for failed builds — a webhook posts to a channel with the commit message, author, and a link to the failing run. For smaller projects, GitHub's built-in email notifications work fine. The goal is simple: you should know within minutes when something breaks.</p>
+
+          <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-4">Start small — a 10-line workflow that runs npm test on every push is worth more than a complex pipeline you never finish building. Iterate from there. Add linting next week, caching the week after, deployment when you're confident. CI/CD is a practice, not a one-time setup.</p>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="bg-primary relative overflow-hidden">
+    <div class="h-1.5 bg-secondary-fixed w-full"></div>
+    <div class="max-w-6xl mx-auto px-margin-mobile md:px-margin-desktop py-16">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
+        <div class="md:col-span-4">
+          <a href="../index.html" class="font-headline-lg text-[36px] font-black text-on-primary tracking-tighter">KARUNESH.</a>
+          <p class="font-body-md text-body-md text-on-primary opacity-50 mt-3 max-w-xs">Fullstack developer crafting fast, scalable web apps with clean architecture and sharp UI.</p>
+          <div class="flex gap-3 mt-6">
+            <a href="https://github.com/karunesh77" target="_blank" class="w-10 h-10 border-2 border-secondary-fixed flex items-center justify-center text-secondary-fixed hover:bg-secondary-fixed hover:text-primary transition-all"><span class="font-label-bold text-xs font-black">GH</span></a>
+            <a href="https://www.linkedin.com/in/karunesh-gupta-680bb0326" target="_blank" class="w-10 h-10 border-2 border-secondary-fixed flex items-center justify-center text-secondary-fixed hover:bg-secondary-fixed hover:text-primary transition-all"><span class="font-label-bold text-xs font-black">IN</span></a>
+            <a href="mailto:karunesh@elens.in" class="w-10 h-10 border-2 border-secondary-fixed flex items-center justify-center text-secondary-fixed hover:bg-secondary-fixed hover:text-primary transition-all"><span class="material-symbols-outlined" style="font-size:18px;">mail</span></a>
+          </div>
+        </div>
+        <div class="md:col-span-2">
+          <h4 class="font-label-bold text-label-bold text-secondary-fixed uppercase tracking-widest mb-4">Pages</h4>
+          <div class="flex flex-col gap-3">
+            <a href="../index.html" class="font-label-bold text-label-bold text-on-primary opacity-60 hover:opacity-100 hover:text-secondary-fixed transition-all uppercase">Home</a>
+            <a href="../about.html" class="font-label-bold text-label-bold text-on-primary opacity-60 hover:opacity-100 hover:text-secondary-fixed transition-all uppercase">About</a>
+            <a href="../projects.html" class="font-label-bold text-label-bold text-on-primary opacity-60 hover:opacity-100 hover:text-secondary-fixed transition-all uppercase">Works</a>
+            <a href="../blog.html" class="font-label-bold text-label-bold text-on-primary opacity-60 hover:opacity-100 hover:text-secondary-fixed transition-all uppercase">Blog</a>
+            <a href="../contact.html" class="font-label-bold text-label-bold text-on-primary opacity-60 hover:opacity-100 hover:text-secondary-fixed transition-all uppercase">Contact</a>
+          </div>
+        </div>
+        <div class="md:col-span-3">
+          <h4 class="font-label-bold text-label-bold text-secondary-fixed uppercase tracking-widest mb-4">Stack</h4>
+          <div class="flex flex-wrap gap-2">
+            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">React</span>
+            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">Next.js</span>
+            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">Node.js</span>
+            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">Express</span>
+            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">MongoDB</span>
+            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">AWS</span>
+            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">Docker</span>
+            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">Tailwind</span>
+          </div>
+        </div>
+        <div class="md:col-span-3">
+          <h4 class="font-label-bold text-label-bold text-secondary-fixed uppercase tracking-widest mb-4">Let's Work</h4>
+          <p class="font-body-md text-body-md text-on-primary opacity-50 text-sm mb-4">Got a project in mind? Let's build something great together.</p>
+          <a href="../contact.html" class="inline-block bg-secondary-fixed text-primary font-label-bold text-label-bold px-6 py-2.5 uppercase hover:bg-on-primary hover:text-primary border-2 border-secondary-fixed hover:border-on-primary transition-all">Get In Touch</a>
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-outline">
+      <div class="max-w-6xl mx-auto px-margin-mobile md:px-margin-desktop py-5 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="font-body-md text-body-md text-on-primary opacity-40 text-sm">&copy; 2025 Karunesh Gupta. Engineered for precision.</p>
+        <button onclick="window.scrollTo({top:0,behavior:'smooth'})" class="font-label-bold text-label-bold text-secondary-fixed uppercase tracking-widest hover:opacity-70 transition-opacity flex items-center gap-1">
+          Back to Top <span class="material-symbols-outlined" style="font-size:16px;">arrow_upward</span>
+        </button>
+      </div>
+    </div>
+    <div class="absolute top-8 right-8 w-32 h-32 opacity-5 pointer-events-none hidden md:block" style="background-image:radial-gradient(#f6e611 2px,transparent 2px);background-size:12px 12px;"></div>
+  </footer>
+  <script>
+    if (sessionStorage.getItem('loaderShown')) {
+      document.getElementById('page-loader').classList.add('done');
+    } else {
+      sessionStorage.setItem('loaderShown', '1');
+      window.addEventListener('load', () => {
+        setTimeout(() => { document.getElementById('page-loader').classList.add('done'); }, 800);
+      });
+    }
+  </script>
+</body>
+</html>

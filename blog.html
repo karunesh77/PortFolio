@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title>Contact - KARUNESH.</title>
-  <meta name="description" content="Get in touch with Karunesh Gupta — Fullstack Developer available for projects, collaborations, and hiring. Response within 24 hours."/>
+  <title>Blog - KARUNESH.</title>
+  <meta name="description" content="Technical blog by Karunesh Gupta — tutorials, project breakdowns, and dev insights on React, Node.js, AWS, and fullstack development."/>
   <meta name="author" content="Karunesh Gupta"/>
-  <meta property="og:title" content="Contact — KARUNESH."/>
-  <meta property="og:description" content="Have a project in mind? Let's talk — available for freelance, collaborations, and full-time opportunities."/>
+  <meta property="og:title" content="Blog — KARUNESH."/>
+  <meta property="og:description" content="Technical blog — tutorials, project breakdowns, and dev insights on React, Node.js, AWS."/>
   <meta property="og:type" content="website"/>
   <meta name="twitter:card" content="summary"/>
   <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet"/>
-  <script id="tailwind-config">
+  <script>
     tailwind.config = {
       darkMode: "class",
       theme: {
@@ -30,6 +30,7 @@
             "surface-container": "#eeeeee",
             "surface-container-low": "#f3f3f4",
             "surface-container-lowest": "#ffffff",
+            "surface-container-highest": "#e2e2e2",
             "on-primary": "#ffffff",
             "on-surface": "#1a1c1c",
             "on-surface-variant": "#444748",
@@ -49,7 +50,6 @@
             "label-bold": ["Inter"],
           },
           fontSize: {
-            "display-lg": ["84px", { lineHeight: "90px", letterSpacing: "-0.04em", fontWeight: "900" }],
             "headline-xl": ["64px", { lineHeight: "72px", letterSpacing: "-0.02em", fontWeight: "800" }],
             "headline-xl-mobile": ["40px", { lineHeight: "44px", fontWeight: "800" }],
             "headline-lg": ["32px", { lineHeight: "40px", fontWeight: "700" }],
@@ -68,16 +68,18 @@
     }
   </script>
   <style>
+    .pattern-dots {
+      background-image: radial-gradient(circle at 1px 1px, #e2e2e2 1px, transparent 0);
+      background-size: 16px 16px;
+    }
     .mobile-menu { display: none; }
     .mobile-menu.open { display: flex; }
-    input:focus, textarea:focus { outline: none; border-color: #f6e611; }
+    .blog-card:hover .blog-card-bar { width: 100%; }
     .page-loader { position:fixed;inset:0;z-index:9999;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.4s ease,visibility 0.4s ease; }
     .page-loader.done { opacity:0;visibility:hidden;pointer-events:none; }
     .loader-bar { width:120px;height:3px;background:#333;margin-top:16px;overflow:hidden; }
     .loader-bar-fill { height:100%;width:0;background:#f6e611;animation:loaderFill 0.8s ease forwards; }
     @keyframes loaderFill { to { width:100%; } }
-    .success-msg { display: none; }
-    .success-msg.show { display: flex; }
   </style>
 </head>
 <body class="bg-surface text-on-surface font-body-md antialiased min-h-screen flex flex-col">
@@ -94,8 +96,8 @@
       <a href="index.html" class="font-label-bold text-label-bold text-on-primary opacity-80 hover:text-secondary transition-colors">HOME</a>
       <a href="about.html" class="font-label-bold text-label-bold text-on-primary opacity-80 hover:text-secondary transition-colors">ABOUT</a>
       <a href="projects.html" class="font-label-bold text-label-bold text-on-primary opacity-80 hover:text-secondary transition-colors">WORKS</a>
-      <a href="blog.html" class="font-label-bold text-label-bold text-on-primary opacity-80 hover:text-secondary transition-colors">BLOG</a>
-      <a href="contact.html" class="font-label-bold text-label-bold text-secondary border-b-4 border-secondary pb-1">CONTACT</a>
+      <a href="blog.html" class="font-label-bold text-label-bold text-secondary border-b-4 border-secondary pb-1">BLOG</a>
+      <a href="contact.html" class="font-label-bold text-label-bold text-on-primary opacity-80 hover:text-secondary transition-colors">CONTACT</a>
     </div>
     <a href="contact.html" class="hidden md:block bg-secondary-fixed text-on-secondary-fixed font-label-bold text-label-bold px-6 py-2 hover:bg-primary hover:text-on-primary border-2 border-secondary-fixed hover:border-primary transition-all">HIRE ME</a>
     <button onclick="document.getElementById('mobile-menu').classList.toggle('open')" class="md:hidden text-on-primary">
@@ -108,169 +110,146 @@
     <a href="index.html" class="font-label-bold text-label-bold text-on-primary opacity-80">HOME</a>
     <a href="about.html" class="font-label-bold text-label-bold text-on-primary opacity-80">ABOUT</a>
     <a href="projects.html" class="font-label-bold text-label-bold text-on-primary opacity-80">WORKS</a>
-    <a href="blog.html" class="font-label-bold text-label-bold text-on-primary opacity-80">BLOG</a>
-    <a href="contact.html" class="font-label-bold text-label-bold text-secondary">CONTACT</a>
+    <a href="blog.html" class="font-label-bold text-label-bold text-secondary">BLOG</a>
+    <a href="contact.html" class="font-label-bold text-label-bold text-on-primary opacity-80">CONTACT</a>
     <a href="contact.html" class="inline-block bg-secondary-fixed text-on-secondary-fixed font-label-bold text-label-bold px-6 py-2 mt-2 w-fit">HIRE ME</a>
   </div>
 
   <main class="flex-grow pt-[80px]">
 
-    <!-- Hero Banner -->
-    <section class="bg-primary text-on-primary py-24 md:py-32 relative overflow-hidden">
+    <!-- Page Header -->
+    <section class="py-20 px-margin-mobile md:px-margin-desktop bg-primary relative overflow-hidden">
       <div class="absolute top-0 left-0 w-64 h-64 opacity-10 pointer-events-none" style="background-image: radial-gradient(#f6e611 2px, transparent 2px); background-size: 16px 16px;"></div>
-      <div class="absolute bottom-0 right-0 w-48 h-48 opacity-10 pointer-events-none" style="background-image: radial-gradient(#f6e611 2px, transparent 2px); background-size: 16px 16px;"></div>
-      <div class="max-w-4xl mx-auto px-margin-mobile md:px-margin-desktop text-center relative z-10">
-        <span class="font-label-bold text-label-bold uppercase tracking-widest text-outline block mb-4">GET IN TOUCH</span>
-        <h1 class="font-headline-xl-mobile md:text-[72px] font-black text-on-primary leading-tight mb-6 relative inline-block">
-          LET'S WORK<br/>TOGETHER
-          <div class="absolute -bottom-4 left-1/2 -translate-x-1/2 w-24 h-1.5 bg-secondary-fixed"></div>
+      <div class="max-w-4xl mx-auto relative z-10">
+        <span class="font-label-bold text-label-bold uppercase tracking-widest text-outline block mb-4">THOUGHTS & TUTORIALS</span>
+        <h1 class="font-headline-xl-mobile md:text-[64px] font-black text-on-primary leading-tight relative inline-block">
+          BLOG
+          <div class="absolute -bottom-2 left-0 w-24 h-1.5 bg-secondary-fixed"></div>
         </h1>
-        <p class="font-body-lg text-body-lg text-inverse-on-surface mt-12 max-w-xl mx-auto opacity-70">
-          Have a project in mind? Looking for a developer? Let's talk — I respond within 24 hours.
+        <p class="font-body-md text-body-md text-on-primary opacity-50 mt-8 max-w-xl">
+          Technical deep-dives, project breakdowns, and things I've learned building for the web.
         </p>
       </div>
     </section>
 
-    <!-- Contact Content -->
-    <section class="py-section-padding bg-surface relative">
-      <div class="max-w-6xl mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 md:grid-cols-12 gap-12">
+    <!-- Blog Posts -->
+    <section class="py-16 px-margin-mobile md:px-margin-desktop bg-surface-container-lowest relative">
+      <div class="absolute top-20 right-20 w-64 h-64 pattern-dots opacity-50 hidden md:block"></div>
+      <div class="max-w-4xl mx-auto relative z-10 flex flex-col gap-0" id="blog-list">
+        <!-- BLOG_LIST_START -->
 
-        <!-- Info Sidebar -->
-        <div class="md:col-span-4">
-          <div class="bg-surface-container border-l-4 border-secondary-fixed p-8 h-full flex flex-col justify-between">
-            <div>
-              <h3 class="font-headline-lg text-[22px] font-bold text-on-surface uppercase tracking-tight mb-8">Contact Info</h3>
-
-              <div class="flex items-start gap-4 mb-8 group">
-                <span class="material-symbols-outlined text-secondary-fixed text-2xl mt-0.5">mail</span>
-                <div>
-                  <p class="font-label-bold text-label-bold text-outline uppercase mb-1">Email</p>
-                  <a href="mailto:karunesh@elens.in" class="font-body-md text-body-md text-on-surface font-semibold hover:text-secondary transition-colors break-all">karunesh@elens.in</a>
-                  <a href="mailto:heyitskaruneshgupta@gmail.com" class="font-body-md text-body-md text-on-surface font-semibold hover:text-secondary transition-colors break-all block mt-1">heyitskaruneshgupta@gmail.com</a>
-                </div>
+        <!-- Post 1 — HireMitra -->
+        <a href="blog/how-i-built-hiremitra.html" class="blog-card group block border-b-2 border-outline hover:border-secondary-fixed transition-colors py-8 first:pt-0">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div class="flex-1">
+              <div class="flex gap-2 items-center mb-3">
+                <span class="bg-secondary-fixed text-primary font-label-bold px-2 py-0.5 text-xs uppercase">Next.js</span>
+                <span class="bg-secondary-fixed text-primary font-label-bold px-2 py-0.5 text-xs uppercase">Express</span>
+                <span class="bg-secondary-fixed text-primary font-label-bold px-2 py-0.5 text-xs uppercase">MongoDB</span>
+                <span class="text-outline text-xs ml-2">5 min read</span>
               </div>
-
-              <div class="flex items-start gap-4 mb-8 group">
-                <span class="material-symbols-outlined text-secondary-fixed text-2xl mt-0.5">location_on</span>
-                <div>
-                  <p class="font-label-bold text-label-bold text-outline uppercase mb-1">Location</p>
-                  <p class="font-body-md text-body-md text-on-surface font-semibold">India<br/>Available Worldwide</p>
-                </div>
-              </div>
-
-              <div class="flex items-start gap-4 mb-8">
-                <span class="material-symbols-outlined text-secondary-fixed text-2xl mt-0.5">schedule</span>
-                <div>
-                  <p class="font-label-bold text-label-bold text-outline uppercase mb-1">Response Time</p>
-                  <p class="font-body-md text-body-md text-on-surface font-semibold">Within 24 hours</p>
-                </div>
-              </div>
-
-              <div class="flex items-start gap-4">
-                <span class="material-symbols-outlined text-secondary-fixed text-2xl mt-0.5">check_circle</span>
-                <div>
-                  <p class="font-label-bold text-label-bold text-outline uppercase mb-1">Status</p>
-                  <div class="flex items-center gap-2">
-                    <div class="w-2 h-2 bg-green-500 rounded-full"></div>
-                    <p class="font-body-md text-body-md text-on-surface font-semibold">Available for Projects</p>
-                  </div>
-                </div>
-              </div>
+              <h2 class="font-headline-lg text-[22px] font-black text-on-surface uppercase group-hover:text-secondary transition-colors">HOW I BUILT HIREMITRA WITH NEXT.JS & EXPRESS</h2>
+              <p class="font-body-md text-body-md text-on-surface-variant mt-2 text-sm">A deep dive into the architecture, auth flow, and deployment of a full-stack job platform.</p>
             </div>
-
-            <div class="mt-12">
-              <h4 class="font-label-bold text-label-bold text-on-surface uppercase mb-4">Find Me On</h4>
-              <div class="flex gap-3">
-                <a href="https://github.com/karunesh77" target="_blank" class="w-10 h-10 bg-primary text-on-primary flex items-center justify-center hover:bg-secondary-fixed hover:text-primary transition-colors font-bold text-sm">GH</a>
-                <a href="https://www.linkedin.com/in/karunesh-gupta-680bb0326" target="_blank" class="w-10 h-10 bg-primary text-on-primary flex items-center justify-center hover:bg-secondary-fixed hover:text-primary transition-colors font-bold text-sm">IN</a>
-              </div>
+            <div class="flex flex-col items-end gap-2 shrink-0">
+              <span class="font-label-bold text-label-bold text-outline uppercase">Jan 15, 2025</span>
+              <span class="material-symbols-outlined text-secondary-fixed opacity-0 group-hover:opacity-100 transition-opacity" style="font-size:28px;">arrow_forward</span>
             </div>
           </div>
-        </div>
-
-        <!-- Contact Form -->
-        <div class="md:col-span-8">
-
-          <!-- Success message -->
-          <div id="success-msg" class="success-msg items-center gap-4 bg-secondary-fixed text-primary px-6 py-4 mb-8 font-label-bold text-label-bold uppercase">
-            <span class="material-symbols-outlined">check_circle</span>
-            Message sent! I'll get back to you within 24 hours.
-          </div>
-
-          <form id="contact-form" class="space-y-8" action="https://formspree.io/f/mpqnwvva" method="POST" onsubmit="handleSubmit(event)">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div>
-                <label class="font-label-bold text-label-bold text-primary uppercase block mb-2" for="name">Name *</label>
-                <input
-                  class="w-full bg-transparent border-0 border-b-2 border-primary text-on-surface font-body-md px-0 py-2 transition-colors placeholder:text-outline"
-                  id="name" name="name" type="text" placeholder="Your name" required
-                />
-              </div>
-              <div>
-                <label class="font-label-bold text-label-bold text-primary uppercase block mb-2" for="email">Email *</label>
-                <input
-                  class="w-full bg-transparent border-0 border-b-2 border-primary text-on-surface font-body-md px-0 py-2 transition-colors placeholder:text-outline"
-                  id="email" name="email" type="email" placeholder="your@email.com" required
-                />
-              </div>
-            </div>
-
-            <div>
-              <label class="font-label-bold text-label-bold text-primary uppercase block mb-2" for="subject">Subject *</label>
-              <input
-                class="w-full bg-transparent border-0 border-b-2 border-primary text-on-surface font-body-md px-0 py-2 transition-colors placeholder:text-outline"
-                id="subject" name="subject" type="text" placeholder="Project inquiry / Collaboration / Hiring" required
-              />
-            </div>
-
-            <div>
-              <label class="font-label-bold text-label-bold text-primary uppercase block mb-2" for="budget">Budget Range</label>
-              <select
-                class="w-full bg-transparent border-0 border-b-2 border-primary text-on-surface font-body-md px-0 py-2 transition-colors appearance-none cursor-pointer"
-                id="budget" name="budget"
-              >
-                <option value="" class="text-outline">Select a range (optional)</option>
-                <option>Under ₹50,000</option>
-                <option>₹50,000 – ₹1,00,000</option>
-                <option>₹1,00,000 – ₹3,00,000</option>
-                <option>₹3,00,000+</option>
-                <option>Let's discuss</option>
-              </select>
-            </div>
-
-            <div>
-              <label class="font-label-bold text-label-bold text-primary uppercase block mb-2" for="message">Message *</label>
-              <textarea
-                class="w-full bg-transparent border-0 border-b-2 border-primary text-on-surface font-body-md px-0 py-2 transition-colors resize-none placeholder:text-outline"
-                id="message" name="message" rows="5"
-                placeholder="Tell me about your project, timeline, and what you need..." required
-              ></textarea>
-            </div>
-
-            <div class="pt-2 flex justify-end">
-              <button
-                type="submit"
-                class="bg-primary text-on-primary font-label-bold text-label-bold px-10 py-4 uppercase tracking-widest hover:bg-secondary-fixed hover:text-primary border-2 border-primary hover:border-secondary-fixed transition-all inline-flex items-center gap-2 group"
-              >
-                SEND MESSAGE
-                <span class="material-symbols-outlined text-xl group-hover:translate-x-1 transition-transform">arrow_forward</span>
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </section>
-
-    <!-- Bottom CTA Strip -->
-    <section class="bg-secondary-fixed py-12 px-margin-mobile md:px-margin-desktop">
-      <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-        <div>
-          <h3 class="font-headline-lg text-[24px] font-black text-primary uppercase">PREFER EMAIL?</h3>
-          <p class="font-body-md text-body-md text-primary opacity-70 mt-1">Drop me a line directly.</p>
-        </div>
-        <a href="mailto:heyitskaruneshgupta@gmail.com" class="bg-primary text-on-primary font-label-bold text-label-bold px-8 py-3 tracking-widest hover:bg-surface hover:text-primary border-2 border-primary transition-all">
-          heyitskaruneshgupta@gmail.com
+          <div class="blog-card-bar h-0.5 w-0 bg-secondary-fixed transition-all duration-500 mt-4"></div>
         </a>
+
+        <!-- Post 2 — AWS Lambda -->
+        <a href="blog/aws-lambda-deployment-guide.html" class="blog-card group block border-b-2 border-outline hover:border-secondary-fixed transition-colors py-8">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div class="flex-1">
+              <div class="flex gap-2 items-center mb-3">
+                <span class="bg-secondary-fixed text-primary font-label-bold px-2 py-0.5 text-xs uppercase">AWS</span>
+                <span class="bg-secondary-fixed text-primary font-label-bold px-2 py-0.5 text-xs uppercase">Lambda</span>
+                <span class="bg-secondary-fixed text-primary font-label-bold px-2 py-0.5 text-xs uppercase">DevOps</span>
+                <span class="text-outline text-xs ml-2">8 min read</span>
+              </div>
+              <h2 class="font-headline-lg text-[22px] font-black text-on-surface uppercase group-hover:text-secondary transition-colors">DEPLOYING NODE.JS APPS ON AWS LAMBDA — A PRACTICAL GUIDE</h2>
+              <p class="font-body-md text-body-md text-on-surface-variant mt-2 text-sm">Step-by-step walkthrough of setting up Lambda functions, API Gateway, and CI/CD pipeline.</p>
+            </div>
+            <div class="flex flex-col items-end gap-2 shrink-0">
+              <span class="font-label-bold text-label-bold text-outline uppercase">Dec 28, 2024</span>
+              <span class="material-symbols-outlined text-secondary-fixed opacity-0 group-hover:opacity-100 transition-opacity" style="font-size:28px;">arrow_forward</span>
+            </div>
+          </div>
+          <div class="blog-card-bar h-0.5 w-0 bg-secondary-fixed transition-all duration-500 mt-4"></div>
+        </a>
+
+        <!-- Post 3 — Bullox -->
+        <a href="blog/building-bullox-trading-app.html" class="blog-card group block border-b-2 border-outline hover:border-secondary-fixed transition-colors py-8">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div class="flex-1">
+              <div class="flex gap-2 items-center mb-3">
+                <span class="bg-secondary-fixed text-primary font-label-bold px-2 py-0.5 text-xs uppercase">React</span>
+                <span class="bg-secondary-fixed text-primary font-label-bold px-2 py-0.5 text-xs uppercase">Node.js</span>
+                <span class="bg-secondary-fixed text-primary font-label-bold px-2 py-0.5 text-xs uppercase">WebSocket</span>
+                <span class="text-outline text-xs ml-2">6 min read</span>
+              </div>
+              <h2 class="font-headline-lg text-[22px] font-black text-on-surface uppercase group-hover:text-secondary transition-colors">BUILDING A REAL-TIME TRADING APP — THE BULLOX STORY</h2>
+              <p class="font-body-md text-body-md text-on-surface-variant mt-2 text-sm">Real-time price updates, instant alerts, and portfolio tracking with React and WebSockets.</p>
+            </div>
+            <div class="flex flex-col items-end gap-2 shrink-0">
+              <span class="font-label-bold text-label-bold text-outline uppercase">Nov 10, 2024</span>
+              <span class="material-symbols-outlined text-secondary-fixed opacity-0 group-hover:opacity-100 transition-opacity" style="font-size:28px;">arrow_forward</span>
+            </div>
+          </div>
+          <div class="blog-card-bar h-0.5 w-0 bg-secondary-fixed transition-all duration-500 mt-4"></div>
+        </a>
+
+        <!-- Post 4 — JWT Auth -->
+        <a href="blog/jwt-authentication-complete-guide.html" class="blog-card group block border-b-2 border-outline hover:border-secondary-fixed transition-colors py-8">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div class="flex-1">
+              <div class="flex gap-2 items-center mb-3">
+                <span class="bg-secondary-fixed text-primary font-label-bold px-2 py-0.5 text-xs uppercase">JWT</span>
+                <span class="bg-secondary-fixed text-primary font-label-bold px-2 py-0.5 text-xs uppercase">Security</span>
+                <span class="bg-secondary-fixed text-primary font-label-bold px-2 py-0.5 text-xs uppercase">Node.js</span>
+                <span class="text-outline text-xs ml-2">7 min read</span>
+              </div>
+              <h2 class="font-headline-lg text-[22px] font-black text-on-surface uppercase group-hover:text-secondary transition-colors">JWT AUTHENTICATION — THE COMPLETE GUIDE FOR FULLSTACK DEVS</h2>
+              <p class="font-body-md text-body-md text-on-surface-variant mt-2 text-sm">Access tokens, refresh tokens, HTTP-only cookies, and protecting your React + Express app the right way.</p>
+            </div>
+            <div class="flex flex-col items-end gap-2 shrink-0">
+              <span class="font-label-bold text-label-bold text-outline uppercase">Oct 5, 2024</span>
+              <span class="material-symbols-outlined text-secondary-fixed opacity-0 group-hover:opacity-100 transition-opacity" style="font-size:28px;">arrow_forward</span>
+            </div>
+          </div>
+          <div class="blog-card-bar h-0.5 w-0 bg-secondary-fixed transition-all duration-500 mt-4"></div>
+        </a>
+
+        <!-- Post 5 — CI/CD -->
+        <a href="blog/cicd-pipeline-nodejs.html" class="blog-card group block border-b-2 border-outline hover:border-secondary-fixed transition-colors py-8">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div class="flex-1">
+              <div class="flex gap-2 items-center mb-3">
+                <span class="bg-secondary-fixed text-primary font-label-bold px-2 py-0.5 text-xs uppercase">CI/CD</span>
+                <span class="bg-secondary-fixed text-primary font-label-bold px-2 py-0.5 text-xs uppercase">GitHub Actions</span>
+                <span class="bg-secondary-fixed text-primary font-label-bold px-2 py-0.5 text-xs uppercase">DevOps</span>
+                <span class="text-outline text-xs ml-2">6 min read</span>
+              </div>
+              <h2 class="font-headline-lg text-[22px] font-black text-on-surface uppercase group-hover:text-secondary transition-colors">SETTING UP CI/CD FOR NODE.JS WITH GITHUB ACTIONS</h2>
+              <p class="font-body-md text-body-md text-on-surface-variant mt-2 text-sm">Automated testing, linting, and deployment pipeline — from zero to production-ready in one workflow file.</p>
+            </div>
+            <div class="flex flex-col items-end gap-2 shrink-0">
+              <span class="font-label-bold text-label-bold text-outline uppercase">Sep 18, 2024</span>
+              <span class="material-symbols-outlined text-secondary-fixed opacity-0 group-hover:opacity-100 transition-opacity" style="font-size:28px;">arrow_forward</span>
+            </div>
+          </div>
+          <div class="blog-card-bar h-0.5 w-0 bg-secondary-fixed transition-all duration-500 mt-4"></div>
+        </a>
+
+        <!-- BLOG_LIST_END -->
+      </div>
+
+      <!-- No posts message (hidden by default, shown when no CMS posts) -->
+      <div id="no-posts" class="hidden max-w-4xl mx-auto text-center py-20">
+        <span class="material-symbols-outlined text-outline" style="font-size:48px;">edit_note</span>
+        <p class="font-label-bold text-label-bold text-on-surface-variant uppercase mt-4">Posts coming soon — stay tuned.</p>
       </div>
     </section>
 
@@ -336,39 +315,6 @@
     </div>
     <div class="absolute top-8 right-8 w-32 h-32 opacity-5 pointer-events-none hidden md:block" style="background-image:radial-gradient(#f6e611 2px,transparent 2px);background-size:12px 12px;"></div>
   </footer>
-
-  <script>
-    async function handleSubmit(e) {
-      e.preventDefault();
-      const form = e.target;
-      const btn = form.querySelector('button[type="submit"]');
-      const successMsg = document.getElementById('success-msg');
-
-      btn.textContent = 'SENDING...';
-      btn.disabled = true;
-
-      try {
-        const res = await fetch(form.action, {
-          method: 'POST',
-          body: new FormData(form),
-          headers: { 'Accept': 'application/json' }
-        });
-
-        if (res.ok) {
-          form.reset();
-          successMsg.classList.add('show');
-          setTimeout(() => successMsg.classList.remove('show'), 5000);
-        } else {
-          alert('Something went wrong. Please try again or email directly.');
-        }
-      } catch {
-        alert('Network error. Please try again.');
-      }
-
-      btn.innerHTML = 'SEND MESSAGE <span class="material-symbols-outlined text-xl group-hover:translate-x-1 transition-transform">arrow_forward</span>';
-      btn.disabled = false;
-    }
-  </script>
   <script>
     if (sessionStorage.getItem('loaderShown')) {
       document.getElementById('page-loader').classList.add('done');

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Deploying Node.js Apps on AWS Lambda - KARUNESH.</title>
+  <meta name="description" content="Step-by-step walkthrough of setting up Lambda functions, API Gateway, and CI/CD pipeline for Node.js applications."/>
+  <meta name="author" content="Karunesh Gupta"/>
+  <meta property="og:title" content="Deploying Node.js on AWS Lambda — KARUNESH."/>
+  <meta property="og:description" content="Practical guide to Lambda functions, API Gateway, and CI/CD for Node.js."/>
+  <meta property="og:type" content="article"/>
+  <meta name="twitter:card" content="summary"/>
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg"/>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet"/>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "outline-variant":"#c4c7c7","primary":"#000000","secondary-container":"#f6e611",
+            "secondary-fixed":"#f6e611","on-secondary-fixed":"#1f1c00","background":"#f9f9f9",
+            "surface":"#f9f9f9","surface-container":"#eeeeee","surface-container-low":"#f3f3f4",
+            "surface-container-lowest":"#ffffff","surface-container-highest":"#e2e2e2",
+            "on-primary":"#ffffff","on-surface":"#1a1c1c","on-surface-variant":"#444748",
+            "on-background":"#1a1c1c","secondary":"#676000","on-secondary":"#ffffff",
+            "outline":"#747878","inverse-on-surface":"#f0f1f1",
+          },
+          fontFamily: {"display-lg":["Montserrat"],"headline-xl":["Montserrat"],"headline-lg":["Montserrat"],"body-lg":["Inter"],"body-md":["Inter"],"label-bold":["Inter"]},
+          fontSize: {
+            "headline-xl":["64px",{lineHeight:"72px",letterSpacing:"-0.02em",fontWeight:"800"}],
+            "headline-lg":["32px",{lineHeight:"40px",fontWeight:"700"}],
+            "body-lg":["18px",{lineHeight:"28px",fontWeight:"400"}],
+            "body-md":["16px",{lineHeight:"24px",fontWeight:"400"}],
+            "label-bold":["14px",{lineHeight:"20px",fontWeight:"700"}],
+          },
+          spacing:{"section-padding":"120px","margin-desktop":"80px","margin-mobile":"20px","gutter":"24px"}
+        }
+      }
+    }
+  </script>
+  <style>
+    .page-loader { position:fixed;inset:0;z-index:9999;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.4s ease,visibility 0.4s ease; }
+    .page-loader.done { opacity:0;visibility:hidden;pointer-events:none; }
+    .loader-bar { width:120px;height:3px;background:#333;margin-top:16px;overflow:hidden; }
+    .loader-bar-fill { height:100%;width:0;background:#f6e611;animation:loaderFill 0.8s ease forwards; }
+    @keyframes loaderFill { to { width:100%; } }
+  </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md antialiased min-h-screen flex flex-col">
+  <div class="page-loader" id="page-loader">
+    <span class="font-headline-lg text-[28px] font-black text-on-primary tracking-tighter">KARUNESH.</span>
+    <div class="loader-bar"><div class="loader-bar-fill"></div></div>
+  </div>
+
+  <nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-[80px] bg-primary border-b border-outline">
+    <a href="../index.html" class="font-headline-lg text-headline-lg font-black tracking-tighter text-on-primary">KARUNESH.</a>
+    <div class="hidden md:flex gap-gutter items-center">
+      <a href="../index.html" class="font-label-bold text-label-bold text-on-primary opacity-80 hover:text-secondary transition-colors">HOME</a>
+      <a href="../about.html" class="font-label-bold text-label-bold text-on-primary opacity-80 hover:text-secondary transition-colors">ABOUT</a>
+      <a href="../projects.html" class="font-label-bold text-label-bold text-on-primary opacity-80 hover:text-secondary transition-colors">WORKS</a>
+      <a href="../blog.html" class="font-label-bold text-label-bold text-secondary border-b-4 border-secondary pb-1">BLOG</a>
+      <a href="../contact.html" class="font-label-bold text-label-bold text-on-primary opacity-80 hover:text-secondary transition-colors">CONTACT</a>
+    </div>
+    <a href="../contact.html" class="hidden md:block bg-secondary-fixed text-on-secondary-fixed font-label-bold text-label-bold px-6 py-2 hover:bg-primary hover:text-on-primary border-2 border-secondary-fixed hover:border-primary transition-all">HIRE ME</a>
+  </nav>
+
+  <main class="flex-grow pt-[80px]">
+    <section class="py-20 px-margin-mobile md:px-margin-desktop bg-primary">
+      <div class="max-w-4xl mx-auto">
+        <a href="../blog.html" class="font-label-bold text-label-bold text-secondary-fixed uppercase tracking-widest hover:opacity-80 transition-opacity">&larr; BACK TO BLOG</a>
+      </div>
+    </section>
+
+    <article class="py-16 px-margin-mobile md:px-margin-desktop bg-surface-container-lowest">
+      <div class="max-w-4xl mx-auto">
+        <div class="flex gap-2 items-center mb-4">
+          <span class="bg-secondary-fixed text-primary font-label-bold px-2 py-0.5 text-xs uppercase">AWS</span>
+          <span class="bg-secondary-fixed text-primary font-label-bold px-2 py-0.5 text-xs uppercase">Lambda</span>
+          <span class="bg-secondary-fixed text-primary font-label-bold px-2 py-0.5 text-xs uppercase">DevOps</span>
+          <span class="text-outline text-xs ml-2">8 min read</span>
+        </div>
+        <h1 class="font-headline-xl text-[36px] md:text-[48px] font-black text-on-surface leading-tight uppercase">DEPLOYING NODE.JS APPS ON AWS LAMBDA — A PRACTICAL GUIDE</h1>
+        <div class="flex items-center gap-4 mt-6 mb-12 pb-8 border-b-2 border-secondary-fixed">
+          <span class="font-label-bold text-label-bold text-on-surface-variant uppercase">Karunesh Gupta</span>
+          <span class="text-outline">&bull;</span>
+          <span class="font-label-bold text-label-bold text-outline uppercase">Dec 28, 2024</span>
+        </div>
+        <div class="prose-content">
+          <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-4">Serverless is not just a buzzword — it fundamentally changes how you think about backend infrastructure. Instead of managing servers, patching OS updates, and worrying about scaling, you write functions and AWS handles the rest. I migrated parts of my backend to Lambda and this is what I learned.</p>
+
+          <h2 class="font-headline-lg text-[22px] font-black text-on-surface uppercase mt-10 mb-4">WHY LAMBDA OVER EC2</h2>
+
+          <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-4">Running an Express server on EC2 means you pay 24/7 whether or not anyone is using your app. With Lambda, you pay per invocation. For side projects and apps with variable traffic, this is a game-changer. My monthly AWS bill dropped from $15 to under $2 after moving background tasks to Lambda.</p>
+
+          <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-4">Lambda also auto-scales. If your endpoint suddenly gets 10,000 requests, AWS spins up more instances automatically. No load balancer configuration, no auto-scaling groups — it just works.</p>
+
+          <h2 class="font-headline-lg text-[22px] font-black text-on-surface uppercase mt-10 mb-4">SETTING UP YOUR FIRST LAMBDA FUNCTION</h2>
+
+          <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-4">The simplest approach is using the AWS Console, but for production you want Infrastructure as Code. I use the Serverless Framework — it lets you define your functions in a YAML file and deploy with a single command.</p>
+
+          <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-4">Your serverless.yml defines the function name, runtime (Node.js 18.x or 20.x), memory allocation, timeout, and the HTTP events that trigger it. Each function maps to an API Gateway endpoint. A POST to /api/users triggers your createUser function, a GET to /api/users/{id} triggers getUser.</p>
+
+          <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-4">The handler function receives an event object with the request body, path parameters, query strings, and headers. You process the request and return an object with statusCode, headers, and body. No Express, no middleware chain — just a function that takes input and returns output.</p>
+
+          <h2 class="font-headline-lg text-[22px] font-black text-on-surface uppercase mt-10 mb-4">API GATEWAY CONFIGURATION</h2>
+
+          <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-4">API Gateway sits in front of your Lambda functions and handles routing, CORS, rate limiting, and authentication. The REST API type gives you more control — you can set up request validation, response transformations, and usage plans.</p>
+
+          <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-4">CORS is the most common pain point. You need to handle it in two places: the API Gateway OPTIONS response and your Lambda function's response headers. Miss either one and your frontend gets the dreaded "CORS policy" error.</p>
+
+          <h2 class="font-headline-lg text-[22px] font-black text-on-surface uppercase mt-10 mb-4">CONNECTING TO MONGODB</h2>
+
+          <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-4">Lambda functions are stateless — they spin up, execute, and die. This means you can't maintain a persistent database connection like you do with Express. The trick is to cache the connection outside the handler function. AWS reuses the execution environment for subsequent invocations, so your cached connection persists across warm starts.</p>
+
+          <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-4">Use MongoDB Atlas with VPC peering for production. The free tier works fine for development, but for production workloads you want the connection to stay within AWS's network for latency and security.</p>
+
+          <h2 class="font-headline-lg text-[22px] font-black text-on-surface uppercase mt-10 mb-4">CI/CD PIPELINE</h2>
+
+          <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-4">I set up GitHub Actions to deploy automatically on push to main. The workflow installs dependencies, runs tests, and then uses the Serverless Framework to deploy. Environment variables (database URL, API keys) are stored as GitHub Secrets and passed to Lambda through the serverless.yml.</p>
+
+          <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-4">The deployment takes about 90 seconds — CloudFormation creates or updates the stack, packages the code, uploads to S3, and updates the Lambda functions. Zero downtime, every time.</p>
+
+          <h2 class="font-headline-lg text-[22px] font-black text-on-surface uppercase mt-10 mb-4">COLD STARTS — THE REAL TALK</h2>
+
+          <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-4">Cold starts are Lambda's biggest drawback. When a function hasn't been invoked for a while, AWS needs to spin up a new execution environment. For Node.js, this adds 200-500ms to the first request. For most APIs this is acceptable, but for user-facing endpoints where every millisecond counts, consider Provisioned Concurrency — it keeps a minimum number of instances warm.</p>
+
+          <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-4">Keep your deployment package small. Fewer dependencies mean faster cold starts. Use esbuild or webpack to bundle your code and tree-shake unused modules. My function packages went from 15MB to 2MB after bundling, and cold starts dropped by 40%.</p>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="bg-primary relative overflow-hidden">
+    <div class="h-1.5 bg-secondary-fixed w-full"></div>
+    <div class="max-w-6xl mx-auto px-margin-mobile md:px-margin-desktop py-16">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
+        <div class="md:col-span-4">
+          <a href="../index.html" class="font-headline-lg text-[36px] font-black text-on-primary tracking-tighter">KARUNESH.</a>
+          <p class="font-body-md text-body-md text-on-primary opacity-50 mt-3 max-w-xs">Fullstack developer crafting fast, scalable web apps with clean architecture and sharp UI.</p>
+          <div class="flex gap-3 mt-6">
+            <a href="https://github.com/karunesh77" target="_blank" class="w-10 h-10 border-2 border-secondary-fixed flex items-center justify-center text-secondary-fixed hover:bg-secondary-fixed hover:text-primary transition-all"><span class="font-label-bold text-xs font-black">GH</span></a>
+            <a href="https://www.linkedin.com/in/karunesh-gupta-680bb0326" target="_blank" class="w-10 h-10 border-2 border-secondary-fixed flex items-center justify-center text-secondary-fixed hover:bg-secondary-fixed hover:text-primary transition-all"><span class="font-label-bold text-xs font-black">IN</span></a>
+            <a href="mailto:karunesh@elens.in" class="w-10 h-10 border-2 border-secondary-fixed flex items-center justify-center text-secondary-fixed hover:bg-secondary-fixed hover:text-primary transition-all"><span class="material-symbols-outlined" style="font-size:18px;">mail</span></a>
+          </div>
+        </div>
+        <div class="md:col-span-2">
+          <h4 class="font-label-bold text-label-bold text-secondary-fixed uppercase tracking-widest mb-4">Pages</h4>
+          <div class="flex flex-col gap-3">
+            <a href="../index.html" class="font-label-bold text-label-bold text-on-primary opacity-60 hover:opacity-100 hover:text-secondary-fixed transition-all uppercase">Home</a>
+            <a href="../about.html" class="font-label-bold text-label-bold text-on-primary opacity-60 hover:opacity-100 hover:text-secondary-fixed transition-all uppercase">About</a>
+            <a href="../projects.html" class="font-label-bold text-label-bold text-on-primary opacity-60 hover:opacity-100 hover:text-secondary-fixed transition-all uppercase">Works</a>
+            <a href="../blog.html" class="font-label-bold text-label-bold text-on-primary opacity-60 hover:opacity-100 hover:text-secondary-fixed transition-all uppercase">Blog</a>
+            <a href="../contact.html" class="font-label-bold text-label-bold text-on-primary opacity-60 hover:opacity-100 hover:text-secondary-fixed transition-all uppercase">Contact</a>
+          </div>
+        </div>
+        <div class="md:col-span-3">
+          <h4 class="font-label-bold text-label-bold text-secondary-fixed uppercase tracking-widest mb-4">Stack</h4>
+          <div class="flex flex-wrap gap-2">
+            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">React</span>
+            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">Next.js</span>
+            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">Node.js</span>
+            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">Express</span>
+            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">MongoDB</span>
+            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">AWS</span>
+            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">Docker</span>
+            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">Tailwind</span>
+          </div>
+        </div>
+        <div class="md:col-span-3">
+          <h4 class="font-label-bold text-label-bold text-secondary-fixed uppercase tracking-widest mb-4">Let's Work</h4>
+          <p class="font-body-md text-body-md text-on-primary opacity-50 text-sm mb-4">Got a project in mind? Let's build something great together.</p>
+          <a href="../contact.html" class="inline-block bg-secondary-fixed text-primary font-label-bold text-label-bold px-6 py-2.5 uppercase hover:bg-on-primary hover:text-primary border-2 border-secondary-fixed hover:border-on-primary transition-all">Get In Touch</a>
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-outline">
+      <div class="max-w-6xl mx-auto px-margin-mobile md:px-margin-desktop py-5 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="font-body-md text-body-md text-on-primary opacity-40 text-sm">&copy; 2025 Karunesh Gupta. Engineered for precision.</p>
+        <button onclick="window.scrollTo({top:0,behavior:'smooth'})" class="font-label-bold text-label-bold text-secondary-fixed uppercase tracking-widest hover:opacity-70 transition-opacity flex items-center gap-1">
+          Back to Top <span class="material-symbols-outlined" style="font-size:16px;">arrow_upward</span>
+        </button>
+      </div>
+    </div>
+    <div class="absolute top-8 right-8 w-32 h-32 opacity-5 pointer-events-none hidden md:block" style="background-image:radial-gradient(#f6e611 2px,transparent 2px);background-size:12px 12px;"></div>
+  </footer>
+  <script>
+    if (sessionStorage.getItem('loaderShown')) {
+      document.getElementById('page-loader').classList.add('done');
+    } else {
+      sessionStorage.setItem('loaderShown', '1');
+      window.addEventListener('load', () => {
+        setTimeout(() => { document.getElementById('page-loader').classList.add('done'); }, 800);
+      });
+    }
+  </script>
+</body>
+</html>

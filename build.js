@@ -137,6 +137,207 @@ function inject(template, startMarker, endMarker, content) {
   );
 }
 
+// ── Generate blog list item HTML ──
+function generateBlogCard(entry) {
+  const f = entry.fields;
+  const title    = f.title || 'Untitled';
+  const slug     = f.slug || 'post';
+  const excerpt  = f.excerpt || '';
+  const tags     = Array.isArray(f.tags) ? f.tags : [];
+  const readTime = f.readTime || 5;
+  const date     = f.publishDate ? new Date(f.publishDate) : new Date();
+  const dateStr  = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+
+  const tagsHtml = tags.map(tag =>
+    `<span class="bg-secondary-fixed text-primary font-label-bold px-2 py-0.5 text-xs uppercase">${escapeHtml(tag)}</span>`
+  ).join('\n                ');
+
+  return `
+        <a href="blog/${escapeHtml(slug)}.html" class="blog-card group block border-b-2 border-outline hover:border-secondary-fixed transition-colors py-8">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div class="flex-1">
+              <div class="flex gap-2 items-center mb-3">
+                ${tagsHtml}
+                <span class="text-outline text-xs ml-2">${readTime} min read</span>
+              </div>
+              <h2 class="font-headline-lg text-[22px] font-black text-on-surface uppercase group-hover:text-secondary transition-colors">${escapeHtml(title.toUpperCase())}</h2>
+              <p class="font-body-md text-body-md text-on-surface-variant mt-2 text-sm">${escapeHtml(excerpt)}</p>
+            </div>
+            <div class="flex flex-col items-end gap-2 shrink-0">
+              <span class="font-label-bold text-label-bold text-outline uppercase">${dateStr}</span>
+              <span class="material-symbols-outlined text-secondary-fixed opacity-0 group-hover:opacity-100 transition-opacity" style="font-size:28px;">arrow_forward</span>
+            </div>
+          </div>
+          <div class="blog-card-bar h-0.5 w-0 bg-secondary-fixed transition-all duration-500 mt-4"></div>
+        </a>`;
+}
+
+// ── Generate individual blog post HTML page ──
+function generatePostPage(entry) {
+  const f = entry.fields;
+  const title    = f.title || 'Untitled';
+  const tags     = Array.isArray(f.tags) ? f.tags : [];
+  const readTime = f.readTime || 5;
+  const body     = f.body || '';
+  const date     = f.publishDate ? new Date(f.publishDate) : new Date();
+  const dateStr  = date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+
+  const tagsHtml = tags.map(tag =>
+    `<span class="bg-secondary-fixed text-primary font-label-bold px-2 py-0.5 text-xs uppercase">${escapeHtml(tag)}</span>`
+  ).join('\n            ');
+
+  const bodyHtml = body
+    .split(/\n\n+/)
+    .filter(p => p.trim())
+    .map(p => {
+      const trimmed = p.trim();
+      if (trimmed.startsWith('## '))
+        return `<h2 class="font-headline-lg text-[22px] font-black text-on-surface uppercase mt-10 mb-4">${escapeHtml(trimmed.slice(3))}</h2>`;
+      if (trimmed.startsWith('### '))
+        return `<h3 class="font-label-bold text-base font-black text-on-surface uppercase mt-8 mb-3">${escapeHtml(trimmed.slice(4))}</h3>`;
+      return `<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-4">${escapeHtml(trimmed)}</p>`;
+    })
+    .join('\n          ');
+
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>${escapeHtml(title)} - KARUNESH.</title>
+  <meta name="description" content="${escapeHtml(f.excerpt || title)}"/>
+  <meta name="author" content="Karunesh Gupta"/>
+  <meta property="og:title" content="${escapeHtml(title)} — KARUNESH."/>
+  <meta property="og:description" content="${escapeHtml(f.excerpt || title)}"/>
+  <meta property="og:type" content="article"/>
+  <meta name="twitter:card" content="summary"/>
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg"/>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"><\/script>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet"/>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "outline-variant": "#c4c7c7", "primary": "#000000", "secondary-container": "#f6e611",
+            "secondary-fixed": "#f6e611", "on-secondary-fixed": "#1f1c00", "background": "#f9f9f9",
+            "surface": "#f9f9f9", "surface-container": "#eeeeee", "surface-container-low": "#f3f3f4",
+            "surface-container-lowest": "#ffffff", "surface-container-highest": "#e2e2e2",
+            "on-primary": "#ffffff", "on-surface": "#1a1c1c", "on-surface-variant": "#444748",
+            "on-background": "#1a1c1c", "secondary": "#676000", "on-secondary": "#ffffff",
+            "outline": "#747878", "inverse-on-surface": "#f0f1f1",
+          },
+          fontFamily: { "display-lg": ["Montserrat"], "headline-xl": ["Montserrat"], "headline-lg": ["Montserrat"], "body-lg": ["Inter"], "body-md": ["Inter"], "label-bold": ["Inter"] },
+          fontSize: {
+            "headline-xl": ["64px", { lineHeight: "72px", letterSpacing: "-0.02em", fontWeight: "800" }],
+            "headline-lg": ["32px", { lineHeight: "40px", fontWeight: "700" }],
+            "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+            "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+            "label-bold": ["14px", { lineHeight: "20px", fontWeight: "700" }],
+          },
+          spacing: { "section-padding": "120px", "margin-desktop": "80px", "margin-mobile": "20px", "gutter": "24px" }
+        }
+      }
+    }
+  <\/script>
+</head>
+<body class="bg-surface text-on-surface font-body-md antialiased min-h-screen flex flex-col">
+  <nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-[80px] bg-primary border-b border-outline">
+    <a href="../index.html" class="font-headline-lg text-headline-lg font-black tracking-tighter text-on-primary">KARUNESH.</a>
+    <div class="hidden md:flex gap-gutter items-center">
+      <a href="../index.html" class="font-label-bold text-label-bold text-on-primary opacity-80 hover:text-secondary transition-colors">HOME</a>
+      <a href="../about.html" class="font-label-bold text-label-bold text-on-primary opacity-80 hover:text-secondary transition-colors">ABOUT</a>
+      <a href="../projects.html" class="font-label-bold text-label-bold text-on-primary opacity-80 hover:text-secondary transition-colors">WORKS</a>
+      <a href="../blog.html" class="font-label-bold text-label-bold text-secondary border-b-4 border-secondary pb-1">BLOG</a>
+      <a href="../contact.html" class="font-label-bold text-label-bold text-on-primary opacity-80 hover:text-secondary transition-colors">CONTACT</a>
+    </div>
+    <a href="../contact.html" class="hidden md:block bg-secondary-fixed text-on-secondary-fixed font-label-bold text-label-bold px-6 py-2 hover:bg-primary hover:text-on-primary border-2 border-secondary-fixed hover:border-primary transition-all">HIRE ME</a>
+  </nav>
+
+  <main class="flex-grow pt-[80px]">
+    <section class="py-20 px-margin-mobile md:px-margin-desktop bg-primary">
+      <div class="max-w-4xl mx-auto">
+        <a href="../blog.html" class="font-label-bold text-label-bold text-secondary-fixed uppercase tracking-widest hover:opacity-80 transition-opacity">← BACK TO BLOG</a>
+      </div>
+    </section>
+
+    <article class="py-16 px-margin-mobile md:px-margin-desktop bg-surface-container-lowest">
+      <div class="max-w-4xl mx-auto">
+        <div class="flex gap-2 items-center mb-4">
+          ${tagsHtml}
+          <span class="text-outline text-xs ml-2">${readTime} min read</span>
+        </div>
+        <h1 class="font-headline-xl text-[36px] md:text-[48px] font-black text-on-surface leading-tight uppercase">${escapeHtml(title.toUpperCase())}</h1>
+        <div class="flex items-center gap-4 mt-6 mb-12 pb-8 border-b-2 border-secondary-fixed">
+          <span class="font-label-bold text-label-bold text-on-surface-variant uppercase">Karunesh Gupta</span>
+          <span class="text-outline">•</span>
+          <span class="font-label-bold text-label-bold text-outline uppercase">${dateStr}</span>
+        </div>
+        <div class="prose-content">
+          ${bodyHtml}
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="bg-primary relative overflow-hidden">
+    <div class="h-1.5 bg-secondary-fixed w-full"></div>
+    <div class="max-w-6xl mx-auto px-margin-mobile md:px-margin-desktop py-16">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
+        <div class="md:col-span-4">
+          <a href="../index.html" class="font-headline-lg text-[36px] font-black text-on-primary tracking-tighter">KARUNESH.</a>
+          <p class="font-body-md text-body-md text-on-primary opacity-50 mt-3 max-w-xs">Fullstack developer crafting fast, scalable web apps with clean architecture and sharp UI.</p>
+          <div class="flex gap-3 mt-6">
+            <a href="https://github.com/karunesh77" target="_blank" class="w-10 h-10 border-2 border-secondary-fixed flex items-center justify-center text-secondary-fixed hover:bg-secondary-fixed hover:text-primary transition-all"><span class="font-label-bold text-xs font-black">GH</span></a>
+            <a href="https://www.linkedin.com/in/karunesh-gupta-680bb0326" target="_blank" class="w-10 h-10 border-2 border-secondary-fixed flex items-center justify-center text-secondary-fixed hover:bg-secondary-fixed hover:text-primary transition-all"><span class="font-label-bold text-xs font-black">IN</span></a>
+            <a href="mailto:karunesh@elens.in" class="w-10 h-10 border-2 border-secondary-fixed flex items-center justify-center text-secondary-fixed hover:bg-secondary-fixed hover:text-primary transition-all"><span class="material-symbols-outlined" style="font-size:18px;">mail</span></a>
+          </div>
+        </div>
+        <div class="md:col-span-2">
+          <h4 class="font-label-bold text-label-bold text-secondary-fixed uppercase tracking-widest mb-4">Pages</h4>
+          <div class="flex flex-col gap-3">
+            <a href="../index.html" class="font-label-bold text-label-bold text-on-primary opacity-60 hover:opacity-100 hover:text-secondary-fixed transition-all uppercase">Home</a>
+            <a href="../about.html" class="font-label-bold text-label-bold text-on-primary opacity-60 hover:opacity-100 hover:text-secondary-fixed transition-all uppercase">About</a>
+            <a href="../projects.html" class="font-label-bold text-label-bold text-on-primary opacity-60 hover:opacity-100 hover:text-secondary-fixed transition-all uppercase">Works</a>
+            <a href="../blog.html" class="font-label-bold text-label-bold text-on-primary opacity-60 hover:opacity-100 hover:text-secondary-fixed transition-all uppercase">Blog</a>
+            <a href="../contact.html" class="font-label-bold text-label-bold text-on-primary opacity-60 hover:opacity-100 hover:text-secondary-fixed transition-all uppercase">Contact</a>
+          </div>
+        </div>
+        <div class="md:col-span-3">
+          <h4 class="font-label-bold text-label-bold text-secondary-fixed uppercase tracking-widest mb-4">Stack</h4>
+          <div class="flex flex-wrap gap-2">
+            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">React</span>
+            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">Next.js</span>
+            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">Node.js</span>
+            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">Express</span>
+            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">MongoDB</span>
+            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">AWS</span>
+            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">Docker</span>
+            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">Tailwind</span>
+          </div>
+        </div>
+        <div class="md:col-span-3">
+          <h4 class="font-label-bold text-label-bold text-secondary-fixed uppercase tracking-widest mb-4">Let's Work</h4>
+          <p class="font-body-md text-body-md text-on-primary opacity-50 text-sm mb-4">Got a project in mind? Let's build something great together.</p>
+          <a href="../contact.html" class="inline-block bg-secondary-fixed text-primary font-label-bold text-label-bold px-6 py-2.5 uppercase hover:bg-on-primary hover:text-primary border-2 border-secondary-fixed hover:border-on-primary transition-all">Get In Touch</a>
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-outline">
+      <div class="max-w-6xl mx-auto px-margin-mobile md:px-margin-desktop py-5 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="font-body-md text-body-md text-on-primary opacity-40 text-sm">© 2025 Karunesh Gupta. Engineered for precision.</p>
+        <button onclick="window.scrollTo({top:0,behavior:'smooth'})" class="font-label-bold text-label-bold text-secondary-fixed uppercase tracking-widest hover:opacity-70 transition-opacity flex items-center gap-1">
+          Back to Top <span class="material-symbols-outlined" style="font-size:16px;">arrow_upward</span>
+        </button>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>`;
+}
+
 // ── Copy a file from root to dist/ ──
 function copyToDist(filename) {
   const src = path.join(__dirname, filename);
@@ -297,9 +498,46 @@ async function build() {
 
   fs.writeFileSync(path.join(distDir, 'index.html'), indexTemplate);
 
+  // ── Build blog.html ──
+  console.log('\n📝  Building blog...');
+  let blogTemplate = fs.readFileSync(path.join(__dirname, 'blog.html'), 'utf8');
+
+  const blogRes = await safeFetch('blogPost', { order: '-fields.publishDate', limit: 100 });
+
+  if (blogRes.items.length > 0) {
+    const blogCardsHtml = blogRes.items.map(generateBlogCard).join('');
+    blogTemplate = inject(blogTemplate, '<!-- BLOG_LIST_START -->', '<!-- BLOG_LIST_END -->', blogCardsHtml);
+
+    const blogDir = path.join(distDir, 'blog');
+    if (!fs.existsSync(blogDir)) fs.mkdirSync(blogDir, { recursive: true });
+
+    blogRes.items.forEach(entry => {
+      const slug = entry.fields.slug || 'post';
+      const postHtml = generatePostPage(entry);
+      fs.writeFileSync(path.join(blogDir, `${slug}.html`), postHtml);
+    });
+
+    console.log(`  ✅ ${blogRes.items.length} blog posts built`);
+  } else {
+    console.log('  ℹ️  no "blogPost" entries — sample posts kept');
+  }
+
+  fs.writeFileSync(path.join(distDir, 'blog.html'), blogTemplate);
+
   // ── Copy remaining static pages ──
   console.log('\n📄  Copying static pages...');
   ['contact.html'].forEach(copyToDist);
+
+  // ── Copy static blog posts (fallback when no CMS entries) ──
+  const srcBlog = path.join(__dirname, 'blog');
+  const distBlog = path.join(distDir, 'blog');
+  if (fs.existsSync(srcBlog) && blogRes.items.length === 0) {
+    if (!fs.existsSync(distBlog)) fs.mkdirSync(distBlog, { recursive: true });
+    fs.readdirSync(srcBlog).filter(f => f.endsWith('.html')).forEach(f => {
+      fs.copyFileSync(path.join(srcBlog, f), path.join(distBlog, f));
+      console.log(`  copied → dist/blog/${f}`);
+    });
+  }
 
   // ── Copy assets (whichever photo format exists) ──
   console.log('\n🖼   Copying assets...');

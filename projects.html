@@ -80,9 +80,19 @@
     .project-card.hidden-card { display: none; }
     .mobile-menu { display: none; }
     .mobile-menu.open { display: flex; }
+    .page-loader { position:fixed;inset:0;z-index:9999;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.4s ease,visibility 0.4s ease; }
+    .page-loader.done { opacity:0;visibility:hidden;pointer-events:none; }
+    .loader-bar { width:120px;height:3px;background:#333;margin-top:16px;overflow:hidden; }
+    .loader-bar-fill { height:100%;width:0;background:#f6e611;animation:loaderFill 0.8s ease forwards; }
+    @keyframes loaderFill { to { width:100%; } }
   </style>
 </head>
 <body class="bg-surface text-on-surface font-body-md antialiased min-h-screen flex flex-col">
+
+  <div class="page-loader" id="page-loader">
+    <span class="font-headline-lg text-[28px] font-black text-on-primary tracking-tighter">KARUNESH.</span>
+    <div class="loader-bar"><div class="loader-bar-fill"></div></div>
+  </div>
 
   <!-- Navigation -->
   <nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-[80px] bg-primary border-b border-outline">
@@ -91,6 +101,7 @@
       <a href="index.html" class="font-label-bold text-label-bold text-on-primary opacity-80 hover:text-secondary transition-colors">HOME</a>
       <a href="about.html" class="font-label-bold text-label-bold text-on-primary opacity-80 hover:text-secondary transition-colors">ABOUT</a>
       <a href="projects.html" class="font-label-bold text-label-bold text-secondary border-b-4 border-secondary pb-1">WORKS</a>
+      <a href="blog.html" class="font-label-bold text-label-bold text-on-primary opacity-80 hover:text-secondary transition-colors">BLOG</a>
       <a href="contact.html" class="font-label-bold text-label-bold text-on-primary opacity-80 hover:text-secondary transition-colors">CONTACT</a>
     </div>
     <a href="contact.html" class="hidden md:block bg-secondary-fixed text-on-secondary-fixed font-label-bold text-label-bold px-6 py-2 hover:bg-primary hover:text-on-primary border-2 border-secondary-fixed hover:border-primary transition-all">HIRE ME</a>
@@ -104,6 +115,7 @@
     <a href="index.html" class="font-label-bold text-label-bold text-on-primary opacity-80">HOME</a>
     <a href="about.html" class="font-label-bold text-label-bold text-on-primary opacity-80">ABOUT</a>
     <a href="projects.html" class="font-label-bold text-label-bold text-secondary">WORKS</a>
+    <a href="blog.html" class="font-label-bold text-label-bold text-on-primary opacity-80">BLOG</a>
     <a href="contact.html" class="font-label-bold text-label-bold text-on-primary opacity-80">CONTACT</a>
     <a href="contact.html" class="inline-block bg-secondary-fixed text-on-secondary-fixed font-label-bold text-label-bold px-6 py-2 mt-2 w-fit">HIRE ME</a>
   </div>
@@ -158,12 +170,47 @@
                 <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">AWS</span>
                 <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">CI/CD</span>
               </div>
+              <div class="flex gap-3 mt-4">
+                <a href="https://hire-mitra.vercel.app/" target="_blank" class="bg-primary text-on-primary font-label-bold px-4 py-1.5 text-xs uppercase hover:bg-surface hover:text-primary transition-all">Live Demo</a>
+              </div>
             </div>
           </div>
           <div class="p-4 bg-primary border-t-2 border-secondary-fixed flex justify-between items-center">
             <div>
               <h3 class="font-label-bold text-base font-black text-on-primary uppercase">HIREMITRA</h3>
               <p class="text-outline text-xs mt-0.5">Job Platform</p>
+            </div>
+            <div class="flex gap-1.5 items-center">
+              <span class="bg-secondary-fixed text-primary font-label-bold px-2 py-1 text-xs uppercase">Fullstack</span>
+              <span class="border border-secondary-fixed text-secondary-fixed font-label-bold px-2 py-1 text-xs uppercase">AWS</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Origo -->
+        <div class="project-card group relative overflow-hidden cursor-pointer" data-category="fullstack cloud">
+          <div class="h-60 relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&q=80" alt="Origo"
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              style="filter:grayscale(100%) brightness(0.55);"/>
+            <div class="absolute inset-0 bg-secondary-fixed opacity-0 group-hover:opacity-90 transition-opacity duration-300 flex flex-col items-center justify-center p-6 text-center">
+              <h3 class="font-headline-lg text-[22px] font-black text-primary mb-2">ORIGO</h3>
+              <p class="font-body-md text-body-md text-primary opacity-80 mb-3 text-sm">Artist & talent management platform — roster, booking, events across India.</p>
+              <div class="flex gap-2 flex-wrap justify-center">
+                <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">React</span>
+                <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">Node.js</span>
+                <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">MongoDB</span>
+                <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">AWS</span>
+              </div>
+              <div class="flex gap-3 mt-4">
+                <a href="https://origo-stage.elens.in/" target="_blank" class="bg-primary text-on-primary font-label-bold px-4 py-1.5 text-xs uppercase hover:bg-surface hover:text-primary transition-all">Live Demo</a>
+              </div>
+            </div>
+          </div>
+          <div class="p-4 bg-primary border-t-2 border-secondary-fixed flex justify-between items-center">
+            <div>
+              <h3 class="font-label-bold text-base font-black text-on-primary uppercase">ORIGO</h3>
+              <p class="text-outline text-xs mt-0.5">Talent Management</p>
             </div>
             <div class="flex gap-1.5 items-center">
               <span class="bg-secondary-fixed text-primary font-label-bold px-2 py-1 text-xs uppercase">Fullstack</span>
@@ -186,6 +233,9 @@
                 <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">Node.js</span>
                 <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">MongoDB</span>
                 <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">AWS S3</span>
+              </div>
+              <div class="flex gap-3 mt-4">
+                <a href="https://bullox.vercel.app/" target="_blank" class="bg-primary text-on-primary font-label-bold px-4 py-1.5 text-xs uppercase hover:bg-surface hover:text-primary transition-all">Live Demo</a>
               </div>
             </div>
           </div>
@@ -332,16 +382,64 @@
   </main>
 
   <!-- Footer -->
-  <footer class="w-full py-10 px-margin-mobile md:px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-gutter bg-primary border-t-2 border-outline">
-    <div class="font-headline-lg text-headline-lg font-black text-on-primary">KARUNESH.</div>
-    <div class="font-body-md text-body-md text-on-primary opacity-60 text-center">
-      © 2025 KARUNESH GUPTA. ENGINEERED FOR PRECISION.
+  <footer class="bg-primary relative overflow-hidden">
+    <div class="h-1.5 bg-secondary-fixed w-full"></div>
+    <div class="max-w-6xl mx-auto px-margin-mobile md:px-margin-desktop py-16">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
+        <div class="md:col-span-4">
+          <a href="index.html" class="font-headline-lg text-[36px] font-black text-on-primary tracking-tighter">KARUNESH.</a>
+          <p class="font-body-md text-body-md text-on-primary opacity-50 mt-3 max-w-xs">Fullstack developer crafting fast, scalable web apps with clean architecture and sharp UI.</p>
+          <div class="flex gap-3 mt-6">
+            <a href="https://github.com/karunesh77" target="_blank" class="w-10 h-10 border-2 border-secondary-fixed flex items-center justify-center text-secondary-fixed hover:bg-secondary-fixed hover:text-primary transition-all">
+              <span class="font-label-bold text-xs font-black">GH</span>
+            </a>
+            <a href="https://www.linkedin.com/in/karunesh-gupta-680bb0326" target="_blank" class="w-10 h-10 border-2 border-secondary-fixed flex items-center justify-center text-secondary-fixed hover:bg-secondary-fixed hover:text-primary transition-all">
+              <span class="font-label-bold text-xs font-black">IN</span>
+            </a>
+            <a href="mailto:karunesh@elens.in" class="w-10 h-10 border-2 border-secondary-fixed flex items-center justify-center text-secondary-fixed hover:bg-secondary-fixed hover:text-primary transition-all">
+              <span class="material-symbols-outlined" style="font-size:18px;">mail</span>
+            </a>
+          </div>
+        </div>
+        <div class="md:col-span-2">
+          <h4 class="font-label-bold text-label-bold text-secondary-fixed uppercase tracking-widest mb-4">Pages</h4>
+          <div class="flex flex-col gap-3">
+            <a href="index.html" class="font-label-bold text-label-bold text-on-primary opacity-60 hover:opacity-100 hover:text-secondary-fixed transition-all uppercase">Home</a>
+            <a href="about.html" class="font-label-bold text-label-bold text-on-primary opacity-60 hover:opacity-100 hover:text-secondary-fixed transition-all uppercase">About</a>
+            <a href="projects.html" class="font-label-bold text-label-bold text-on-primary opacity-60 hover:opacity-100 hover:text-secondary-fixed transition-all uppercase">Works</a>
+            <a href="blog.html" class="font-label-bold text-label-bold text-on-primary opacity-60 hover:opacity-100 hover:text-secondary-fixed transition-all uppercase">Blog</a>
+            <a href="contact.html" class="font-label-bold text-label-bold text-on-primary opacity-60 hover:opacity-100 hover:text-secondary-fixed transition-all uppercase">Contact</a>
+          </div>
+        </div>
+        <div class="md:col-span-3">
+          <h4 class="font-label-bold text-label-bold text-secondary-fixed uppercase tracking-widest mb-4">Stack</h4>
+          <div class="flex flex-wrap gap-2">
+            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">React</span>
+            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">Next.js</span>
+            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">Node.js</span>
+            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">Express</span>
+            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">MongoDB</span>
+            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">AWS</span>
+            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">Docker</span>
+            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">Tailwind</span>
+          </div>
+        </div>
+        <div class="md:col-span-3">
+          <h4 class="font-label-bold text-label-bold text-secondary-fixed uppercase tracking-widest mb-4">Let's Work</h4>
+          <p class="font-body-md text-body-md text-on-primary opacity-50 text-sm mb-4">Got a project in mind? Let's build something great together.</p>
+          <a href="contact.html" class="inline-block bg-secondary-fixed text-primary font-label-bold text-label-bold px-6 py-2.5 uppercase hover:bg-on-primary hover:text-primary border-2 border-secondary-fixed hover:border-on-primary transition-all">Get In Touch</a>
+        </div>
+      </div>
     </div>
-    <div class="flex gap-gutter">
-      <a href="#" class="font-label-bold text-label-bold text-on-primary opacity-60 hover:text-secondary transition-all">GITHUB</a>
-      <a href="#" class="font-label-bold text-label-bold text-on-primary opacity-60 hover:text-secondary transition-all">LINKEDIN</a>
-      <a href="mailto:karunesh@elens.in" class="font-label-bold text-label-bold text-on-primary opacity-60 hover:text-secondary transition-all">EMAIL</a>
+    <div class="border-t border-outline">
+      <div class="max-w-6xl mx-auto px-margin-mobile md:px-margin-desktop py-5 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="font-body-md text-body-md text-on-primary opacity-40 text-sm">&copy; 2025 Karunesh Gupta. Engineered for precision.</p>
+        <button onclick="window.scrollTo({top:0,behavior:'smooth'})" class="font-label-bold text-label-bold text-secondary-fixed uppercase tracking-widest hover:opacity-70 transition-opacity flex items-center gap-1">
+          Back to Top <span class="material-symbols-outlined" style="font-size:16px;">arrow_upward</span>
+        </button>
+      </div>
     </div>
+    <div class="absolute top-8 right-8 w-32 h-32 opacity-5 pointer-events-none hidden md:block" style="background-image:radial-gradient(#f6e611 2px,transparent 2px);background-size:12px 12px;"></div>
   </footer>
 
   <script>
@@ -381,6 +479,16 @@
         if (match) visible++;
       });
       document.getElementById('no-results').classList.toggle('hidden', visible > 0);
+    }
+  </script>
+  <script>
+    if (sessionStorage.getItem('loaderShown')) {
+      document.getElementById('page-loader').classList.add('done');
+    } else {
+      sessionStorage.setItem('loaderShown', '1');
+      window.addEventListener('load', () => {
+        setTimeout(() => { document.getElementById('page-loader').classList.add('done'); }, 800);
+      });
     }
   </script>
 </body>
