@@ -4,13 +4,15 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>Works - KARUNESH.</title>
-  <meta name="description" content="Portfolio of Karunesh Gupta — Fullstack projects including job platforms, trading apps, auth systems, and more. React, Node.js, AWS."/>
+  <meta name="description" content="Projects by Karunesh Gupta — AWS cloud infrastructure, CI/CD pipelines, Docker/ECS deployments and serverless apps with AWS CDK, plus full-stack web apps."/>
   <meta name="author" content="Karunesh Gupta"/>
   <meta property="og:title" content="Works — KARUNESH."/>
-  <meta property="og:description" content="Fullstack projects including job platforms, trading apps, auth systems. React, Node.js, MongoDB, AWS."/>
+  <meta property="og:description" content="DevOps &amp; cloud projects — ECS Fargate, EC2, Lambda, VPC, GitHub Actions, CloudWatch, AWS CDK."/>
   <meta property="og:type" content="website"/>
   <meta name="twitter:card" content="summary"/>
   <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+  <script>document.documentElement.classList.add('fx')</script>
+  <link rel="stylesheet" href="fx.css"/>
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet"/>
@@ -126,36 +128,137 @@
     <section class="py-20 px-margin-mobile md:px-margin-desktop bg-primary relative overflow-hidden">
       <div class="absolute top-0 left-0 w-64 h-64 opacity-10 pointer-events-none" style="background-image: radial-gradient(#f6e611 2px, transparent 2px); background-size: 16px 16px;"></div>
       <div class="max-w-6xl mx-auto relative z-10">
-        <span class="font-label-bold text-label-bold uppercase tracking-widest text-outline block mb-4">MY PORTFOLIO</span>
-        <h1 class="font-headline-xl-mobile md:text-[64px] font-black text-on-primary leading-tight relative inline-block">
+        <span class="font-label-bold text-label-bold uppercase tracking-widest text-outline block mb-4" data-reveal>MY PORTFOLIO</span>
+        <h1 class="font-headline-xl-mobile md:text-[64px] font-black text-on-primary leading-tight relative inline-block" data-split>
           MY WORK
           <div class="absolute -bottom-2 left-0 w-24 h-1.5 bg-secondary-fixed"></div>
         </h1>
         <p class="font-body-md text-body-md text-on-primary opacity-50 mt-8 max-w-xl">
-          A selection of projects I've built — from fullstack platforms to polished frontends. Each one engineered with precision.
+          Cloud infrastructure I've designed, automated and run on AWS — containers, serverless, CI/CD and monitoring — plus the full-stack apps where it all started.
         </p>
       </div>
     </section>
 
     <!-- Filter Bar -->
     <section class="sticky top-[80px] z-30 bg-surface-container-lowest border-b border-outline">
-      <div class="max-w-6xl mx-auto px-margin-mobile md:px-margin-desktop py-4 flex flex-wrap gap-8 font-label-bold text-label-bold">
+      <div class="max-w-6xl mx-auto px-margin-mobile md:px-margin-desktop py-4 flex flex-wrap gap-x-8 gap-y-2 font-label-bold text-label-bold">
         <button onclick="filterProjects('all', this)" class="filter-btn active uppercase text-on-surface hover:text-primary pb-2 transition-colors">ALL</button>
+        <button onclick="filterProjects('cloud', this)" class="filter-btn uppercase text-on-surface-variant hover:text-primary pb-2 transition-colors">AWS</button>
+        <button onclick="filterProjects('cicd', this)" class="filter-btn uppercase text-on-surface-variant hover:text-primary pb-2 transition-colors">CI/CD</button>
+        <button onclick="filterProjects('containers', this)" class="filter-btn uppercase text-on-surface-variant hover:text-primary pb-2 transition-colors">CONTAINERS</button>
+        <button onclick="filterProjects('serverless', this)" class="filter-btn uppercase text-on-surface-variant hover:text-primary pb-2 transition-colors">SERVERLESS</button>
         <button onclick="filterProjects('fullstack', this)" class="filter-btn uppercase text-on-surface-variant hover:text-primary pb-2 transition-colors">FULLSTACK</button>
-        <button onclick="filterProjects('frontend', this)" class="filter-btn uppercase text-on-surface-variant hover:text-primary pb-2 transition-colors">FRONTEND</button>
-        <button onclick="filterProjects('backend', this)" class="filter-btn uppercase text-on-surface-variant hover:text-primary pb-2 transition-colors">BACKEND</button>
-        <button onclick="filterProjects('cloud', this)" class="filter-btn uppercase text-on-surface-variant hover:text-primary pb-2 transition-colors">CLOUD</button>
       </div>
     </section>
 
     <!-- Projects Grid -->
     <section class="py-16 px-margin-mobile md:px-margin-desktop bg-surface-container-lowest relative">
       <div class="absolute top-20 right-20 w-64 h-64 pattern-dots opacity-50 hidden md:block"></div>
-      <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10" id="projects-grid">
+      <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10" id="projects-grid" data-reveal-stagger="0.1">
         <!-- PROJECTS_GRID_START -->
 
+        <!-- E-Commerce Platform -->
+        <div class="project-card group relative overflow-hidden cursor-pointer" data-category="cloud containers cicd" data-reveal data-tilt="9">
+          <div class="h-60 relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80" alt="Server racks" loading="lazy"
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              style="filter:grayscale(100%) brightness(0.5);"/>
+            <span class="absolute top-4 left-4 z-10 bg-secondary-fixed text-primary font-label-bold text-[11px] px-2 py-1 uppercase tracking-widest flex items-center gap-1 group-hover:opacity-0 transition-opacity"><span class="w-1.5 h-1.5 bg-green-600 rounded-full animate-pulse"></span>Live</span>
+            <p class="absolute bottom-4 left-4 right-4 font-label-bold text-[11px] text-secondary-fixed uppercase tracking-wider group-hover:opacity-0 transition-opacity">GitHub Actions → ECR → ECS Fargate → ALB</p>
+            <div class="absolute inset-0 bg-secondary-fixed opacity-0 group-hover:opacity-95 transition-opacity duration-300 flex flex-col items-center justify-center p-6 text-center">
+              <h3 class="fx-depth font-headline-lg text-[22px] font-black text-primary mb-2">E-COMMERCE PLATFORM</h3>
+              <p class="fx-depth-sm font-body-md text-body-md text-primary opacity-80 mb-3 text-sm">Dockerized Node.js API on ECS Fargate &amp; EC2 Auto Scaling behind an ALB. Custom VPC with public/private subnets and NAT; IAM roles, SSM &amp; Secrets Manager; CloudWatch alarms → SNS.</p>
+              <div class="fx-depth-sm flex gap-2 flex-wrap justify-center">
+                <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">Docker</span>
+                <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">ECS</span>
+                <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">ECR</span>
+                <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">VPC</span>
+                <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">ALB</span>
+                <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">GitHub Actions</span>
+                <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">CloudWatch</span>
+              </div>
+            </div>
+          </div>
+          <div class="p-4 bg-primary border-t-2 border-secondary-fixed flex justify-between items-center">
+            <div>
+              <h3 class="font-label-bold text-base font-black text-on-primary uppercase">E-COMMERCE PLATFORM</h3>
+              <p class="text-outline text-xs mt-0.5">Containerized · ECS Fargate</p>
+            </div>
+            <div class="flex gap-1.5 items-center">
+              <span class="bg-secondary-fixed text-primary font-label-bold px-2 py-1 text-xs uppercase">DevOps</span>
+              <span class="border border-secondary-fixed text-secondary-fixed font-label-bold px-2 py-1 text-xs uppercase">AWS</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- FarmHouse -->
+        <div class="project-card group relative overflow-hidden cursor-pointer" data-category="cloud containers cicd" data-reveal data-tilt="9">
+          <div class="h-60 relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800&q=80" alt="Network switch cables" loading="lazy"
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              style="filter:grayscale(100%) brightness(0.5);"/>
+            <span class="absolute top-4 left-4 z-10 bg-secondary-fixed text-primary font-label-bold text-[11px] px-2 py-1 uppercase tracking-widest flex items-center gap-1 group-hover:opacity-0 transition-opacity"><span class="w-1.5 h-1.5 bg-green-600 rounded-full animate-pulse"></span>Live</span>
+            <p class="absolute bottom-4 left-4 right-4 font-label-bold text-[11px] text-secondary-fixed uppercase tracking-wider group-hover:opacity-0 transition-opacity">GitHub Actions → Docker → EC2 → Nginx</p>
+            <div class="absolute inset-0 bg-secondary-fixed opacity-0 group-hover:opacity-95 transition-opacity duration-300 flex flex-col items-center justify-center p-6 text-center">
+              <h3 class="fx-depth font-headline-lg text-[22px] font-black text-primary mb-2">FARMHOUSE</h3>
+              <p class="fx-depth-sm font-body-md text-body-md text-primary opacity-80 mb-3 text-sm">Containerized backend behind an Nginx reverse proxy with chmod 600 secrets. SSH blocked — portless access via IAM roles + SSM. GitHub Actions CI/CD with CloudWatch/SNS monitoring.</p>
+              <div class="fx-depth-sm flex gap-2 flex-wrap justify-center">
+                <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">Docker</span>
+                <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">Nginx</span>
+                <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">EC2</span>
+                <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">SSM</span>
+                <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">CloudWatch</span>
+                <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">SNS</span>
+              </div>
+            </div>
+          </div>
+          <div class="p-4 bg-primary border-t-2 border-secondary-fixed flex justify-between items-center">
+            <div>
+              <h3 class="font-label-bold text-base font-black text-on-primary uppercase">FARMHOUSE</h3>
+              <p class="text-outline text-xs mt-0.5">Hardened EC2 · DevOps</p>
+            </div>
+            <div class="flex gap-1.5 items-center">
+              <span class="bg-secondary-fixed text-primary font-label-bold px-2 py-1 text-xs uppercase">DevOps</span>
+              <span class="border border-secondary-fixed text-secondary-fixed font-label-bold px-2 py-1 text-xs uppercase">AWS</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mizuto CRM -->
+        <div class="project-card group relative overflow-hidden cursor-pointer" data-category="cloud serverless cicd" data-reveal data-tilt="9">
+          <div class="h-60 relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80" alt="Global network" loading="lazy"
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              style="filter:grayscale(100%) brightness(0.5);"/>
+            <span class="absolute top-4 left-4 z-10 bg-secondary-fixed text-primary font-label-bold text-[11px] px-2 py-1 uppercase tracking-widest flex items-center gap-1 group-hover:opacity-0 transition-opacity"><span class="w-1.5 h-1.5 bg-green-600 rounded-full animate-pulse"></span>Live</span>
+            <p class="absolute bottom-4 left-4 right-4 font-label-bold text-[11px] text-secondary-fixed uppercase tracking-wider group-hover:opacity-0 transition-opacity">OIDC → AWS CDK → Lambda → CloudFront</p>
+            <div class="absolute inset-0 bg-secondary-fixed opacity-0 group-hover:opacity-95 transition-opacity duration-300 flex flex-col items-center justify-center p-6 text-center">
+              <h3 class="fx-depth font-headline-lg text-[22px] font-black text-primary mb-2">MIZUTO CRM</h3>
+              <p class="fx-depth-sm font-body-md text-body-md text-primary opacity-80 mb-3 text-sm">Next.js on Lambda via OpenNext with CloudFront, S3, DynamoDB &amp; Cognito — full IaC in AWS CDK. Two-account CI/CD (dev→staging, main→prod) with OIDC, Route53 + ACM and drift detection.</p>
+              <div class="fx-depth-sm flex gap-2 flex-wrap justify-center">
+                <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">Lambda</span>
+                <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">CloudFront</span>
+                <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">DynamoDB</span>
+                <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">Cognito</span>
+                <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">AWS CDK</span>
+                <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">OIDC</span>
+              </div>
+            </div>
+          </div>
+          <div class="p-4 bg-primary border-t-2 border-secondary-fixed flex justify-between items-center">
+            <div>
+              <h3 class="font-label-bold text-base font-black text-on-primary uppercase">MIZUTO CRM</h3>
+              <p class="text-outline text-xs mt-0.5">Serverless · Multi-Account</p>
+            </div>
+            <div class="flex gap-1.5 items-center">
+              <span class="bg-secondary-fixed text-primary font-label-bold px-2 py-1 text-xs uppercase">Serverless</span>
+              <span class="border border-secondary-fixed text-secondary-fixed font-label-bold px-2 py-1 text-xs uppercase">AWS</span>
+            </div>
+          </div>
+        </div>
+
         <!-- HireMitra -->
-        <div class="project-card group relative overflow-hidden cursor-pointer" data-category="fullstack cloud">
+        <div class="project-card group relative overflow-hidden cursor-pointer" data-category="fullstack" data-reveal data-tilt="9">
           <div class="h-60 relative overflow-hidden">
             <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80" alt="HireMitra"
               class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
@@ -188,7 +291,7 @@
         </div>
 
         <!-- Origo -->
-        <div class="project-card group relative overflow-hidden cursor-pointer" data-category="fullstack cloud">
+        <div class="project-card group relative overflow-hidden cursor-pointer" data-category="fullstack" data-reveal data-tilt="9">
           <div class="h-60 relative overflow-hidden">
             <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&q=80" alt="Origo"
               class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
@@ -220,7 +323,7 @@
         </div>
 
         <!-- Bullox -->
-        <div class="project-card group relative overflow-hidden cursor-pointer" data-category="fullstack cloud">
+        <div class="project-card group relative overflow-hidden cursor-pointer" data-category="fullstack" data-reveal data-tilt="9">
           <div class="h-60 relative overflow-hidden">
             <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&q=80" alt="Bullox"
               class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
@@ -251,123 +354,6 @@
           </div>
         </div>
 
-        <!-- AI Chat System -->
-        <div class="project-card group relative overflow-hidden cursor-pointer" data-category="backend cloud">
-          <div class="h-60 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1577563908411-5077b6dc7624?w=800&q=80" alt="AI Chat"
-              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-              style="filter:grayscale(100%) brightness(0.55);"/>
-            <div class="absolute inset-0 bg-secondary-fixed opacity-0 group-hover:opacity-90 transition-opacity duration-300 flex flex-col items-center justify-center p-6 text-center">
-              <h3 class="font-headline-lg text-[22px] font-black text-primary mb-2">AI CHAT SYSTEM</h3>
-              <p class="font-body-md text-body-md text-primary opacity-80 mb-3 text-sm">8 controller functions, REST endpoints, real-time messaging backend.</p>
-              <div class="flex gap-2 flex-wrap justify-center">
-                <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">Express</span>
-                <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">MongoDB</span>
-                <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">REST API</span>
-                <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">AWS Lambda</span>
-                <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">CI/CD</span>
-              </div>
-            </div>
-          </div>
-          <div class="p-4 bg-primary border-t-2 border-secondary-fixed flex justify-between items-center">
-            <div>
-              <h3 class="font-label-bold text-base font-black text-on-primary uppercase">AI CHAT SYSTEM</h3>
-              <p class="text-outline text-xs mt-0.5">Messaging Backend</p>
-            </div>
-            <div class="flex gap-1.5 items-center">
-              <span class="bg-primary border border-outline text-on-primary font-label-bold px-2 py-1 text-xs uppercase">Backend</span>
-              <span class="border border-secondary-fixed text-secondary-fixed font-label-bold px-2 py-1 text-xs uppercase">Lambda</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Auth System -->
-        <div class="project-card group relative overflow-hidden cursor-pointer" data-category="backend cloud">
-          <div class="h-60 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&q=80" alt="Auth System"
-              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-              style="filter:grayscale(100%) brightness(0.55);"/>
-            <div class="absolute inset-0 bg-secondary-fixed opacity-0 group-hover:opacity-90 transition-opacity duration-300 flex flex-col items-center justify-center p-6 text-center">
-              <h3 class="font-headline-lg text-[22px] font-black text-primary mb-2">AUTH SYSTEM</h3>
-              <p class="font-body-md text-body-md text-primary opacity-80 mb-3 text-sm">JWT auth, login/register, protected routes, Auth Context.</p>
-              <div class="flex gap-2 flex-wrap justify-center">
-                <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">JWT</span>
-                <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">React</span>
-                <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">Express</span>
-                <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">AWS</span>
-                <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">CI/CD</span>
-              </div>
-            </div>
-          </div>
-          <div class="p-4 bg-primary border-t-2 border-secondary-fixed flex justify-between items-center">
-            <div>
-              <h3 class="font-label-bold text-base font-black text-on-primary uppercase">AUTH SYSTEM</h3>
-              <p class="text-outline text-xs mt-0.5">Security Module</p>
-            </div>
-            <div class="flex gap-1.5 items-center">
-              <span class="bg-primary border border-outline text-on-primary font-label-bold px-2 py-1 text-xs uppercase">Backend</span>
-              <span class="border border-secondary-fixed text-secondary-fixed font-label-bold px-2 py-1 text-xs uppercase">AWS</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Portfolio Site -->
-        <div class="project-card group relative overflow-hidden cursor-pointer" data-category="frontend cloud">
-          <div class="h-60 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&q=80" alt="Portfolio"
-              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-              style="filter:grayscale(100%) brightness(0.55);"/>
-            <div class="absolute inset-0 bg-secondary-fixed opacity-0 group-hover:opacity-90 transition-opacity duration-300 flex flex-col items-center justify-center p-6 text-center">
-              <h3 class="font-headline-lg text-[22px] font-black text-primary mb-2">PORTFOLIO SITE</h3>
-              <p class="font-body-md text-body-md text-primary opacity-80 mb-3 text-sm">Brutalist developer portfolio — sharp, fast, precision-engineered.</p>
-              <div class="flex gap-2 flex-wrap justify-center">
-                <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">HTML</span>
-                <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">TailwindCSS</span>
-                <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">AWS S3</span>
-                <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">CDN</span>
-              </div>
-            </div>
-          </div>
-          <div class="p-4 bg-primary border-t-2 border-secondary-fixed flex justify-between items-center">
-            <div>
-              <h3 class="font-label-bold text-base font-black text-on-primary uppercase">PORTFOLIO SITE</h3>
-              <p class="text-outline text-xs mt-0.5">Personal Brand</p>
-            </div>
-            <div class="flex gap-1.5 items-center">
-              <span class="bg-primary border border-outline text-on-primary font-label-bold px-2 py-1 text-xs uppercase">Frontend</span>
-              <span class="border border-secondary-fixed text-secondary-fixed font-label-bold px-2 py-1 text-xs uppercase">CDN</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Admin Dashboard -->
-        <div class="project-card group relative overflow-hidden cursor-pointer" data-category="frontend cloud">
-          <div class="h-60 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80" alt="Dashboard"
-              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-              style="filter:grayscale(100%) brightness(0.55);"/>
-            <div class="absolute inset-0 bg-secondary-fixed opacity-0 group-hover:opacity-90 transition-opacity duration-300 flex flex-col items-center justify-center p-6 text-center">
-              <h3 class="font-headline-lg text-[22px] font-black text-primary mb-2">ADMIN DASHBOARD</h3>
-              <p class="font-body-md text-body-md text-primary opacity-80 mb-3 text-sm">Responsive admin UI with tables, charts, and role-based access.</p>
-              <div class="flex gap-2 flex-wrap justify-center">
-                <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">React</span>
-                <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">TailwindCSS</span>
-                <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">AWS S3</span>
-                <span class="bg-primary text-on-primary font-label-bold px-3 py-1 text-xs uppercase">CDN</span>
-              </div>
-            </div>
-          </div>
-          <div class="p-4 bg-primary border-t-2 border-secondary-fixed flex justify-between items-center">
-            <div>
-              <h3 class="font-label-bold text-base font-black text-on-primary uppercase">ADMIN DASHBOARD</h3>
-              <p class="text-outline text-xs mt-0.5">UI / Frontend</p>
-            </div>
-            <div class="flex gap-1.5 items-center">
-              <span class="bg-primary border border-outline text-on-primary font-label-bold px-2 py-1 text-xs uppercase">Frontend</span>
-              <span class="border border-secondary-fixed text-secondary-fixed font-label-bold px-2 py-1 text-xs uppercase">CDN</span>
-            </div>
-          </div>
-        </div>
         <!-- PROJECTS_GRID_END -->
 
       </div>
@@ -388,7 +374,7 @@
       <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
         <div class="md:col-span-4">
           <a href="index.html" class="font-headline-lg text-[36px] font-black text-on-primary tracking-tighter">KARUNESH.</a>
-          <p class="font-body-md text-body-md text-on-primary opacity-50 mt-3 max-w-xs">Fullstack developer crafting fast, scalable web apps with clean architecture and sharp UI.</p>
+          <p class="font-body-md text-body-md text-on-primary opacity-50 mt-3 max-w-xs">DevOps &amp; Cloud Engineer automating AWS infrastructure, CI/CD and containers — engineered for uptime.</p>
           <div class="flex gap-3 mt-6">
             <a href="https://github.com/karunesh77" target="_blank" class="w-10 h-10 border-2 border-secondary-fixed flex items-center justify-center text-secondary-fixed hover:bg-secondary-fixed hover:text-primary transition-all">
               <span class="font-label-bold text-xs font-black">GH</span>
@@ -414,26 +400,26 @@
         <div class="md:col-span-3">
           <h4 class="font-label-bold text-label-bold text-secondary-fixed uppercase tracking-widest mb-4">Stack</h4>
           <div class="flex flex-wrap gap-2">
-            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">React</span>
-            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">Next.js</span>
-            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">Node.js</span>
-            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">Express</span>
-            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">MongoDB</span>
             <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">AWS</span>
             <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">Docker</span>
-            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">Tailwind</span>
+            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">GitHub Actions</span>
+            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">ECS</span>
+            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">Lambda</span>
+            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">Linux</span>
+            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">Nginx</span>
+            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">AWS CDK</span>
           </div>
         </div>
         <div class="md:col-span-3">
           <h4 class="font-label-bold text-label-bold text-secondary-fixed uppercase tracking-widest mb-4">Let's Work</h4>
-          <p class="font-body-md text-body-md text-on-primary opacity-50 text-sm mb-4">Got a project in mind? Let's build something great together.</p>
+          <p class="font-body-md text-body-md text-on-primary opacity-50 text-sm mb-4">Hiring for DevOps or Cloud? Let's keep your production fast, secure and always on.</p>
           <a href="contact.html" class="inline-block bg-secondary-fixed text-primary font-label-bold text-label-bold px-6 py-2.5 uppercase hover:bg-on-primary hover:text-primary border-2 border-secondary-fixed hover:border-on-primary transition-all">Get In Touch</a>
         </div>
       </div>
     </div>
     <div class="border-t border-outline">
       <div class="max-w-6xl mx-auto px-margin-mobile md:px-margin-desktop py-5 flex flex-col md:flex-row justify-between items-center gap-4">
-        <p class="font-body-md text-body-md text-on-primary opacity-40 text-sm">&copy; 2025 Karunesh Gupta. Engineered for precision.</p>
+        <p class="font-body-md text-body-md text-on-primary opacity-40 text-sm">&copy; 2026 Karunesh Gupta. Engineered for uptime.</p>
         <button onclick="window.scrollTo({top:0,behavior:'smooth'})" class="font-label-bold text-label-bold text-secondary-fixed uppercase tracking-widest hover:opacity-70 transition-opacity flex items-center gap-1">
           Back to Top <span class="material-symbols-outlined" style="font-size:16px;">arrow_upward</span>
         </button>
@@ -442,29 +428,6 @@
     <div class="absolute top-8 right-8 w-32 h-32 opacity-5 pointer-events-none hidden md:block" style="background-image:radial-gradient(#f6e611 2px,transparent 2px);background-size:12px 12px;"></div>
   </footer>
 
-  <script>
-    // ── 3D Card Tilt Effect ──
-    document.querySelectorAll('.project-card').forEach(card => {
-      card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const cx = rect.width / 2;
-        const cy = rect.height / 2;
-        const rotateX = ((y - cy) / cy) * -10;
-        const rotateY = ((x - cx) / cx) * 10;
-        card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.03,1.03,1.03)`;
-        card.style.transition = 'transform 0.1s ease';
-        card.style.boxShadow = `${-rotateY * 2}px ${rotateX * 2}px 30px rgba(246,230,17,0.2)`;
-      });
-
-      card.addEventListener('mouseleave', () => {
-        card.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) scale3d(1,1,1)';
-        card.style.transition = 'transform 0.5s ease, box-shadow 0.5s ease';
-        card.style.boxShadow = 'none';
-      });
-    });
-  </script>
 
   <script>
     function filterProjects(category, btn) {
@@ -491,5 +454,6 @@
       });
     }
   </script>
+  <script src="fx.js"></script>
 </body>
 </html>

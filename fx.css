@@ -1,0 +1,210 @@
+/* ─────────────────────────────────────────────
+   FX — shared motion & 3D layer for all pages
+   Reveal-on-scroll, 3D tilt, cursor, pipeline,
+   terminal, marquee, CSS 3D cube, flip cards.
+   ───────────────────────────────────────────── */
+
+:root {
+  --fx-yellow: #f6e611;
+  --fx-black: #000;
+  --fx-ease: cubic-bezier(.2, .8, .2, 1);
+}
+
+html { scroll-behavior: smooth; }
+/* Off-screen start positions of left/right reveals must never create sideways scroll */
+body, main { overflow-x: hidden; overflow-x: clip; }
+
+/* ── Scroll progress bar ── */
+.fx-progress {
+  position: fixed; top: 0; left: 0; height: 3px; width: 100%;
+  background: var(--fx-yellow); z-index: 60;
+  transform-origin: 0 50%; transform: scaleX(0);
+  box-shadow: 0 0 12px rgba(246, 230, 17, .6);
+  pointer-events: none;
+}
+
+/* ── Reveal on scroll (only hidden once JS has flagged <html class="fx">) ── */
+.fx [data-reveal] {
+  opacity: 0;
+  transform: perspective(900px) translate3d(0, 48px, 0) rotateX(-12deg);
+  transform-origin: 50% 100%;
+  transition: opacity .9s var(--fx-ease), transform .9s var(--fx-ease);
+  transition-delay: var(--fx-delay, 0s);
+  will-change: opacity, transform;
+}
+.fx [data-reveal="left"]  { transform: translate3d(-60px, 0, 0); }
+.fx [data-reveal="right"] { transform: translate3d(60px, 0, 0); }
+.fx [data-reveal="zoom"]  { transform: perspective(900px) translate3d(0, 0, -160px) scale(.9); }
+.fx [data-reveal="flip"]  { transform: perspective(900px) rotateY(-35deg) translate3d(0, 20px, 0); transform-origin: 0 50%; }
+.fx [data-reveal].is-visible { opacity: 1; transform: none; }
+
+/* Word-by-word 3D headline */
+.fx-word { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: .14em; margin-bottom: -.14em; }
+.fx-word > span {
+  display: inline-block;
+  transform: translate3d(0, 110%, 0) rotateX(-80deg);
+  transform-origin: 50% 100%;
+  transition: transform 1s var(--fx-ease);
+  transition-delay: var(--fx-delay, 0s);
+}
+.fx-split.is-visible .fx-word > span { transform: none; }
+
+/* ── 3D tilt ── */
+[data-tilt] { transform-style: preserve-3d; will-change: transform; position: relative; }
+[data-tilt] .fx-depth { transform: translateZ(40px); }
+[data-tilt] .fx-depth-sm { transform: translateZ(20px); }
+.fx-glare {
+  position: absolute; inset: 0; pointer-events: none; z-index: 30;
+  background: radial-gradient(circle at var(--gx, 50%) var(--gy, 50%), rgba(255, 255, 255, .28), transparent 55%);
+  opacity: 0; transition: opacity .3s ease; mix-blend-mode: overlay;
+}
+[data-tilt]:hover .fx-glare { opacity: 1; }
+
+/* ── Custom cursor (fine pointers only) ── */
+.fx-cursor, .fx-cursor-ring { display: none; }
+@media (hover: hover) and (pointer: fine) {
+  .fx-cursor, .fx-cursor-ring {
+    display: block; position: fixed; top: 0; left: 0; z-index: 10000;
+    pointer-events: none; border-radius: 50%;
+    transform: translate3d(-100px, -100px, 0);
+  }
+  .fx-cursor { width: 6px; height: 6px; margin: -3px 0 0 -3px; background: var(--fx-yellow); mix-blend-mode: difference; }
+  .fx-cursor-ring {
+    width: 36px; height: 36px; margin: -18px 0 0 -18px;
+    border: 1.5px solid var(--fx-yellow); mix-blend-mode: difference;
+    transition: width .25s var(--fx-ease), height .25s var(--fx-ease), margin .25s var(--fx-ease), background .25s;
+  }
+  .fx-cursor-ring.is-hover { width: 64px; height: 64px; margin: -32px 0 0 -32px; background: rgba(246, 230, 17, .15); }
+}
+
+/* ── Marquee ticker ── */
+.fx-marquee { overflow: hidden; white-space: nowrap; display: flex; user-select: none; }
+.fx-marquee-track { display: inline-flex; flex-shrink: 0; gap: 3rem; padding-right: 3rem; animation: fxMarquee 32s linear infinite; }
+.fx-marquee:hover .fx-marquee-track { animation-play-state: paused; }
+@keyframes fxMarquee { to { transform: translate3d(-100%, 0, 0); } }
+
+/* ── Floating / pulse helpers ── */
+.fx-float { animation: fxFloat 6s ease-in-out infinite; }
+@keyframes fxFloat { 0%, 100% { transform: translate3d(0, 0, 0); } 50% { transform: translate3d(0, -14px, 0); } }
+.fx-grid-bg {
+  background-image:
+    linear-gradient(rgba(246, 230, 17, .07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(246, 230, 17, .07) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+.fx-grid-floor {
+  position: absolute; left: -50%; right: -50%; bottom: -10%; height: 70%;
+  background-image:
+    linear-gradient(rgba(246, 230, 17, .22) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(246, 230, 17, .22) 1px, transparent 1px);
+  background-size: 60px 60px;
+  transform: perspective(500px) rotateX(62deg);
+  transform-origin: 50% 100%;
+  animation: fxFloor 3s linear infinite;
+  mask-image: linear-gradient(to top, #000 10%, transparent 85%);
+  -webkit-mask-image: linear-gradient(to top, #000 10%, transparent 85%);
+  pointer-events: none;
+}
+@keyframes fxFloor { to { background-position: 0 60px, 0 0; } }
+
+/* ── CI/CD pipeline visual ── */
+.fx-pipeline { position: relative; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 12px; }
+.fx-pipeline::before {
+  content: ""; position: absolute; left: 7%; right: 7%; top: 34px; height: 2px;
+  background: repeating-linear-gradient(90deg, #444 0 8px, transparent 8px 14px);
+}
+.fx-pipe-fill {
+  position: absolute; left: 7%; top: 34px; height: 2px; width: 0; max-width: 86%;
+  background: var(--fx-yellow); box-shadow: 0 0 14px var(--fx-yellow);
+  transition: width .6s var(--fx-ease);
+}
+.fx-stage { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 10px; }
+.fx-stage-icon {
+  width: 68px; height: 68px; display: flex; align-items: center; justify-content: center;
+  background: #111; border: 2px solid #444; color: #888;
+  transition: all .4s var(--fx-ease); transform: perspective(400px) rotateX(0);
+}
+.fx-stage-label { font: 700 11px/1.2 Inter, sans-serif; letter-spacing: .12em; text-transform: uppercase; color: #777; transition: color .4s; }
+.fx-stage.is-running .fx-stage-icon { border-color: var(--fx-yellow); color: var(--fx-yellow); box-shadow: 0 0 0 6px rgba(246, 230, 17, .12), 0 0 30px rgba(246, 230, 17, .35); transform: perspective(400px) rotateX(18deg) translateY(-6px); }
+.fx-stage.is-running .fx-stage-icon .material-symbols-outlined { animation: fxPulse .8s ease-in-out infinite; }
+.fx-stage.is-done .fx-stage-icon { background: var(--fx-yellow); border-color: var(--fx-yellow); color: #000; }
+.fx-stage.is-running .fx-stage-label, .fx-stage.is-done .fx-stage-label { color: #fff; }
+@keyframes fxPulse { 50% { transform: scale(1.25); } }
+@media (max-width: 767px) {
+  .fx-pipeline { grid-template-columns: repeat(4, minmax(0, 1fr)); row-gap: 24px; }
+  .fx-pipeline::before, .fx-pipe-fill { display: none; }
+  .fx-stage-icon { width: 56px; height: 56px; }
+}
+
+/* ── Terminal ── */
+.fx-terminal { background: #0b0b0b; border: 1px solid #333; box-shadow: 0 30px 60px -20px rgba(0, 0, 0, .8), 0 0 0 1px rgba(246, 230, 17, .08); }
+.fx-terminal-bar { display: flex; align-items: center; gap: 8px; padding: 10px 14px; border-bottom: 1px solid #222; background: #141414; }
+.fx-terminal-bar i { width: 11px; height: 11px; border-radius: 50%; display: block; }
+.fx-terminal-body {
+  font: 13px/1.7 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  color: #cfcfcf; padding: 16px 18px; height: 260px; overflow: hidden;
+  display: flex; flex-direction: column; justify-content: flex-end; overflow-wrap: anywhere;
+}
+.fx-terminal-body .ok { color: #4ade80; }
+.fx-terminal-body .y { color: var(--fx-yellow); }
+.fx-terminal-body .dim { color: #666; }
+.fx-caret { display: inline-block; width: 8px; height: 15px; background: var(--fx-yellow); vertical-align: -2px; animation: fxBlink 1s steps(1) infinite; }
+@keyframes fxBlink { 50% { opacity: 0; } }
+
+/* ── CSS 3D cube ── */
+.fx-cube-scene { width: 180px; height: 180px; perspective: 800px; }
+.fx-cube { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; animation: fxCube 16s linear infinite; }
+.fx-cube-scene:hover .fx-cube { animation-play-state: paused; }
+.fx-cube > div {
+  position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+  border: 2px solid var(--fx-yellow); background: rgba(0, 0, 0, .85);
+  color: var(--fx-yellow); font: 900 18px/1 Montserrat, sans-serif; letter-spacing: .04em;
+  backface-visibility: visible;
+}
+.fx-cube > div:nth-child(1) { transform: rotateY(0deg) translateZ(90px); }
+.fx-cube > div:nth-child(2) { transform: rotateY(90deg) translateZ(90px); }
+.fx-cube > div:nth-child(3) { transform: rotateY(180deg) translateZ(90px); }
+.fx-cube > div:nth-child(4) { transform: rotateY(-90deg) translateZ(90px); }
+.fx-cube > div:nth-child(5) { transform: rotateX(90deg) translateZ(90px); background: var(--fx-yellow); color: #000; }
+.fx-cube > div:nth-child(6) { transform: rotateX(-90deg) translateZ(90px); background: var(--fx-yellow); color: #000; }
+@keyframes fxCube { from { transform: rotateX(-22deg) rotateY(0); } to { transform: rotateX(-22deg) rotateY(360deg); } }
+
+/* ── Flip cards ── */
+.fx-flip { perspective: 1000px; }
+.fx-flip-inner { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; transition: transform .8s var(--fx-ease); }
+.fx-flip:focus-within .fx-flip-inner, .fx-flip.is-flipped .fx-flip-inner { transform: rotateY(180deg); }
+@media (hover: hover) { .fx-flip:hover .fx-flip-inner { transform: rotateY(180deg); } }
+.fx-flip-face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.fx-flip-back { transform: rotateY(180deg); }
+
+/* ── Shine sweep on buttons ── */
+.fx-shine { position: relative; overflow: hidden; }
+.fx-shine::after {
+  content: ""; position: absolute; top: 0; left: -120%; width: 60%; height: 100%;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, .45), transparent);
+  transform: skewX(-20deg); transition: left .7s var(--fx-ease);
+}
+.fx-shine:hover::after { left: 140%; }
+
+/* ── Hero 3D label chips (positioned by three.js) ── */
+.fx-node-label {
+  position: absolute; top: 0; left: 0; z-index: 5; pointer-events: none;
+  font: 700 10px/1 Inter, sans-serif; letter-spacing: .14em; text-transform: uppercase;
+  color: #000; background: var(--fx-yellow); padding: 5px 7px;
+  white-space: nowrap; transition: opacity .3s;
+  box-shadow: 3px 3px 0 rgba(255, 255, 255, .15);
+}
+
+/* ── Glitch-free gradient text ── */
+.fx-outline-text { color: transparent; -webkit-text-stroke: 1.5px currentColor; }
+
+/* ── Respect reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
+  .fx [data-reveal], .fx-word > span { opacity: 1 !important; transform: none !important; }
+  .fx-cursor, .fx-cursor-ring { display: none !important; }
+}
+
+/* Timeline rail that draws itself top → bottom */
+.fx [data-reveal="line"] { opacity: 1; transform: scaleY(0); transform-origin: 50% 0; transition: transform 1.8s var(--fx-ease); }
+.fx [data-reveal="line"].is-visible { transform: scaleY(1); }

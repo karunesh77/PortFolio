@@ -288,7 +288,7 @@ function generatePostPage(entry) {
       <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
         <div class="md:col-span-4">
           <a href="../index.html" class="font-headline-lg text-[36px] font-black text-on-primary tracking-tighter">KARUNESH.</a>
-          <p class="font-body-md text-body-md text-on-primary opacity-50 mt-3 max-w-xs">Fullstack developer crafting fast, scalable web apps with clean architecture and sharp UI.</p>
+          <p class="font-body-md text-body-md text-on-primary opacity-50 mt-3 max-w-xs">DevOps &amp; Cloud Engineer automating AWS infrastructure, CI/CD and containers — engineered for uptime.</p>
           <div class="flex gap-3 mt-6">
             <a href="https://github.com/karunesh77" target="_blank" class="w-10 h-10 border-2 border-secondary-fixed flex items-center justify-center text-secondary-fixed hover:bg-secondary-fixed hover:text-primary transition-all"><span class="font-label-bold text-xs font-black">GH</span></a>
             <a href="https://www.linkedin.com/in/karunesh-gupta-680bb0326" target="_blank" class="w-10 h-10 border-2 border-secondary-fixed flex items-center justify-center text-secondary-fixed hover:bg-secondary-fixed hover:text-primary transition-all"><span class="font-label-bold text-xs font-black">IN</span></a>
@@ -308,26 +308,26 @@ function generatePostPage(entry) {
         <div class="md:col-span-3">
           <h4 class="font-label-bold text-label-bold text-secondary-fixed uppercase tracking-widest mb-4">Stack</h4>
           <div class="flex flex-wrap gap-2">
-            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">React</span>
-            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">Next.js</span>
-            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">Node.js</span>
-            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">Express</span>
-            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">MongoDB</span>
             <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">AWS</span>
             <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">Docker</span>
-            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">Tailwind</span>
+            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">GitHub Actions</span>
+            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">ECS</span>
+            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">Lambda</span>
+            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">Linux</span>
+            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">Nginx</span>
+            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">AWS CDK</span>
           </div>
         </div>
         <div class="md:col-span-3">
           <h4 class="font-label-bold text-label-bold text-secondary-fixed uppercase tracking-widest mb-4">Let's Work</h4>
-          <p class="font-body-md text-body-md text-on-primary opacity-50 text-sm mb-4">Got a project in mind? Let's build something great together.</p>
+          <p class="font-body-md text-body-md text-on-primary opacity-50 text-sm mb-4">Hiring for DevOps or Cloud? Let's keep your production fast, secure and always on.</p>
           <a href="../contact.html" class="inline-block bg-secondary-fixed text-primary font-label-bold text-label-bold px-6 py-2.5 uppercase hover:bg-on-primary hover:text-primary border-2 border-secondary-fixed hover:border-on-primary transition-all">Get In Touch</a>
         </div>
       </div>
     </div>
     <div class="border-t border-outline">
       <div class="max-w-6xl mx-auto px-margin-mobile md:px-margin-desktop py-5 flex flex-col md:flex-row justify-between items-center gap-4">
-        <p class="font-body-md text-body-md text-on-primary opacity-40 text-sm">© 2025 Karunesh Gupta. Engineered for precision.</p>
+        <p class="font-body-md text-body-md text-on-primary opacity-40 text-sm">© 2026 Karunesh Gupta. Engineered for uptime.</p>
         <button onclick="window.scrollTo({top:0,behavior:'smooth'})" class="font-label-bold text-label-bold text-secondary-fixed uppercase tracking-widest hover:opacity-70 transition-opacity flex items-center gap-1">
           Back to Top <span class="material-symbols-outlined" style="font-size:16px;">arrow_upward</span>
         </button>
@@ -474,15 +474,17 @@ async function build() {
       indexTemplate = inject(indexTemplate, '<!-- HERO_TAGLINE_START -->', '<!-- HERO_TAGLINE_END -->', escapeHtml(c.heroTagline));
     }
 
-    if (c.statYears != null) {
-      indexTemplate = indexTemplate.replace(/data-target="3"/, `data-target="${c.statYears}"`);
-    }
-    if (c.statProjects != null) {
-      indexTemplate = indexTemplate.replace(/data-target="10"/, `data-target="${c.statProjects}"`);
-    }
-    if (c.statStacks != null) {
-      indexTemplate = indexTemplate.replace(/data-target="5"/, `data-target="${c.statStacks}"`);
-    }
+    // Stats are matched by data-stat so they don't depend on the default numbers
+    const setStat = (key, value) => {
+      if (value == null) return;
+      indexTemplate = indexTemplate.replace(
+        new RegExp(`data-stat="${key}" data-target="\\d+"`),
+        `data-stat="${key}" data-target="${value}"`
+      );
+    };
+    setStat('years', c.statYears);
+    setStat('projects', c.statProjects);
+    setStat('stacks', c.statStacks);
 
     if (Array.isArray(c.typingRoles) && c.typingRoles.length > 0) {
       indexTemplate = indexTemplate.replace(
@@ -526,7 +528,7 @@ async function build() {
 
   // ── Copy remaining static pages ──
   console.log('\n📄  Copying static pages...');
-  ['contact.html'].forEach(copyToDist);
+  ['contact.html', '404.html'].forEach(copyToDist);
 
   // ── Copy static blog posts (fallback when no CMS entries) ──
   const srcBlog = path.join(__dirname, 'blog');
@@ -541,7 +543,7 @@ async function build() {
 
   // ── Copy assets (whichever photo format exists) ──
   console.log('\n🖼   Copying assets...');
-  ['profile.webp', 'profile.jpg', 'profile.png', 'favicon.svg'].forEach(f => {
+  ['profile.webp', 'profile.jpg', 'profile.png', 'favicon.svg', 'fx.css', 'fx.js'].forEach(f => {
     if (fs.existsSync(path.join(__dirname, f))) copyToDist(f);
   });
 

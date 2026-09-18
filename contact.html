@@ -4,13 +4,15 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>Contact - KARUNESH.</title>
-  <meta name="description" content="Get in touch with Karunesh Gupta — Fullstack Developer available for projects, collaborations, and hiring. Response within 24 hours."/>
+  <meta name="description" content="Get in touch with Karunesh Gupta — DevOps &amp; Cloud Engineer (AWS Certified Solutions Architect) open to full-time DevOps and Cloud roles. Response within 24 hours."/>
   <meta name="author" content="Karunesh Gupta"/>
   <meta property="og:title" content="Contact — KARUNESH."/>
-  <meta property="og:description" content="Have a project in mind? Let's talk — available for freelance, collaborations, and full-time opportunities."/>
+  <meta property="og:description" content="Hiring for DevOps or Cloud? Let's talk — open to full-time roles, contracts and AWS infrastructure work."/>
   <meta property="og:type" content="website"/>
   <meta name="twitter:card" content="summary"/>
   <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+  <script>document.documentElement.classList.add('fx')</script>
+  <link rel="stylesheet" href="fx.css"/>
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet"/>
@@ -121,12 +123,12 @@
       <div class="absolute bottom-0 right-0 w-48 h-48 opacity-10 pointer-events-none" style="background-image: radial-gradient(#f6e611 2px, transparent 2px); background-size: 16px 16px;"></div>
       <div class="max-w-4xl mx-auto px-margin-mobile md:px-margin-desktop text-center relative z-10">
         <span class="font-label-bold text-label-bold uppercase tracking-widest text-outline block mb-4">GET IN TOUCH</span>
-        <h1 class="font-headline-xl-mobile md:text-[72px] font-black text-on-primary leading-tight mb-6 relative inline-block">
+        <h1 class="font-headline-xl-mobile md:text-[72px] font-black text-on-primary leading-tight mb-6 relative inline-block" data-split>
           LET'S WORK<br/>TOGETHER
           <div class="absolute -bottom-4 left-1/2 -translate-x-1/2 w-24 h-1.5 bg-secondary-fixed"></div>
         </h1>
         <p class="font-body-lg text-body-lg text-inverse-on-surface mt-12 max-w-xl mx-auto opacity-70">
-          Have a project in mind? Looking for a developer? Let's talk — I respond within 24 hours.
+          Hiring a DevOps or Cloud Engineer? Need AWS infrastructure or a CI/CD pipeline set up? Let's talk — I respond within 24 hours.
         </p>
       </div>
     </section>
@@ -137,7 +139,7 @@
 
         <!-- Info Sidebar -->
         <div class="md:col-span-4">
-          <div class="bg-surface-container border-l-4 border-secondary-fixed p-8 h-full flex flex-col justify-between">
+          <div class="bg-surface-container border-l-4 border-secondary-fixed p-8 h-full flex flex-col justify-between" data-reveal="left">
             <div>
               <h3 class="font-headline-lg text-[22px] font-bold text-on-surface uppercase tracking-tight mb-8">Contact Info</h3>
 
@@ -154,7 +156,7 @@
                 <span class="material-symbols-outlined text-secondary-fixed text-2xl mt-0.5">location_on</span>
                 <div>
                   <p class="font-label-bold text-label-bold text-outline uppercase mb-1">Location</p>
-                  <p class="font-body-md text-body-md text-on-surface font-semibold">India<br/>Available Worldwide</p>
+                  <p class="font-body-md text-body-md text-on-surface font-semibold">Noida, India<br/>Remote &amp; On-site</p>
                 </div>
               </div>
 
@@ -172,7 +174,7 @@
                   <p class="font-label-bold text-label-bold text-outline uppercase mb-1">Status</p>
                   <div class="flex items-center gap-2">
                     <div class="w-2 h-2 bg-green-500 rounded-full"></div>
-                    <p class="font-body-md text-body-md text-on-surface font-semibold">Available for Projects</p>
+                    <p class="font-body-md text-body-md text-on-surface font-semibold">Open to DevOps &amp; Cloud roles</p>
                   </div>
                 </div>
               </div>
@@ -197,7 +199,7 @@
             Message sent! I'll get back to you within 24 hours.
           </div>
 
-          <form id="contact-form" class="space-y-8" action="https://formspree.io/f/mpqnwvva" method="POST" onsubmit="handleSubmit(event)">
+          <form id="contact-form" data-reveal="right" class="space-y-8" action="https://formspree.io/f/mpqnwvva" method="POST" onsubmit="handleSubmit(event)">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div>
                 <label class="font-label-bold text-label-bold text-primary uppercase block mb-2" for="name">Name *</label>
@@ -219,22 +221,22 @@
               <label class="font-label-bold text-label-bold text-primary uppercase block mb-2" for="subject">Subject *</label>
               <input
                 class="w-full bg-transparent border-0 border-b-2 border-primary text-on-surface font-body-md px-0 py-2 transition-colors placeholder:text-outline"
-                id="subject" name="subject" type="text" placeholder="Project inquiry / Collaboration / Hiring" required
+                id="subject" name="subject" type="text" placeholder="Job opportunity / AWS setup / CI/CD pipeline" required
               />
             </div>
 
             <div>
-              <label class="font-label-bold text-label-bold text-primary uppercase block mb-2" for="budget">Budget Range</label>
+              <label class="font-label-bold text-label-bold text-primary uppercase block mb-2" for="budget">Opportunity Type</label>
               <select
                 class="w-full bg-transparent border-0 border-b-2 border-primary text-on-surface font-body-md px-0 py-2 transition-colors appearance-none cursor-pointer"
                 id="budget" name="budget"
               >
-                <option value="" class="text-outline">Select a range (optional)</option>
-                <option>Under ₹50,000</option>
-                <option>₹50,000 – ₹1,00,000</option>
-                <option>₹1,00,000 – ₹3,00,000</option>
-                <option>₹3,00,000+</option>
-                <option>Let's discuss</option>
+                <option value="" class="text-outline">Select one (optional)</option>
+                <option>Full-time DevOps / Cloud role</option>
+                <option>Contract / Freelance</option>
+                <option>AWS infrastructure setup</option>
+                <option>CI/CD pipeline &amp; automation</option>
+                <option>Something else</option>
               </select>
             </div>
 
@@ -243,7 +245,7 @@
               <textarea
                 class="w-full bg-transparent border-0 border-b-2 border-primary text-on-surface font-body-md px-0 py-2 transition-colors resize-none placeholder:text-outline"
                 id="message" name="message" rows="5"
-                placeholder="Tell me about your project, timeline, and what you need..." required
+                placeholder="Tell me about the role or infrastructure, timeline, and what you need..." required
               ></textarea>
             </div>
 
@@ -283,7 +285,7 @@
       <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
         <div class="md:col-span-4">
           <a href="index.html" class="font-headline-lg text-[36px] font-black text-on-primary tracking-tighter">KARUNESH.</a>
-          <p class="font-body-md text-body-md text-on-primary opacity-50 mt-3 max-w-xs">Fullstack developer crafting fast, scalable web apps with clean architecture and sharp UI.</p>
+          <p class="font-body-md text-body-md text-on-primary opacity-50 mt-3 max-w-xs">DevOps &amp; Cloud Engineer automating AWS infrastructure, CI/CD and containers — engineered for uptime.</p>
           <div class="flex gap-3 mt-6">
             <a href="https://github.com/karunesh77" target="_blank" class="w-10 h-10 border-2 border-secondary-fixed flex items-center justify-center text-secondary-fixed hover:bg-secondary-fixed hover:text-primary transition-all">
               <span class="font-label-bold text-xs font-black">GH</span>
@@ -309,26 +311,26 @@
         <div class="md:col-span-3">
           <h4 class="font-label-bold text-label-bold text-secondary-fixed uppercase tracking-widest mb-4">Stack</h4>
           <div class="flex flex-wrap gap-2">
-            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">React</span>
-            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">Next.js</span>
-            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">Node.js</span>
-            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">Express</span>
-            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">MongoDB</span>
             <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">AWS</span>
             <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">Docker</span>
-            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">Tailwind</span>
+            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">GitHub Actions</span>
+            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">ECS</span>
+            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">Lambda</span>
+            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">Linux</span>
+            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">Nginx</span>
+            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">AWS CDK</span>
           </div>
         </div>
         <div class="md:col-span-3">
           <h4 class="font-label-bold text-label-bold text-secondary-fixed uppercase tracking-widest mb-4">Let's Work</h4>
-          <p class="font-body-md text-body-md text-on-primary opacity-50 text-sm mb-4">Got a project in mind? Let's build something great together.</p>
+          <p class="font-body-md text-body-md text-on-primary opacity-50 text-sm mb-4">Hiring for DevOps or Cloud? Let's keep your production fast, secure and always on.</p>
           <a href="contact.html" class="inline-block bg-secondary-fixed text-primary font-label-bold text-label-bold px-6 py-2.5 uppercase hover:bg-on-primary hover:text-primary border-2 border-secondary-fixed hover:border-on-primary transition-all">Get In Touch</a>
         </div>
       </div>
     </div>
     <div class="border-t border-outline">
       <div class="max-w-6xl mx-auto px-margin-mobile md:px-margin-desktop py-5 flex flex-col md:flex-row justify-between items-center gap-4">
-        <p class="font-body-md text-body-md text-on-primary opacity-40 text-sm">&copy; 2025 Karunesh Gupta. Engineered for precision.</p>
+        <p class="font-body-md text-body-md text-on-primary opacity-40 text-sm">&copy; 2026 Karunesh Gupta. Engineered for uptime.</p>
         <button onclick="window.scrollTo({top:0,behavior:'smooth'})" class="font-label-bold text-label-bold text-secondary-fixed uppercase tracking-widest hover:opacity-70 transition-opacity flex items-center gap-1">
           Back to Top <span class="material-symbols-outlined" style="font-size:16px;">arrow_upward</span>
         </button>
@@ -379,5 +381,6 @@
       });
     }
   </script>
+  <script src="fx.js"></script>
 </body>
 </html>

@@ -4,16 +4,18 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>About - KARUNESH.</title>
-  <meta name="description" content="About Karunesh Gupta — Fullstack Developer skilled in React, Node.js, MongoDB, AWS, Docker. View my skills, tech stack, and work process."/>
+  <meta name="description" content="About Karunesh Gupta — DevOps &amp; Cloud Engineer and AWS Certified Solutions Architect. Skills in AWS, GitHub Actions CI/CD, Docker, Linux, Nginx, AWS CDK and CloudWatch."/>
   <meta name="author" content="Karunesh Gupta"/>
   <meta property="og:title" content="About — KARUNESH."/>
-  <meta property="og:description" content="Fullstack Developer skilled in React, Node.js, MongoDB, AWS, Docker. View my skills, tech stack, and work process."/>
+  <meta property="og:description" content="DevOps &amp; Cloud Engineer — AWS, CI/CD, Docker, Linux, IaC and monitoring. Certifications, skills and experience."/>
   <meta property="og:type" content="website"/>
   <meta name="twitter:card" content="summary"/>
   <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+  <script>document.documentElement.classList.add('fx')</script>
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="fx.css"/>
   <script id="tailwind-config">
     tailwind.config = {
       darkMode: "class",
@@ -72,7 +74,7 @@
       background-image: radial-gradient(circle, #747878 1px, transparent 1px);
       background-size: 8px 8px;
     }
-    .skill-bar-fill { transition: width 1s ease-in-out; }
+    .skill-bar-fill { width: 0; transition: width 1.4s cubic-bezier(.2,.8,.2,1); }
     .mobile-menu { display: none; }
     .mobile-menu.open { display: flex; }
     .page-loader { position:fixed;inset:0;z-index:9999;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.4s ease,visibility 0.4s ease; }
@@ -99,8 +101,8 @@
       <a href="blog.html" class="font-label-bold text-label-bold text-on-primary opacity-80 hover:text-secondary transition-colors">BLOG</a>
       <a href="contact.html" class="font-label-bold text-label-bold text-on-primary opacity-80 hover:text-secondary transition-colors">CONTACT</a>
     </div>
-    <a href="contact.html" class="hidden md:block bg-secondary-fixed text-on-secondary-fixed font-label-bold text-label-bold px-6 py-2 hover:bg-primary hover:text-on-primary border-2 border-secondary-fixed hover:border-primary transition-all">HIRE ME</a>
-    <button onclick="document.getElementById('mobile-menu').classList.toggle('open')" class="md:hidden text-on-primary">
+    <a href="contact.html" data-magnetic class="fx-shine hidden md:block bg-secondary-fixed text-on-secondary-fixed font-label-bold text-label-bold px-6 py-2 hover:bg-primary hover:text-on-primary border-2 border-secondary-fixed hover:border-primary transition-colors">HIRE ME</a>
+    <button onclick="document.getElementById('mobile-menu').classList.toggle('open')" class="md:hidden text-on-primary" aria-label="Open menu">
       <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">menu</span>
     </button>
   </nav>
@@ -117,65 +119,168 @@
 
   <main>
 
-    <!-- Who Am I -->
+    <!-- ═══════════ Who Am I ═══════════ -->
     <section class="py-section-padding px-margin-mobile md:px-margin-desktop bg-surface-container-low relative overflow-hidden">
       <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-gutter items-center relative z-10">
 
         <!-- Avatar Block -->
-        <div class="md:col-span-5 md:col-start-1 relative flex justify-center">
+        <div class="md:col-span-5 md:col-start-1 relative flex justify-center" data-reveal="left">
           <div class="absolute -top-8 -left-4 w-full h-full bg-primary z-0 hidden md:block"></div>
           <div class="absolute -top-4 -right-4 w-4 h-4 bg-secondary-fixed rounded-full z-20 hidden md:block"></div>
           <div class="absolute -top-4 -right-12 w-2 h-2 bg-secondary-fixed rounded-full z-20 hidden md:block"></div>
-          <div class="relative z-10">
-            <!-- Offset yellow shadow -->
+          <div class="relative z-10" data-tilt="12">
             <div class="absolute top-4 left-4 w-full h-full bg-secondary-fixed opacity-80"></div>
-            <!-- Photo -->
             <img
               src="profile.webp"
               alt="Karunesh Gupta"
               class="relative z-10 w-64 h-72 md:w-72 md:h-80 object-cover"
               style="filter: grayscale(90%) contrast(1.2) brightness(0.8); object-position: center 35%;"
             />
-            <!-- Corner accents -->
             <div class="absolute -top-2 -right-2 w-6 h-6 bg-secondary-fixed z-20"></div>
             <div class="absolute -bottom-2 -left-2 w-6 h-6 bg-secondary-fixed z-20"></div>
+            <!-- Floating AWS badge -->
+            <div class="fx-depth absolute -bottom-6 -right-6 z-30 bg-primary text-on-primary border-2 border-secondary-fixed px-3 py-2 flex items-center gap-2">
+              <span class="material-symbols-outlined text-secondary-fixed" style="font-size:20px; font-variation-settings:'FILL' 1;">verified</span>
+              <span class="font-label-bold text-[11px] uppercase tracking-widest">AWS Certified</span>
+            </div>
           </div>
           <div class="absolute -bottom-12 right-0 w-32 h-16 dot-pattern z-0 opacity-40 hidden md:block"></div>
         </div>
 
         <!-- Text Block -->
         <div class="md:col-span-6 md:col-start-7 mt-12 md:mt-0">
-          <span class="font-label-bold text-label-bold uppercase tracking-wider text-outline block mb-3">WHO AM I</span>
-          <h2 class="font-headline-xl-mobile md:text-[52px] font-black text-primary relative inline-block mb-6">
+          <span class="font-label-bold text-label-bold uppercase tracking-wider text-outline block mb-3" data-reveal>WHO AM I</span>
+          <h2 class="font-headline-xl-mobile md:text-[52px] font-black text-primary relative inline-block mb-6" data-split>
             HELLO, I'M<br/>KARUNESH
             <div class="absolute -bottom-2 left-0 w-full h-1 bg-secondary-fixed"></div>
           </h2>
-          <div class="mt-8 font-body-md text-body-md text-on-surface-variant space-y-4">
+          <div class="mt-8 font-body-md text-body-md text-on-surface-variant space-y-4" data-reveal>
             <!-- ABOUT_BIO_START -->
             <p>
-              Full Stack Developer with hands-on experience building scalable full-stack applications and integrating AI via Claude API, MCP servers, and REST APIs. I turn ideas into production-ready software — from database design to polished user interfaces.
+              DevOps &amp; Cloud Engineer and AWS Certified Solutions Architect — Associate. I design, automate and run infrastructure on AWS — EC2, ECS, Lambda, VPC, IAM, SSM and SNS — with CI/CD pipelines that take code from commit to production with zero manual steps.
             </p>
             <p>
-              Currently working as a Full Stack Developer at V3 Consultant, Noida. Previously shipped 5+ live applications as a freelance developer including job platforms, music streaming apps, AI chatbots, and resume builders — all deployed on Vercel.
+              Currently a Cloud Support Engineer at V3iQ Tech Pvt. Ltd., Noida — managing AWS infrastructure, resolving real-time incidents to keep production highly available, and building GitHub Actions pipelines for faster, reliable releases. I also use AI-assisted development with Claude to build and ship faster.
             </p>
             <!-- ABOUT_BIO_END -->
           </div>
-          <div class="mt-8 flex gap-4">
-            <a href="__CV_URL__" class="bg-primary text-on-primary font-label-bold text-label-bold px-8 py-3 hover:bg-secondary-fixed hover:text-primary transition-colors" target="_blank" rel="noopener">DOWNLOAD CV</a>
-            <a href="contact.html" class="border-2 border-primary text-primary font-label-bold text-label-bold px-8 py-3 hover:bg-primary hover:text-on-primary transition-all">CONTACT</a>
+
+          <!-- Quick facts -->
+          <div class="grid grid-cols-3 gap-4 mt-8 border-y border-outline-variant py-5" data-reveal>
+            <div>
+              <p class="font-label-bold text-[11px] uppercase tracking-widest text-outline mb-1">Role</p>
+              <p class="font-label-bold text-sm text-primary uppercase">Cloud Support Eng.</p>
+            </div>
+            <div>
+              <p class="font-label-bold text-[11px] uppercase tracking-widest text-outline mb-1">Based In</p>
+              <p class="font-label-bold text-sm text-primary uppercase">Noida, India</p>
+            </div>
+            <div>
+              <p class="font-label-bold text-[11px] uppercase tracking-widest text-outline mb-1">Focus</p>
+              <p class="font-label-bold text-sm text-primary uppercase">AWS · CI/CD</p>
+            </div>
+          </div>
+
+          <div class="mt-8 flex gap-4 flex-wrap" data-reveal>
+            <a href="__CV_URL__" data-magnetic class="fx-shine bg-primary text-on-primary font-label-bold text-label-bold px-8 py-3 hover:bg-secondary-fixed hover:text-primary transition-colors" target="_blank" rel="noopener">DOWNLOAD CV</a>
+            <a href="contact.html" data-magnetic class="border-2 border-primary text-primary font-label-bold text-label-bold px-8 py-3 hover:bg-primary hover:text-on-primary transition-colors">CONTACT</a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Skills Section -->
+    <!-- ═══════════ Certifications — 3D flip cards ═══════════ -->
+    <section id="certifications" class="py-section-padding px-margin-mobile md:px-margin-desktop bg-surface-container-lowest relative overflow-hidden">
+      <div class="max-w-6xl mx-auto">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-14">
+          <div>
+            <span class="font-label-bold text-label-bold uppercase tracking-widest text-outline block mb-2" data-reveal>CREDENTIALS</span>
+            <h2 class="font-headline-xl-mobile md:text-[48px] font-black text-primary leading-tight" data-split>
+              <span class="inline-block relative fx-nosplit">CERTIFICATIONS<div class="absolute -bottom-1 left-0 w-full h-1 bg-secondary-fixed"></div></span>
+            </h2>
+          </div>
+          <p class="font-label-bold text-xs uppercase tracking-widest text-outline flex items-center gap-2" data-reveal>
+            <span class="material-symbols-outlined" style="font-size:18px;">3d_rotation</span> Hover / tap a card to flip
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5" data-reveal-stagger="0.1">
+          <!-- AWS SAA (featured) -->
+          <div class="fx-flip h-64 lg:col-span-2 cursor-pointer" tabindex="0" data-reveal="flip">
+            <div class="fx-flip-inner">
+              <div class="fx-flip-face bg-secondary-fixed border-2 border-primary p-6 flex flex-col justify-between shadow-[8px_8px_0_#000]">
+                <span class="material-symbols-outlined text-primary" style="font-size:44px; font-variation-settings:'FILL' 1;">cloud_done</span>
+                <div>
+                  <p class="font-label-bold text-[11px] uppercase tracking-widest text-primary opacity-70 mb-1">Amazon Web Services</p>
+                  <h3 class="font-headline-lg text-[24px] font-black text-primary uppercase leading-7">AWS Certified Solutions Architect — Associate</h3>
+                </div>
+              </div>
+              <div class="fx-flip-face fx-flip-back bg-primary text-on-primary border-2 border-secondary-fixed p-6 flex flex-col justify-center">
+                <p class="font-label-bold text-[11px] uppercase tracking-widest text-secondary-fixed mb-3">What it proves</p>
+                <p class="text-sm opacity-80 leading-6">Designing secure, resilient, high-performing and cost-optimized architectures on AWS — compute, networking, storage, databases and IAM.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="fx-flip h-64 cursor-pointer" tabindex="0" data-reveal="flip">
+            <div class="fx-flip-inner">
+              <div class="fx-flip-face bg-primary text-on-primary border-2 border-primary p-6 flex flex-col justify-between">
+                <span class="material-symbols-outlined text-secondary-fixed" style="font-size:36px;">workspace_premium</span>
+                <div>
+                  <p class="font-label-bold text-[11px] uppercase tracking-widest text-outline mb-1">NIELIT</p>
+                  <h3 class="font-headline-lg text-[18px] font-black uppercase leading-6">O Level Certificate</h3>
+                </div>
+              </div>
+              <div class="fx-flip-face fx-flip-back bg-secondary-fixed text-primary border-2 border-primary p-6 flex flex-col justify-center">
+                <p class="font-label-bold text-[11px] uppercase tracking-widest mb-3">Issued by</p>
+                <p class="text-sm leading-6">National Institute of Electronics &amp; Information Technology — IT fundamentals, programming and networking.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="fx-flip h-64 cursor-pointer" tabindex="0" data-reveal="flip">
+            <div class="fx-flip-inner">
+              <div class="fx-flip-face bg-primary text-on-primary border-2 border-primary p-6 flex flex-col justify-between">
+                <span class="material-symbols-outlined text-secondary-fixed" style="font-size:36px;">psychology</span>
+                <div>
+                  <p class="font-label-bold text-[11px] uppercase tracking-widest text-outline mb-1">Be10X</p>
+                  <h3 class="font-headline-lg text-[18px] font-black uppercase leading-6">AI Tools Certificate</h3>
+                </div>
+              </div>
+              <div class="fx-flip-face fx-flip-back bg-secondary-fixed text-primary border-2 border-primary p-6 flex flex-col justify-center">
+                <p class="font-label-bold text-[11px] uppercase tracking-widest mb-3">Applied as</p>
+                <p class="text-sm leading-6">AI-assisted development with Claude and prompt engineering to build and deploy faster.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="fx-flip h-64 cursor-pointer" tabindex="0" data-reveal="flip">
+            <div class="fx-flip-inner">
+              <div class="fx-flip-face bg-primary text-on-primary border-2 border-primary p-6 flex flex-col justify-between">
+                <span class="material-symbols-outlined text-secondary-fixed" style="font-size:36px;">code_blocks</span>
+                <div>
+                  <p class="font-label-bold text-[11px] uppercase tracking-widest text-outline mb-1">Development</p>
+                  <h3 class="font-headline-lg text-[18px] font-black uppercase leading-6">Web Dev Internship &amp; React.js</h3>
+                </div>
+              </div>
+              <div class="fx-flip-face fx-flip-back bg-secondary-fixed text-primary border-2 border-primary p-6 flex flex-col justify-center">
+                <p class="font-label-bold text-[11px] uppercase tracking-widest mb-3">Two certificates</p>
+                <p class="text-sm leading-6">Web Developer Internship Certificate and React.js Developer Certificate — the app side of the apps I now deploy.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ Skills ═══════════ -->
     <section class="py-section-padding px-margin-mobile md:px-margin-desktop bg-primary relative overflow-hidden">
-      <div class="absolute top-12 right-12 w-48 h-48 dot-pattern opacity-10 hidden md:block"></div>
+      <div class="absolute top-12 right-12 w-48 h-48 dot-pattern opacity-10 hidden md:block" data-parallax="0.2"></div>
       <div class="max-w-6xl mx-auto">
         <div class="mb-14">
-          <span class="font-label-bold text-label-bold uppercase tracking-widest text-outline block mb-2">TECHNICAL SKILLS</span>
-          <h2 class="font-headline-xl-mobile md:text-[48px] font-black text-on-primary leading-tight">
-            MY <span class="text-secondary-fixed">STACK</span>
+          <span class="font-label-bold text-label-bold uppercase tracking-widest text-outline block mb-2" data-reveal>TECHNICAL SKILLS</span>
+          <h2 class="font-headline-xl-mobile md:text-[48px] font-black text-on-primary leading-tight" data-split>
+            MY <span class="text-secondary-fixed">TOOLCHAIN</span>
           </h2>
         </div>
 
@@ -183,171 +288,189 @@
           <!-- SKILLS_START -->
           <div>
             <div class="flex justify-between mb-2">
-              <span class="font-label-bold text-label-bold text-on-primary uppercase">JavaScript (ES6+)</span>
-              <span class="font-label-bold text-label-bold text-secondary-fixed">90%</span>
-            </div>
-            <div class="w-full h-1 bg-outline">
-              <div class="h-1 bg-secondary-fixed" style="width:90%"></div>
-            </div>
-          </div>
-          <div>
-            <div class="flex justify-between mb-2">
-              <span class="font-label-bold text-label-bold text-on-primary uppercase">React.js / Next.js</span>
+              <span class="font-label-bold text-label-bold text-on-primary uppercase">AWS (EC2, S3, Lambda, ECS, VPC, IAM)</span>
               <span class="font-label-bold text-label-bold text-secondary-fixed">88%</span>
             </div>
             <div class="w-full h-1 bg-outline">
-              <div class="h-1 bg-secondary-fixed" style="width:88%"></div>
+              <div class="h-1 bg-secondary-fixed skill-bar-fill" data-skill="88"></div>
             </div>
           </div>
           <div>
             <div class="flex justify-between mb-2">
-              <span class="font-label-bold text-label-bold text-on-primary uppercase">Node.js / Express.js</span>
+              <span class="font-label-bold text-label-bold text-on-primary uppercase">CI/CD — GitHub Actions</span>
+              <span class="font-label-bold text-label-bold text-secondary-fixed">88%</span>
+            </div>
+            <div class="w-full h-1 bg-outline">
+              <div class="h-1 bg-secondary-fixed skill-bar-fill" data-skill="88"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between mb-2">
+              <span class="font-label-bold text-label-bold text-on-primary uppercase">Docker / ECR / ECS Fargate</span>
               <span class="font-label-bold text-label-bold text-secondary-fixed">85%</span>
             </div>
             <div class="w-full h-1 bg-outline">
-              <div class="h-1 bg-secondary-fixed" style="width:85%"></div>
+              <div class="h-1 bg-secondary-fixed skill-bar-fill" data-skill="85"></div>
             </div>
           </div>
           <div>
             <div class="flex justify-between mb-2">
-              <span class="font-label-bold text-label-bold text-on-primary uppercase">MongoDB / Supabase</span>
-              <span class="font-label-bold text-label-bold text-secondary-fixed">82%</span>
-            </div>
-            <div class="w-full h-1 bg-outline">
-              <div class="h-1 bg-secondary-fixed" style="width:82%"></div>
-            </div>
-          </div>
-          <div>
-            <div class="flex justify-between mb-2">
-              <span class="font-label-bold text-label-bold text-on-primary uppercase">Tailwind CSS</span>
-              <span class="font-label-bold text-label-bold text-secondary-fixed">90%</span>
-            </div>
-            <div class="w-full h-1 bg-outline">
-              <div class="h-1 bg-secondary-fixed" style="width:90%"></div>
-            </div>
-          </div>
-          <div>
-            <div class="flex justify-between mb-2">
-              <span class="font-label-bold text-label-bold text-on-primary uppercase">REST APIs / JWT Auth</span>
-              <span class="font-label-bold text-label-bold text-secondary-fixed">85%</span>
-            </div>
-            <div class="w-full h-1 bg-outline">
-              <div class="h-1 bg-secondary-fixed" style="width:85%"></div>
-            </div>
-          </div>
-          <div>
-            <div class="flex justify-between mb-2">
-              <span class="font-label-bold text-label-bold text-on-primary uppercase">Claude API / AI Agents</span>
+              <span class="font-label-bold text-label-bold text-on-primary uppercase">Linux / Bash Scripting</span>
               <span class="font-label-bold text-label-bold text-secondary-fixed">80%</span>
             </div>
             <div class="w-full h-1 bg-outline">
-              <div class="h-1 bg-secondary-fixed" style="width:80%"></div>
+              <div class="h-1 bg-secondary-fixed skill-bar-fill" data-skill="80"></div>
             </div>
           </div>
           <div>
             <div class="flex justify-between mb-2">
-              <span class="font-label-bold text-label-bold text-on-primary uppercase">Git / CI/CD / Vercel</span>
-              <span class="font-label-bold text-label-bold text-secondary-fixed">85%</span>
+              <span class="font-label-bold text-label-bold text-on-primary uppercase">CloudWatch / SNS Monitoring</span>
+              <span class="font-label-bold text-label-bold text-secondary-fixed">82%</span>
             </div>
             <div class="w-full h-1 bg-outline">
-              <div class="h-1 bg-secondary-fixed" style="width:85%"></div>
+              <div class="h-1 bg-secondary-fixed skill-bar-fill" data-skill="82"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between mb-2">
+              <span class="font-label-bold text-label-bold text-on-primary uppercase">Nginx / Networking (VPC, ALB)</span>
+              <span class="font-label-bold text-label-bold text-secondary-fixed">78%</span>
+            </div>
+            <div class="w-full h-1 bg-outline">
+              <div class="h-1 bg-secondary-fixed skill-bar-fill" data-skill="78"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between mb-2">
+              <span class="font-label-bold text-label-bold text-on-primary uppercase">IaC — AWS CDK / CloudFormation</span>
+              <span class="font-label-bold text-label-bold text-secondary-fixed">75%</span>
+            </div>
+            <div class="w-full h-1 bg-outline">
+              <div class="h-1 bg-secondary-fixed skill-bar-fill" data-skill="75"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between mb-2">
+              <span class="font-label-bold text-label-bold text-on-primary uppercase">Node.js / Express / Python</span>
+              <span class="font-label-bold text-label-bold text-secondary-fixed">75%</span>
+            </div>
+            <div class="w-full h-1 bg-outline">
+              <div class="h-1 bg-secondary-fixed skill-bar-fill" data-skill="75"></div>
             </div>
           </div>
           <!-- SKILLS_END -->
         </div>
 
         <!-- Tech Chips -->
-        <div class="mt-16">
-          <span class="font-label-bold text-label-bold uppercase tracking-widest text-outline block mb-6">TOOLS & TECHNOLOGIES</span>
+        <div class="mt-16" data-reveal>
+          <span class="font-label-bold text-label-bold uppercase tracking-widest text-outline block mb-6">TOOLS &amp; TECHNOLOGIES</span>
           <div class="flex flex-wrap gap-3">
             <!-- TECH_CHIPS_START -->
-            <span class="bg-secondary-fixed text-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">React.js</span>
-            <span class="bg-secondary-fixed text-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">Node.js</span>
-            <span class="bg-secondary-fixed text-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">Express.js</span>
-            <span class="bg-secondary-fixed text-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">MongoDB</span>
-            <span class="bg-secondary-fixed text-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">Tailwind CSS</span>
-            <span class="bg-secondary-fixed text-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">Claude API</span>
-            <span class="bg-secondary-fixed text-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">Vercel</span>
-            <span class="bg-secondary-fixed text-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">Supabase</span>
-            <span class="border border-outline text-on-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">JavaScript (ES6+)</span>
-            <span class="border border-outline text-on-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">TypeScript</span>
+            <span class="bg-secondary-fixed text-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">AWS</span>
+            <span class="bg-secondary-fixed text-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">Docker</span>
+            <span class="bg-secondary-fixed text-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">GitHub Actions</span>
+            <span class="bg-secondary-fixed text-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">CI/CD</span>
+            <span class="bg-secondary-fixed text-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">Linux</span>
+            <span class="bg-secondary-fixed text-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">CloudWatch</span>
+            <span class="bg-secondary-fixed text-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">AWS CDK</span>
+            <span class="bg-secondary-fixed text-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">Nginx</span>
+            <span class="border border-outline text-on-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">EC2</span>
+            <span class="border border-outline text-on-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">S3</span>
+            <span class="border border-outline text-on-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">Lambda</span>
+            <span class="border border-outline text-on-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">ECS Fargate</span>
+            <span class="border border-outline text-on-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">ECR</span>
+            <span class="border border-outline text-on-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">VPC</span>
+            <span class="border border-outline text-on-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">IAM</span>
+            <span class="border border-outline text-on-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">SSM</span>
+            <span class="border border-outline text-on-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">SNS</span>
+            <span class="border border-outline text-on-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">CloudFront</span>
+            <span class="border border-outline text-on-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">Route53</span>
+            <span class="border border-outline text-on-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">ACM</span>
+            <span class="border border-outline text-on-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">Secrets Manager</span>
+            <span class="border border-outline text-on-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">Cognito</span>
+            <span class="border border-outline text-on-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">DynamoDB</span>
+            <span class="border border-outline text-on-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">OpenNext</span>
+            <span class="border border-outline text-on-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">OIDC</span>
+            <span class="border border-outline text-on-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">Systemd</span>
+            <span class="border border-outline text-on-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">Bash</span>
+            <span class="border border-outline text-on-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">Node.js</span>
+            <span class="border border-outline text-on-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">Express.js</span>
             <span class="border border-outline text-on-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">Python</span>
-            <span class="border border-outline text-on-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">HTML5</span>
-            <span class="border border-outline text-on-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">CSS3</span>
-            <span class="border border-outline text-on-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">SQL</span>
-            <span class="border border-outline text-on-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">JWT</span>
-            <span class="border border-outline text-on-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">REST APIs</span>
-            <span class="border border-outline text-on-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">Firebase</span>
-            <span class="border border-outline text-on-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">Gmail MCP</span>
-            <span class="border border-outline text-on-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">AI Agents</span>
+            <span class="border border-outline text-on-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">MongoDB</span>
+            <span class="border border-outline text-on-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">PostgreSQL</span>
             <span class="border border-outline text-on-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">Git</span>
-            <span class="border border-outline text-on-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">GitHub</span>
-            <span class="border border-outline text-on-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">CI/CD</span>
-            <span class="border border-outline text-on-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">Vite</span>
             <span class="border border-outline text-on-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">Postman</span>
-            <span class="border border-outline text-on-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">CSS Modules</span>
+            <span class="border border-outline text-on-primary font-label-bold text-label-bold px-4 py-2 uppercase text-xs">Claude (AI-Assisted)</span>
             <!-- TECH_CHIPS_END -->
           </div>
         </div>
 
-        <!-- Cloud & DevOps Section -->
-        <div class="mt-16 border-t border-outline pt-12">
-          <div class="flex flex-col md:flex-row md:items-start gap-10">
+        <!-- Cloud & Infra Section -->
+        <div class="mt-20 border-t border-outline pt-14">
+          <div class="flex flex-col lg:flex-row lg:items-center gap-14">
 
-            <!-- Left label -->
-            <div class="md:w-1/3 shrink-0">
+            <!-- Left: label + 3D cube -->
+            <div class="lg:w-1/3 shrink-0 flex flex-col items-center lg:items-start" data-reveal="left">
               <span class="font-label-bold text-label-bold uppercase tracking-widest text-outline block mb-2">INFRASTRUCTURE</span>
-              <h3 class="font-headline-lg text-[28px] font-black text-on-primary leading-tight">
-                DEVOPS &<br/><span class="text-secondary-fixed">AI / LLM</span>
+              <h3 class="font-headline-lg text-[28px] font-black text-on-primary leading-tight text-center lg:text-left">
+                CLOUD &amp;<br/><span class="text-secondary-fixed">DEVOPS CORE</span>
               </h3>
-              <p class="font-body-md text-body-md text-on-surface-variant mt-4 text-sm max-w-xs">
-                Deploying apps on Vercel, automating CI/CD pipelines, and building AI-powered products with Claude API.
-              </p>
+              <div class="fx-cube-scene mt-14 mb-6 lg:ml-8" aria-hidden="true">
+                <div class="fx-cube">
+                  <div>AWS</div>
+                  <div>DOCKER</div>
+                  <div>LINUX</div>
+                  <div>CI/CD</div>
+                  <div>NGINX</div>
+                  <div>CDK</div>
+                </div>
+              </div>
             </div>
 
             <!-- Right: Cards grid -->
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 flex-1">
-
-              <div class="border border-outline p-4 hover:border-secondary-fixed hover:bg-on-primary transition-all group cursor-default">
-                <div class="w-8 h-8 bg-secondary-fixed flex items-center justify-center mb-3">
-                  <span class="material-symbols-outlined text-primary text-base">rocket_launch</span>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 flex-1" data-reveal-stagger="0.08">
+              <div data-reveal>
+                <div data-tilt="12" class="h-full border border-outline p-5 hover:border-secondary-fixed transition-colors cursor-default">
+                  <div class="fx-depth w-9 h-9 bg-secondary-fixed flex items-center justify-center mb-3"><span class="material-symbols-outlined text-primary text-base">memory</span></div>
+                  <h4 class="fx-depth-sm font-label-bold text-label-bold text-on-primary uppercase text-xs font-black mb-1">Compute</h4>
+                  <p class="fx-depth-sm text-outline text-xs leading-5">EC2 Auto Scaling, ECS Fargate, Lambda (OpenNext)</p>
                 </div>
-                <h4 class="font-label-bold text-label-bold text-on-primary uppercase text-xs font-black mb-1">VERCEL</h4>
-                <p class="text-outline text-xs">Production deployments — instant global hosting</p>
               </div>
-
-              <div class="border border-outline p-4 hover:border-secondary-fixed hover:bg-on-primary transition-all group cursor-default">
-                <div class="w-8 h-8 bg-secondary-fixed flex items-center justify-center mb-3">
-                  <span class="material-symbols-outlined text-primary text-base">sync_alt</span>
+              <div data-reveal>
+                <div data-tilt="12" class="h-full border border-outline p-5 hover:border-secondary-fixed transition-colors cursor-default">
+                  <div class="fx-depth w-9 h-9 bg-secondary-fixed flex items-center justify-center mb-3"><span class="material-symbols-outlined text-primary text-base">lan</span></div>
+                  <h4 class="fx-depth-sm font-label-bold text-label-bold text-on-primary uppercase text-xs font-black mb-1">Networking</h4>
+                  <p class="fx-depth-sm text-outline text-xs leading-5">Custom VPCs, public/private subnets, IGW, NAT, ALB, Route53 + ACM</p>
                 </div>
-                <h4 class="font-label-bold text-label-bold text-on-primary uppercase text-xs font-black mb-1">CI/CD</h4>
-                <p class="text-outline text-xs">GitHub Actions — automated build, test & deploy</p>
               </div>
-
-              <div class="border border-outline p-4 hover:border-secondary-fixed hover:bg-on-primary transition-all group cursor-default">
-                <div class="w-8 h-8 bg-secondary-fixed flex items-center justify-center mb-3">
-                  <span class="material-symbols-outlined text-primary text-base">smart_toy</span>
+              <div data-reveal>
+                <div data-tilt="12" class="h-full border border-outline p-5 hover:border-secondary-fixed transition-colors cursor-default">
+                  <div class="fx-depth w-9 h-9 bg-secondary-fixed flex items-center justify-center mb-3"><span class="material-symbols-outlined text-primary text-base">shield_lock</span></div>
+                  <h4 class="fx-depth-sm font-label-bold text-label-bold text-on-primary uppercase text-xs font-black mb-1">Security</h4>
+                  <p class="fx-depth-sm text-outline text-xs leading-5">Scoped IAM roles, SSM instead of SSH, Secrets Manager, OIDC</p>
                 </div>
-                <h4 class="font-label-bold text-label-bold text-on-primary uppercase text-xs font-black mb-1">CLAUDE API</h4>
-                <p class="text-outline text-xs">Anthropic — AI-powered app integration</p>
               </div>
-
-              <div class="border border-outline p-4 hover:border-secondary-fixed hover:bg-on-primary transition-all group cursor-default">
-                <div class="w-8 h-8 bg-secondary-fixed flex items-center justify-center mb-3">
-                  <span class="material-symbols-outlined text-primary text-base">mail</span>
+              <div data-reveal>
+                <div data-tilt="12" class="h-full border border-outline p-5 hover:border-secondary-fixed transition-colors cursor-default">
+                  <div class="fx-depth w-9 h-9 bg-secondary-fixed flex items-center justify-center mb-3"><span class="material-symbols-outlined text-primary text-base">monitoring</span></div>
+                  <h4 class="fx-depth-sm font-label-bold text-label-bold text-on-primary uppercase text-xs font-black mb-1">Observability</h4>
+                  <p class="fx-depth-sm text-outline text-xs leading-5">CloudWatch logs &amp; alarms, SNS alerting, incident response</p>
                 </div>
-                <h4 class="font-label-bold text-label-bold text-on-primary uppercase text-xs font-black mb-1">GMAIL MCP</h4>
-                <p class="text-outline text-xs">AI email classification & automation</p>
               </div>
-
-              <div class="border border-outline p-4 hover:border-secondary-fixed hover:bg-on-primary transition-all group cursor-default col-span-2 md:col-span-2">
-                <div class="w-8 h-8 bg-secondary-fixed flex items-center justify-center mb-3">
-                  <span class="material-symbols-outlined text-primary text-base">psychology</span>
+              <div data-reveal>
+                <div data-tilt="12" class="h-full border border-outline p-5 hover:border-secondary-fixed transition-colors cursor-default">
+                  <div class="fx-depth w-9 h-9 bg-secondary-fixed flex items-center justify-center mb-3"><span class="material-symbols-outlined text-primary text-base">data_object</span></div>
+                  <h4 class="fx-depth-sm font-label-bold text-label-bold text-on-primary uppercase text-xs font-black mb-1">Infra as Code</h4>
+                  <p class="fx-depth-sm text-outline text-xs leading-5">AWS CDK stacks, CloudFormation drift detection</p>
                 </div>
-                <h4 class="font-label-bold text-label-bold text-on-primary uppercase text-xs font-black mb-1">PROMPT ENGINEERING</h4>
-                <p class="text-outline text-xs">Building AI agents, multi-turn conversations & automation workflows</p>
               </div>
-
+              <div data-reveal>
+                <div data-tilt="12" class="h-full border border-outline p-5 hover:border-secondary-fixed transition-colors cursor-default">
+                  <div class="fx-depth w-9 h-9 bg-secondary-fixed flex items-center justify-center mb-3"><span class="material-symbols-outlined text-primary text-base">smart_toy</span></div>
+                  <h4 class="fx-depth-sm font-label-bold text-label-bold text-on-primary uppercase text-xs font-black mb-1">AI-Assisted</h4>
+                  <p class="fx-depth-sm text-outline text-xs leading-5">Claude for faster builds, scripts and troubleshooting</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -355,145 +478,129 @@
       </div>
     </section>
 
-    <!-- My Process Section -->
+    <!-- ═══════════ My Process ═══════════ -->
     <section class="py-section-padding px-margin-mobile md:px-margin-desktop bg-surface-container-lowest relative overflow-hidden">
-      <!-- Decorative dot pattern -->
       <div class="absolute bottom-0 right-0 w-64 h-64 dot-pattern opacity-10 hidden md:block"></div>
 
       <div class="max-w-6xl mx-auto">
         <div class="mb-14">
-          <span class="font-label-bold text-label-bold uppercase tracking-widest text-outline block mb-2">HOW I WORK</span>
-          <h2 class="font-headline-xl-mobile md:text-[48px] font-black text-primary leading-tight">
-            MY <span class="inline-block relative">PROCESS<div class="absolute -bottom-1 left-0 w-full h-1 bg-secondary-fixed"></div></span>
+          <span class="font-label-bold text-label-bold uppercase tracking-widest text-outline block mb-2" data-reveal>HOW I WORK</span>
+          <h2 class="font-headline-xl-mobile md:text-[48px] font-black text-primary leading-tight" data-split>
+            MY <span class="inline-block relative fx-nosplit">PROCESS<div class="absolute -bottom-1 left-0 w-full h-1 bg-secondary-fixed"></div></span>
           </h2>
         </div>
 
-        <!-- Steps Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-0 border border-outline">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-0 border border-outline" data-reveal-stagger="0.12">
 
-          <!-- Step 01 -->
-          <div class="relative p-8 border-b md:border-b-0 md:border-r border-outline group hover:bg-primary transition-all duration-300 cursor-default">
+          <div class="relative p-8 border-b md:border-b-0 md:border-r border-outline group hover:bg-primary transition-colors duration-300 cursor-default" data-reveal>
             <div class="text-[64px] font-black leading-none mb-4 text-secondary-fixed" style="font-family:'Montserrat'; opacity:0.3;">01</div>
-            <div class="w-10 h-10 bg-secondary-fixed flex items-center justify-center mb-4 group-hover:bg-primary group-hover:border-2 group-hover:border-secondary-fixed transition-all">
-              <span class="material-symbols-outlined text-primary group-hover:text-secondary-fixed text-xl">search</span>
+            <div class="w-10 h-10 bg-secondary-fixed flex items-center justify-center mb-4 group-hover:bg-primary group-hover:border-2 group-hover:border-secondary-fixed transition-all group-hover:-translate-y-1">
+              <span class="material-symbols-outlined text-primary group-hover:text-secondary-fixed text-xl">architecture</span>
             </div>
-            <h3 class="font-label-bold text-label-bold text-on-surface group-hover:text-on-primary uppercase font-black text-base mb-3 tracking-wider">DISCOVER</h3>
+            <h3 class="font-label-bold text-label-bold text-on-surface group-hover:text-on-primary uppercase font-black text-base mb-3 tracking-wider">PLAN</h3>
             <p class="font-body-md text-body-md text-on-surface-variant group-hover:text-on-primary opacity-80 text-sm leading-relaxed">
-              Understand the problem, gather requirements, research the tech stack, and plan the architecture.
+              Map the architecture — network layout, IAM boundaries, environments and failure points — before a single resource exists.
             </p>
-            <!-- Arrow desktop -->
             <div class="hidden md:block absolute top-1/2 -right-4 z-10 text-secondary-fixed font-black text-xl">→</div>
           </div>
 
-          <!-- Step 02 -->
-          <div class="relative p-8 border-b md:border-b-0 md:border-r border-outline group hover:bg-primary transition-all duration-300 cursor-default">
+          <div class="relative p-8 border-b md:border-b-0 md:border-r border-outline group hover:bg-primary transition-colors duration-300 cursor-default" data-reveal>
             <div class="text-[64px] font-black leading-none mb-4 text-secondary-fixed" style="font-family:'Montserrat'; opacity:0.3;">02</div>
-            <div class="w-10 h-10 bg-secondary-fixed flex items-center justify-center mb-4 group-hover:bg-primary group-hover:border-2 group-hover:border-secondary-fixed transition-all">
-              <span class="material-symbols-outlined text-primary group-hover:text-secondary-fixed text-xl">design_services</span>
+            <div class="w-10 h-10 bg-secondary-fixed flex items-center justify-center mb-4 group-hover:bg-primary group-hover:border-2 group-hover:border-secondary-fixed transition-all group-hover:-translate-y-1">
+              <span class="material-symbols-outlined text-primary group-hover:text-secondary-fixed text-xl">data_object</span>
             </div>
-            <h3 class="font-label-bold text-label-bold text-on-surface group-hover:text-on-primary uppercase font-black text-base mb-3 tracking-wider">DESIGN</h3>
+            <h3 class="font-label-bold text-label-bold text-on-surface group-hover:text-on-primary uppercase font-black text-base mb-3 tracking-wider">CODIFY</h3>
             <p class="font-body-md text-body-md text-on-surface-variant group-hover:text-on-primary opacity-80 text-sm leading-relaxed">
-              Structure the UI/UX, plan database schema, define API contracts, and set up the project.
+              Define infrastructure as code with AWS CDK and containerize services with Docker — repeatable across every environment.
             </p>
             <div class="hidden md:block absolute top-1/2 -right-4 z-10 text-secondary-fixed font-black text-xl">→</div>
           </div>
 
-          <!-- Step 03 -->
-          <div class="relative p-8 border-b md:border-b-0 md:border-r border-outline group hover:bg-primary transition-all duration-300 cursor-default">
+          <div class="relative p-8 border-b md:border-b-0 md:border-r border-outline group hover:bg-primary transition-colors duration-300 cursor-default" data-reveal>
             <div class="text-[64px] font-black leading-none mb-4 text-secondary-fixed" style="font-family:'Montserrat'; opacity:0.3;">03</div>
-            <div class="w-10 h-10 bg-secondary-fixed flex items-center justify-center mb-4 group-hover:bg-primary group-hover:border-2 group-hover:border-secondary-fixed transition-all">
-              <span class="material-symbols-outlined text-primary group-hover:text-secondary-fixed text-xl">code</span>
+            <div class="w-10 h-10 bg-secondary-fixed flex items-center justify-center mb-4 group-hover:bg-primary group-hover:border-2 group-hover:border-secondary-fixed transition-all group-hover:-translate-y-1">
+              <span class="material-symbols-outlined text-primary group-hover:text-secondary-fixed text-xl">sync_alt</span>
             </div>
-            <h3 class="font-label-bold text-label-bold text-on-surface group-hover:text-on-primary uppercase font-black text-base mb-3 tracking-wider">BUILD</h3>
+            <h3 class="font-label-bold text-label-bold text-on-surface group-hover:text-on-primary uppercase font-black text-base mb-3 tracking-wider">AUTOMATE</h3>
             <p class="font-body-md text-body-md text-on-surface-variant group-hover:text-on-primary opacity-80 text-sm leading-relaxed">
-              Write clean, maintainable code. Frontend + Backend together, tested at every step.
+              Wire up GitHub Actions — build, test, publish images and deploy on every push, authenticated through OIDC.
             </p>
             <div class="hidden md:block absolute top-1/2 -right-4 z-10 text-secondary-fixed font-black text-xl">→</div>
           </div>
 
-          <!-- Step 04 -->
-          <div class="relative p-8 group hover:bg-primary transition-all duration-300 cursor-default">
+          <div class="relative p-8 group hover:bg-primary transition-colors duration-300 cursor-default" data-reveal>
             <div class="text-[64px] font-black leading-none mb-4 text-secondary-fixed" style="font-family:'Montserrat'; opacity:0.3;">04</div>
-            <div class="w-10 h-10 bg-secondary-fixed flex items-center justify-center mb-4 group-hover:bg-primary group-hover:border-2 group-hover:border-secondary-fixed transition-all">
-              <span class="material-symbols-outlined text-primary group-hover:text-secondary-fixed text-xl">rocket_launch</span>
+            <div class="w-10 h-10 bg-secondary-fixed flex items-center justify-center mb-4 group-hover:bg-primary group-hover:border-2 group-hover:border-secondary-fixed transition-all group-hover:-translate-y-1">
+              <span class="material-symbols-outlined text-primary group-hover:text-secondary-fixed text-xl">monitor_heart</span>
             </div>
-            <h3 class="font-label-bold text-label-bold text-on-surface group-hover:text-on-primary uppercase font-black text-base mb-3 tracking-wider">DEPLOY</h3>
+            <h3 class="font-label-bold text-label-bold text-on-surface group-hover:text-on-primary uppercase font-black text-base mb-3 tracking-wider">OBSERVE</h3>
             <p class="font-body-md text-body-md text-on-surface-variant group-hover:text-on-primary opacity-80 text-sm leading-relaxed">
-              Deploy to production, monitor performance, fix bugs, and iterate based on feedback.
+              CloudWatch dashboards, alarms and SNS alerts — catch incidents early and resolve them fast to protect uptime.
             </p>
           </div>
 
         </div>
 
-        <!-- Bottom yellow strip -->
-        <div class="bg-secondary-fixed p-6 flex flex-col md:flex-row items-center justify-between gap-4 mt-0 border border-t-0 border-outline">
+        <div class="bg-secondary-fixed p-6 flex flex-col md:flex-row items-center justify-between gap-4 mt-0 border border-t-0 border-outline" data-reveal>
           <p class="font-label-bold text-label-bold text-primary uppercase tracking-wider text-sm">
-            Every project — same precision. Every time.
+            Every release — same pipeline. Every time.
           </p>
-          <a href="contact.html" class="bg-primary text-on-primary font-label-bold text-label-bold px-6 py-2 uppercase tracking-widest hover:bg-surface hover:text-primary border-2 border-primary transition-all text-sm">
-            START A PROJECT →
+          <a href="contact.html" data-magnetic class="bg-primary text-on-primary font-label-bold text-label-bold px-6 py-2 uppercase tracking-widest hover:bg-surface hover:text-primary border-2 border-primary transition-colors text-sm">
+            LET'S TALK →
           </a>
         </div>
       </div>
     </section>
 
-    <!-- Experience / Timeline -->
-    <section class="py-section-padding px-margin-mobile md:px-margin-desktop bg-surface-container-lowest relative">
+    <!-- ═══════════ Experience / Timeline ═══════════ -->
+    <section class="py-section-padding px-margin-mobile md:px-margin-desktop bg-surface-container-lowest relative border-t border-outline-variant">
       <div class="max-w-6xl mx-auto">
         <div class="mb-14">
-          <span class="font-label-bold text-label-bold uppercase tracking-widest text-outline block mb-2">JOURNEY</span>
-          <h2 class="font-headline-xl-mobile md:text-[48px] font-black text-primary leading-tight">
-            EXPERIENCE &<br/><span class="inline-block relative">EDUCATION<div class="absolute -bottom-1 left-0 w-full h-1 bg-secondary-fixed"></div></span>
+          <span class="font-label-bold text-label-bold uppercase tracking-widest text-outline block mb-2" data-reveal>JOURNEY</span>
+          <h2 class="font-headline-xl-mobile md:text-[48px] font-black text-primary leading-tight" data-split>
+            EXPERIENCE &amp;<br/><span class="inline-block relative fx-nosplit">EDUCATION<div class="absolute -bottom-1 left-0 w-full h-1 bg-secondary-fixed"></div></span>
           </h2>
         </div>
 
-        <div class="relative border-l-2 border-outline ml-4 space-y-12 pl-8">
+        <div class="relative border-l-2 border-outline-variant ml-4 space-y-12 pl-8">
+          <!-- Rail that draws itself on scroll -->
+          <div class="absolute -left-[2px] top-0 w-[2px] h-full bg-secondary-fixed" data-reveal="line"></div>
 
-          <!-- Entry 1 -->
-          <div class="relative">
-            <div class="absolute -left-[41px] top-1 w-4 h-4 bg-secondary-fixed border-2 border-primary"></div>
+          <div class="relative" data-reveal="right">
+            <div class="absolute -left-[41px] top-1 w-4 h-4 bg-secondary-fixed border-2 border-primary animate-pulse"></div>
             <span class="font-label-bold text-label-bold text-outline uppercase tracking-wider block mb-1">APRIL 2026 — PRESENT</span>
-            <h3 class="font-headline-lg text-[22px] font-bold text-primary uppercase mb-1">Full Stack Developer</h3>
-            <p class="font-label-bold text-label-bold text-secondary uppercase mb-3">V3 Consultant — Noida, India</p>
-            <p class="font-body-md text-body-md text-on-surface-variant max-w-xl">
-              Developing full-stack MERN applications, contributing to CI/CD pipelines, code reviews, and production deployments following agile practices.
-            </p>
+            <h3 class="font-headline-lg text-[22px] font-bold text-primary uppercase mb-1">Cloud Support Engineer</h3>
+            <p class="font-label-bold text-label-bold text-secondary uppercase mb-3">V3iQ Tech Pvt. Ltd. — Noida, India</p>
+            <ul class="font-body-md text-body-md text-on-surface-variant max-w-2xl space-y-2">
+              <li class="flex gap-3"><span class="text-secondary font-black">▸</span>Managing AWS infrastructure (EC2, S3, Lambda, CloudWatch) — resolving real-time incidents, improving uptime and keeping production highly available.</li>
+              <li class="flex gap-3"><span class="text-secondary font-black">▸</span>Building and maintaining CI/CD pipelines with GitHub Actions — automated build, test and deploy workflows for faster, reliable releases on AWS.</li>
+            </ul>
+            <div class="flex flex-wrap gap-2 mt-4">
+              <span class="bg-primary text-on-primary font-label-bold px-2 py-1 text-[11px] uppercase">AWS</span>
+              <span class="bg-primary text-on-primary font-label-bold px-2 py-1 text-[11px] uppercase">GitHub Actions</span>
+              <span class="bg-primary text-on-primary font-label-bold px-2 py-1 text-[11px] uppercase">CloudWatch</span>
+            </div>
           </div>
 
-          <!-- Entry 2 -->
-          <div class="relative">
+          <div class="relative" data-reveal="right">
             <div class="absolute -left-[41px] top-1 w-4 h-4 bg-primary border-2 border-outline"></div>
             <span class="font-label-bold text-label-bold text-outline uppercase tracking-wider block mb-1">JULY 2025 — DECEMBER 2025</span>
-            <h3 class="font-headline-lg text-[22px] font-bold text-primary uppercase mb-1">Full Stack Intern</h3>
+            <h3 class="font-headline-lg text-[22px] font-bold text-primary uppercase mb-1">MERN Stack Intern</h3>
             <p class="font-label-bold text-label-bold text-secondary uppercase mb-3">Coreline Solution — Noida, India</p>
-            <p class="font-body-md text-body-md text-on-surface-variant max-w-xl">
-              Built full-stack MERN apps with React.js, Node.js, MongoDB — REST APIs, JWT auth, responsive UIs; collaborated via Git/GitHub following best practices.
-            </p>
+            <ul class="font-body-md text-body-md text-on-surface-variant max-w-2xl space-y-2">
+              <li class="flex gap-3"><span class="text-secondary font-black">▸</span>Deployed MERN apps with automated Git/GitHub workflows — backend API optimization and production deployment on Vercel.</li>
+            </ul>
           </div>
 
-          <!-- Entry 3 -->
-          <div class="relative">
-            <div class="absolute -left-[41px] top-1 w-4 h-4 bg-primary border-2 border-outline"></div>
-            <span class="font-label-bold text-label-bold text-outline uppercase tracking-wider block mb-1">2023 — JUNE 2025</span>
-            <h3 class="font-headline-lg text-[22px] font-bold text-primary uppercase mb-1">Full Stack & AI Developer</h3>
-            <p class="font-label-bold text-label-bold text-secondary uppercase mb-3">Freelance / Independent — Noida, India</p>
-            <p class="font-body-md text-body-md text-on-surface-variant max-w-xl">
-              Built and shipped 5 live full-stack applications on Vercel. Integrated Claude API and Gmail MCP for AI email classification; built production apps including resume builder, chatbot, and music streaming app.
-            </p>
-          </div>
-
-          <!-- Entry 4 — Education -->
-          <div class="relative">
+          <div class="relative" data-reveal="right">
             <div class="absolute -left-[41px] top-1 w-4 h-4 bg-primary border-2 border-outline"></div>
             <span class="font-label-bold text-label-bold text-outline uppercase tracking-wider block mb-1">2025 — COMPLETED</span>
             <h3 class="font-headline-lg text-[22px] font-bold text-primary uppercase mb-1">B.Sc — Science</h3>
             <p class="font-label-bold text-label-bold text-secondary uppercase mb-3">Siddharth University — Uttar Pradesh, India</p>
             <p class="font-body-md text-body-md text-on-surface-variant max-w-xl">
-              Relevant Coursework: Data Structures & Algorithms, Web Development, Database Management, Computer Networks, Object-Oriented Programming.
+              Bachelor of Science, alongside the AWS Solutions Architect — Associate and NIELIT O Level certifications.
             </p>
           </div>
-
-
         </div>
       </div>
     </section>
@@ -507,12 +614,12 @@
       <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
         <div class="md:col-span-4">
           <a href="index.html" class="font-headline-lg text-[36px] font-black text-on-primary tracking-tighter">KARUNESH.</a>
-          <p class="font-body-md text-body-md text-on-primary opacity-50 mt-3 max-w-xs">Fullstack developer crafting fast, scalable web apps with clean architecture and sharp UI.</p>
+          <p class="font-body-md text-body-md text-on-primary opacity-50 mt-3 max-w-xs">DevOps &amp; Cloud Engineer automating AWS infrastructure, CI/CD and containers — engineered for uptime.</p>
           <div class="flex gap-3 mt-6">
-            <a href="https://github.com/karunesh77" target="_blank" class="w-10 h-10 border-2 border-secondary-fixed flex items-center justify-center text-secondary-fixed hover:bg-secondary-fixed hover:text-primary transition-all">
+            <a href="https://github.com/karunesh77" target="_blank" rel="noopener" class="w-10 h-10 border-2 border-secondary-fixed flex items-center justify-center text-secondary-fixed hover:bg-secondary-fixed hover:text-primary transition-all">
               <span class="font-label-bold text-xs font-black">GH</span>
             </a>
-            <a href="https://www.linkedin.com/in/karunesh-gupta-680bb0326" target="_blank" class="w-10 h-10 border-2 border-secondary-fixed flex items-center justify-center text-secondary-fixed hover:bg-secondary-fixed hover:text-primary transition-all">
+            <a href="https://www.linkedin.com/in/karunesh-gupta-680bb0326" target="_blank" rel="noopener" class="w-10 h-10 border-2 border-secondary-fixed flex items-center justify-center text-secondary-fixed hover:bg-secondary-fixed hover:text-primary transition-all">
               <span class="font-label-bold text-xs font-black">IN</span>
             </a>
             <a href="mailto:karunesh@elens.in" class="w-10 h-10 border-2 border-secondary-fixed flex items-center justify-center text-secondary-fixed hover:bg-secondary-fixed hover:text-primary transition-all">
@@ -533,26 +640,26 @@
         <div class="md:col-span-3">
           <h4 class="font-label-bold text-label-bold text-secondary-fixed uppercase tracking-widest mb-4">Stack</h4>
           <div class="flex flex-wrap gap-2">
-            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">React</span>
-            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">Next.js</span>
-            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">Node.js</span>
-            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">Express</span>
-            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">MongoDB</span>
             <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">AWS</span>
             <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">Docker</span>
-            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">Tailwind</span>
+            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">GitHub Actions</span>
+            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">ECS</span>
+            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">Lambda</span>
+            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">Linux</span>
+            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">Nginx</span>
+            <span class="border border-outline text-on-primary opacity-60 font-label-bold px-2 py-1 text-xs uppercase">AWS CDK</span>
           </div>
         </div>
         <div class="md:col-span-3">
           <h4 class="font-label-bold text-label-bold text-secondary-fixed uppercase tracking-widest mb-4">Let's Work</h4>
-          <p class="font-body-md text-body-md text-on-primary opacity-50 text-sm mb-4">Got a project in mind? Let's build something great together.</p>
+          <p class="font-body-md text-body-md text-on-primary opacity-50 text-sm mb-4">Hiring for DevOps or Cloud? Let's keep your production fast, secure and always on.</p>
           <a href="contact.html" class="inline-block bg-secondary-fixed text-primary font-label-bold text-label-bold px-6 py-2.5 uppercase hover:bg-on-primary hover:text-primary border-2 border-secondary-fixed hover:border-on-primary transition-all">Get In Touch</a>
         </div>
       </div>
     </div>
     <div class="border-t border-outline">
       <div class="max-w-6xl mx-auto px-margin-mobile md:px-margin-desktop py-5 flex flex-col md:flex-row justify-between items-center gap-4">
-        <p class="font-body-md text-body-md text-on-primary opacity-40 text-sm">&copy; 2025 Karunesh Gupta. Engineered for precision.</p>
+        <p class="font-body-md text-body-md text-on-primary opacity-40 text-sm">&copy; 2026 Karunesh Gupta. Engineered for uptime.</p>
         <button onclick="window.scrollTo({top:0,behavior:'smooth'})" class="font-label-bold text-label-bold text-secondary-fixed uppercase tracking-widest hover:opacity-70 transition-opacity flex items-center gap-1">
           Back to Top <span class="material-symbols-outlined" style="font-size:16px;">arrow_upward</span>
         </button>
@@ -560,6 +667,8 @@
     </div>
     <div class="absolute top-8 right-8 w-32 h-32 opacity-5 pointer-events-none hidden md:block" style="background-image:radial-gradient(#f6e611 2px,transparent 2px);background-size:12px 12px;"></div>
   </footer>
+
+  <script src="fx.js"></script>
   <script>
     if (sessionStorage.getItem('loaderShown')) {
       document.getElementById('page-loader').classList.add('done');
